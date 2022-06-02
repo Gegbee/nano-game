@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity2D",
+"class": "Enemy2D",
+"language": "GDScript",
+"path": "res://Entity/Enemy2D.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Entity2D",
 "language": "GDScript",
 "path": "res://Entity/Entity2D.gd"
 } ]
 _global_script_class_icons={
+"Enemy2D": "",
 "Entity2D": ""
 }
 
@@ -30,10 +36,9 @@ UiRef="*res://UIRef.gd"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=960
+window/size/height=540
 window/size/resizable=false
-window/size/fullscreen=true
 
 [importer_defaults]
 

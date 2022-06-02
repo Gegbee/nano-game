@@ -1,18 +1,15 @@
-extends KinematicBody2D
+extends Entity2D
 
 var can_slide : bool = true
 
 const SPEED = 150
 const ACCEL = 2000
 const JUMP_SPEED = 300
-const GRAVITY = 700
 
 const CAT_MAX_TIME = 0.3
 var cat_time : float = 0.0
 var can_jump := false
 var can_dash : bool = true
-
-var vel : Vector2 = Vector2()
 
 var jump_movement_y : float = 0.0
 var floor_movement_x : float = 0.0
@@ -81,7 +78,7 @@ func _physics_process(delta):
 	if !can_jump and Input.is_action_just_released("up"):
 		vel.y *= 0.7
 	
-	vel = move_and_slide(vel, Vector2.UP, false, 4, PI/4, false)
+	move(delta)
 	
 	if vel.x > 0:
 		$Sprite.scale.x = -1

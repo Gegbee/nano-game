@@ -14,7 +14,9 @@ extents = Vector2( 11, 17 )
 extents = Vector2( 43, 15 )
 
 [node name="SidePlayer" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
+knockback_resistance = 2.0
 melee = NodePath("Melee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

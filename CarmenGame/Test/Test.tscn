@@ -24,11 +24,11 @@ polygon_copy = NodePath("../Polygon2D")
 color = Color( 0.113725, 0.121569, 0.129412, 1 )
 polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 56, -8, 56, -16, 28, -16, 28, -8, 4, -8, 4, -16, -4, -16, -4, -8, -12, -8, -12, -32, -20, -32, -20, -8, -56, -8, -56, -28, -28, -28, -28, -48, -36, -48, -36, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
 
-[node name="SidePlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 72, -32 )
-
 [node name="NPC" parent="." instance=ExtResource( 5 )]
 position = Vector2( 404, -128 )
 
 [node name="Nanobot1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 128, -64 )
+
+[node name="SidePlayer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 40, -40 )

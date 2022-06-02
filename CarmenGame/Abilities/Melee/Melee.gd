@@ -1,8 +1,11 @@
 extends Node2D
 
-const SWING_TIME : float = 0.4
+const SWING_TIME : float = 0.2
 var swing_init : bool = false
 
+func _ready():
+	$AnimatedSprite.play('hit')
+	
 func _process(delta):
 	var local_mouse_pos = get_global_mouse_position()-global_position
 	rotation = atan2(local_mouse_pos.y, local_mouse_pos.x)
@@ -33,4 +36,4 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy"):
-		body.damage(1, (global_position-body.global_position).normalized(), 40)
+		body.damage(2, (-body.global_position + global_position).normalized(), 60)
