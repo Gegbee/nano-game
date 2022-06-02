@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://IKPieces/IK2Pieces.gd" type="Script" id=1]
+
+[node name="IK2Pieces" type="Node2D"]
+script = ExtResource( 1 )
+piece_length = 24.0
+piece_width = 8.0

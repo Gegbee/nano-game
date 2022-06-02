@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
+[ext_resource path="res://SidePlayer/Body.png" type="Texture" id=2]
+[ext_resource path="res://SidePlayer/CharacterConcept.png" type="Texture" id=3]
+[ext_resource path="res://SidePlayer/CharacterHead.png" type="Texture" id=4]
+[ext_resource path="res://SidePlayer/Ear.png" type="Texture" id=5]
+[ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 17 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 43, 15 )
+
+[node name="SidePlayer" type="KinematicBody2D"]
+script = ExtResource( 1 )
+melee = NodePath("Melee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -17 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.4, 0.4 )
+smoothing_enabled = true
+smoothing_speed = 2.0
+
+[node name="SpriteRef" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17, -19 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Body" type="Node2D" parent="Sprite"]
+position = Vector2( 1, 0 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Body"]
+visible = false
+color = Color( 0.443137, 0.498039, 0.596078, 1 )
+polygon = PoolVector2Array( -8, -24, -8, -9, -6, -7, 7, -7, 7, -24 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Sprite/Body"]
+visible = false
+position = Vector2( -2, 0 )
+color = Color( 0.286275, 0.380392, 0.501961, 1 )
+polygon = PoolVector2Array( 7, -24, 7, -8, 8, -7, 9, -7, 11, -9, 11, -24 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Body"]
+position = Vector2( 0, -12.375 )
+scale = Vector2( 0.573529, 0.825 )
+texture = ExtResource( 2 )
+
+[node name="Head" type="Node2D" parent="Sprite"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Head"]
+visible = false
+color = Color( 0.117647, 0.211765, 0.533333, 1 )
+polygon = PoolVector2Array( -11, -25, -12, -26, -12, -34, 7, -34, 7, -26, 11, -26, 10, -25 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Head"]
+scale = Vector2( 0.625, 0.640625 )
+texture = ExtResource( 4 )
+offset = Vector2( -2, -47 )
+
+[node name="Ear1" type="Node2D" parent="Sprite"]
+position = Vector2( 10, -29 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Ear1"]
+visible = false
+polygon = PoolVector2Array( -3, -1, -3, 2, -2, 3, 1, 3, 2, 2, 9, -16, 9, -19 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Ear1"]
+self_modulate = Color( 0.443137, 0.498039, 0.596078, 1 )
+scale = Vector2( 0.6, 0.552632 )
+texture = ExtResource( 5 )
+offset = Vector2( 8, -14 )
+
+[node name="Ear2" type="Node2D" parent="Sprite"]
+position = Vector2( -7, -30 )
+z_index = -1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Sprite/Ear2"]
+self_modulate = Color( 0.286275, 0.380392, 0.501961, 1 )
+scale = Vector2( 0.6, 0.552632 )
+texture = ExtResource( 5 )
+offset = Vector2( 8, -14 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Ear2"]
+visible = false
+polygon = PoolVector2Array( -3, -1, -3, 2, -2, 3, 1, 3, 2, 2, 9, -16, 9, -19 )
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Melee" parent="." instance=ExtResource( 6 )]
+
+[node name="NPCDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCDetection"]
+position = Vector2( 0, -15 )
+shape = SubResource( 2 )
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

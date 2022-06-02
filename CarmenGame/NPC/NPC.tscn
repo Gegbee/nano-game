@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://NPC/NPC.gd" type="Script" id=1]
+[ext_resource path="res://NPC/TestNPCAnim.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 16 )
+
+[node name="NPC" type="Area2D"]
+script = ExtResource( 1 )
+_name = "BOB"
+sprite_frames = ExtResource( 2 )
+lines = [ "Did you know that cabybaras are swog", "They have fur", "and like men" ]
+
+[node name="Label" type="Label" parent="."]
+margin_bottom = 14.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( -1, -1, -1, 1, 1, 1, 1, -1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
+shape = SubResource( 1 )
+
+[node name="InteractIndicator" type="Label" parent="."]
+margin_left = -25.0
+margin_top = -23.0
+margin_right = 26.0
+margin_bottom = -9.0
+text = "fuck me"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="." to="." method="_on_NPC_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_NPC_area_exited"]
