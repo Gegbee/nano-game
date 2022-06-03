@@ -2,9 +2,9 @@ extends Entity2D
 
 var can_slide : bool = true
 
-const SPEED = 150
+const SPEED = 100
 const ACCEL = 2000
-const JUMP_SPEED = 300
+const JUMP_SPEED = 200
 
 const CAT_MAX_TIME = 0.3
 var cat_time : float = 0.0
@@ -76,14 +76,14 @@ func _physics_process(delta):
 		vel.y = -JUMP_SPEED
 		can_jump = false
 	if !can_jump and Input.is_action_just_released("up"):
-		vel.y *= 0.7
+		vel.y *= 0.5
 	
 	move(delta)
 	
 	if vel.x > 0:
-		$Sprite.scale.x = -1
-	elif vel.x < 0:
 		$Sprite.scale.x = 1
+	elif vel.x < 0:
+		$Sprite.scale.x = -1
 		
 	if melee != null:
 		if Input.is_action_just_pressed("attack_left"):
