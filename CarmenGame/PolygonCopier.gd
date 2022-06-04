@@ -1,3 +1,4 @@
+tool
 extends CollisionPolygon2D
 
 

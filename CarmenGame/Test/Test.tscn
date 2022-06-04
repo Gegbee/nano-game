@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Enemies/Nanobot0/Nanobot0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PolygonCopier.gd" type="Script" id=2]
 [ext_resource path="res://SidePlayer/SidePlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ScreenShaders/ScreenShaders.tscn" type="PackedScene" id=4]
@@ -22,13 +23,20 @@ polygon_copy = NodePath("../Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 color = Color( 0.113725, 0.121569, 0.129412, 1 )
-polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 56, -8, 56, -16, 28, -16, 28, -8, 4, -8, 4, -16, -4, -16, -4, -8, -12, -8, -12, -32, -20, -32, -20, -8, -56, -8, -56, -28, -28, -28, -28, -48, -36, -48, -36, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
+polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 80, -8, 80, -16, 28, -16, 28, -8, -8, -8, -8, -16, -16, -16, -16, -8, -24, -8, -24, -28, -32, -28, -32, -8, -56, -8, -56, -28, -40, -28, -40, -42, -48, -42, -48, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
 
 [node name="NPC" parent="." instance=ExtResource( 5 )]
-position = Vector2( 404, -128 )
-
-[node name="Nanobot1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 128, -64 )
+position = Vector2( -24, -32 )
+lines = [ "Bob:Did you know that cabybaras are swog", "Nano:They have fur", "Nano:and like men" ]
 
 [node name="SidePlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 40, -40 )
+position = Vector2( 24, -24 )
+
+[node name="Nanobot1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 144, -32 )
+
+[node name="Nanobot3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 208, -64 )
+
+[node name="Nanobot2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 72, -32 )

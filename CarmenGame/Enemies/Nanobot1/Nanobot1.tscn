@@ -1,16 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemies/Nanobot1/Nanobot1.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Nanobot1/Body.png" type="Texture" id=2]
-[ext_resource path="res://Enemies/Nanobot1/Leg.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Nanobot1/Nanobot1Spritemap.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 128.0
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 9 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 16 )
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "attacking"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Body/Leg2:rotation_degrees")
@@ -37,9 +33,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
-length = 0.8
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Body:position")
@@ -48,39 +42,49 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.8 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -4 ), Vector2( 0, -5 ), Vector2( 0, -4 ) ]
+"values": [ Vector2( 0, -4 ), Vector2( 0, -2 ), Vector2( 0, -4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/Body/Leg1:rotation_degrees")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 0.0, 10.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite/Body/Leg2:rotation_degrees")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 0.0, -10.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Body/Leg3:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "walking"
-length = 0.4
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -90,10 +94,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -4 ), Vector2( 0, -8 ), Vector2( 0, -4 ), Vector2( 0, -8 ) ]
+"values": [ Vector2( 0, -4 ), Vector2( 0, -5 ), Vector2( 0, -4 ), Vector2( 0, -5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/Body/Leg1:rotation_degrees")
@@ -102,10 +106,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1 ),
+"times": PoolRealArray( 0, 0.1, 0.65 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -45.0, 0.0, 10.0 ]
+"values": [ 45.0, 0.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite/Body/Leg2:rotation_degrees")
@@ -114,26 +118,31 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.25, 0.3 ),
+"times": PoolRealArray( 0.3, 0.65, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 45.0, 0.0, -10.0 ]
+"values": [ 0.0, -45.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Body/Leg3:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.35, 0.45, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, 0.0, 0.0 ]
 }
 
 [node name="Nanobot1" type="KinematicBody2D"]
-scale = Vector2( 0.8, 0.8 )
 collision_layer = 4
 script = ExtResource( 1 )
 MAX_HEALTH = 6
 
-[node name="PlayerDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2( 0, -10 )
-shape = SubResource( 2 )
-
 [node name="FloorDetection" type="RayCast2D" parent="."]
-position = Vector2( -25, 0 )
+position = Vector2( -12, 0 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 
@@ -141,56 +150,72 @@ cast_to = Vector2( 0, 10 )
 one_shot = true
 
 [node name="HitDetection" type="RayCast2D" parent="."]
-position = Vector2( -16, -12 )
+position = Vector2( -8, -10 )
 enabled = true
 cast_to = Vector2( -10, 0 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
-shape = SubResource( 1 )
+position = Vector2( 0, -9 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="Body" type="Node2D" parent="Sprite"]
-position = Vector2( 0, -4 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 0, -4.93074 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Body"]
+position = Vector2( 0, -7 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 3
 
 [node name="Leg1" type="Node2D" parent="Sprite/Body"]
-position = Vector2( 8, -3 )
-scale = Vector2( 1, 1 )
+position = Vector2( -1, 0 )
+rotation = -0.0493223
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Sprite/Body/Leg1"]
-position = Vector2( 0, -8 )
-texture = ExtResource( 3 )
+position = Vector2( -5, -4 )
+texture = ExtResource( 2 )
 flip_h = true
+vframes = 3
+hframes = 3
+frame = 1
 
 [node name="Leg2" type="Node2D" parent="Sprite/Body"]
-position = Vector2( -8, -3 )
-rotation = -0.349066
-scale = Vector2( 1, 1 )
+position = Vector2( 2, 0 )
+rotation = 0.0556452
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Sprite/Body/Leg2"]
-position = Vector2( 0, -8 )
-texture = ExtResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Sprite/Body"]
-position = Vector2( 0, -8 )
+position = Vector2( 5, -4 )
 texture = ExtResource( 2 )
+vframes = 3
+hframes = 3
+frame = 1
+
+[node name="Leg3" type="Node2D" parent="Sprite/Body"]
+position = Vector2( 0, -1 )
+rotation = 0.462263
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Sprite/Body/Leg3"]
+position = Vector2( 0, -3 )
+texture = ExtResource( 2 )
+vframes = 3
+hframes = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_default_blend_time = 0.1
-anims/attacking = SubResource( 5 )
-anims/idle = SubResource( 3 )
-anims/walking = SubResource( 4 )
-[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
-[connection signal="body_exited" from="PlayerDetection" to="." method="_on_PlayerDetection_body_exited"]
+playback_default_blend_time = 0.2
+anims/attacking = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walking = SubResource( 5 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

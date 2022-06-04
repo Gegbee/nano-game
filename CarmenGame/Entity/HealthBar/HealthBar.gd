@@ -13,11 +13,8 @@ func updateHealth(new_health : int):
 #
 #	$Tween.interpolate_property(self, "rect_scale", rect_scale, 
 #	Vector2(1, 1), 2, Tween.TRANS_LINEAR, Tween.EASE_IN, 2)
-	$Tween.reset_all()
 	$Tween.remove_all()
-	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 0),
-	Color(1, 1, 1, 1), 0.2, Tween.TRANS_EXPO, Tween.EASE_IN)
-	$Tween.start()
+	modulate = Color(1, 1, 1, 1)
 	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1),
 	Color(1, 1, 1, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 3)
 	$Tween.start()

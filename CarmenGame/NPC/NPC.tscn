@@ -10,7 +10,7 @@ extents = Vector2( 10, 16 )
 script = ExtResource( 1 )
 _name = "BOB"
 sprite_frames = ExtResource( 2 )
-lines = [ "Did you know that cabybaras are swog", "They have fur", "and like men" ]
+lines = [ "Bob:Did you know that cabybaras are swog", "Nano:They have fur", "Bob:and like men" ]
 
 [node name="Label" type="Label" parent="."]
 margin_bottom = 14.0

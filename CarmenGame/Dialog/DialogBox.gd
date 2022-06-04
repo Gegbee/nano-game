@@ -8,11 +8,13 @@ enum {
 var state : int = IDLE
 var set_dialog : Array = []
 
-onready var t = $CenterContainer/Label
+onready var t = $CenterContainer/VBoxContainer/Dialog
+onready var n = $CenterContainer/VBoxContainer/Name
 
 func _ready():
 	UiRef.dialog_box = self
 	t.text = ""
+	n.text = ""
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
@@ -21,10 +23,12 @@ func _process(_delta):
 		state = IDLE
 		
 func runDialog(new_dialog : String):
+	var split_dialog = new_dialog.split(":")
 	state = RUNNING
 	
 	t.percent_visible = 0
-	t.text = new_dialog
+	t.text = split_dialog[1]
+	n.text = split_dialog[0] + ":"
 	$Tween.interpolate_property(t, "percent_visible", 0, 1, 
 	float(len(t.text)) / 20.0, 
 	Tween.TRANS_LINEAR, 
@@ -45,4 +49,5 @@ func nextAction():
 			runDialog(set_dialog[0])
 			set_dialog.remove(0)
 		else:
+			n.text = ""
 			t.text = ""

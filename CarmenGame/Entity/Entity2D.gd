@@ -5,7 +5,7 @@ class_name Entity2D
 export var health_bar_path : NodePath
 var health_bar = null
 
-const GRAVITY : float = 600.0
+const GRAVITY : float = 500.0
 
 export var MAX_HEALTH : int = 10.0
 export var knockback_resistance : float = 1.0
@@ -39,6 +39,8 @@ func set_health(new_health : int):
 		health_bar.updateHealth(health)
 	
 func kys():
+	if self.is_in_group('player'):
+		PlayerRef.player = null
 	queue_free()
 	
 func impulse(dir : Vector2, strength: float):

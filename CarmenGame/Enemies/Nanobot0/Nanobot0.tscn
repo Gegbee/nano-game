@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Enemies/Nanobot0/Nanobot0.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Nanobot0/Nanobot0Spritemap.png" type="Texture" id=2]
+[ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9, 6 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -7 ), Vector2( 0, -6 ), Vector2( 0, -7 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "walking"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -6 ), Vector2( 0, -8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Leg1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Leg2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.15, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5, 5 )
+
+[node name="Nanobot0" type="KinematicBody2D"]
+collision_layer = 4
+script = ExtResource( 1 )
+health_bar_path = NodePath("HealthBar")
+MAX_HEALTH = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -6 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
+
+[node name="Leg1" type="Node2D" parent="Sprite"]
+position = Vector2( -2, -3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Leg1" type="Sprite" parent="Sprite/Leg1"]
+position = Vector2( -4, 0 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Leg2" type="Node2D" parent="Sprite"]
+position = Vector2( 0, -3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Leg2" type="Sprite" parent="Sprite/Leg2"]
+position = Vector2( 4, 0 )
+texture = ExtResource( 2 )
+flip_h = true
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Body" type="Sprite" parent="Sprite"]
+position = Vector2( 0, -6 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+anims/walking = SubResource( 2 )
+
+[node name="FloorDetection" type="RayCast2D" parent="."]
+position = Vector2( -11, 0 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="WallDetection" type="RayCast2D" parent="."]
+position = Vector2( 0, -6 )
+enabled = true
+cast_to = Vector2( -16, 0 )
+
+[node name="HitDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection"]
+position = Vector2( 0, -5 )
+shape = SubResource( 4 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 3 )]
+margin_left = -16.0
+margin_top = -20.0
+margin_right = 16.0
+margin_bottom = -16.0
+[connection signal="body_entered" from="HitDetection" to="." method="_on_HitDetection_body_entered"]
