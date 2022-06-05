@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
 [ext_resource path="res://SidePlayer/CharacterSpritemap.png" type="Texture" id=2]
@@ -6,8 +6,26 @@
 [ext_resource path="res://SidePlayer/RunningParticle.png" type="Texture" id=4]
 [ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=6]
 
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform int amount = 40;
+
+void fragment()
+{
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+	
+	vec4 text = texture(TEXTURE, grid_uv);
+	
+	COLOR = text;
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
+shader_param/amount = 67
+
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 10 )
+extents = Vector2( 6, 9 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 10 )
@@ -43,7 +61,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -40.0 ]
+"values": [ 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite/Leg2:rotation_degrees")
@@ -323,6 +341,7 @@ tracks/1/keys = {
 }
 
 [node name="SidePlayer" type="KinematicBody2D"]
+material = SubResource( 11 )
 collision_layer = 2
 script = ExtResource( 1 )
 knockback_resistance = 2.0
@@ -354,7 +373,6 @@ position = Vector2( 0, -10 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Node2D" parent="."]
-rotation = -0.698132
 
 [node name="Leg1" type="Node2D" parent="Sprite"]
 position = Vector2( -5, -4.29376 )
@@ -439,7 +457,7 @@ anims/slide = SubResource( 5 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -34 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.35, 0.35 )
 smoothing_enabled = true
 smoothing_speed = 2.0
 

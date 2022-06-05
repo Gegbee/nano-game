@@ -12,7 +12,7 @@ onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
 
 func _ready():
-	UiRef.dialog_box = self
+	Global.dialog_box = self
 	t.text = ""
 	n.text = ""
 	

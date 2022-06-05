@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://NPC/NPC.gd" type="Script" id=1]
-[ext_resource path="res://NPC/TestNPCAnim.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 16 )
@@ -9,16 +8,12 @@ extents = Vector2( 10, 16 )
 [node name="NPC" type="Area2D"]
 script = ExtResource( 1 )
 _name = "BOB"
-sprite_frames = ExtResource( 2 )
 lines = [ "Bob:Did you know that cabybaras are swog", "Nano:They have fur", "Bob:and like men" ]
 
 [node name="Label" type="Label" parent="."]
 margin_bottom = 14.0
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -41,5 +36,8 @@ text = "fuck me"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_NPC_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_NPC_area_exited"]

@@ -1,5 +1,8 @@
 extends Node
 
+var camera : Camera2D = null
+
+var dialog_box = null
 
 var player : Entity2D = null
 

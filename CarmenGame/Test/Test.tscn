@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemies/Nanobot0/Nanobot0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PolygonCopier.gd" type="Script" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Dialog/DialogBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Nanobot1/Nanobot1.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_intensity = 2.76
+glow_strength = 1.17
+glow_bloom = 0.31
 
 [node name="Test" type="Node2D"]
 
@@ -18,25 +24,30 @@
 scale = Vector2( 2, 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 80, -8, 80, -16, 28, -16, 28, -8, -8, -8, -8, -16, -16, -16, -16, -8, -24, -8, -24, -32, -32, -32, -32, -8, -56, -8, -56, -28, -40, -28, -40, -42, -48, -42, -48, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
 script = ExtResource( 2 )
 polygon_copy = NodePath("../Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-color = Color( 0.113725, 0.121569, 0.129412, 1 )
-polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 80, -8, 80, -16, 28, -16, 28, -8, -8, -8, -8, -16, -16, -16, -16, -8, -24, -8, -24, -28, -32, -28, -32, -8, -56, -8, -56, -28, -40, -28, -40, -42, -48, -42, -48, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -64, -8, -64, 8, 128, 8, 128, -8, 120, -8, 120, -48, 172, -48, 172, -56, 120, -56, 120, -84, 112, -84, 112, -52, 108, -52, 108, -44, 112, -44.0937, 112, -32, 96, -32, 96, -24, 112, -24, 112, -8, 80, -8, 80, -16, 28, -16, 28, -8, -8, -8, -8, -16, -16, -16, -16, -8, -24, -8, -24, -32, -32, -32, -32, -8, -56, -8, -56, -28, -40, -28, -40, -42, -48, -42, -48, -36, -64, -36, -64, -16, -120, -16, -120, -8 )
 
 [node name="NPC" parent="." instance=ExtResource( 5 )]
 position = Vector2( -24, -32 )
 lines = [ "Bob:Did you know that cabybaras are swog", "Nano:They have fur", "Nano:and like men" ]
 
 [node name="SidePlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 24, -24 )
+position = Vector2( 24, -68 )
+MAX_HEALTH = 100
 
 [node name="Nanobot1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 144, -32 )
+position = Vector2( 96, -32 )
 
 [node name="Nanobot3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 208, -64 )
+position = Vector2( 204, -64 )
 
 [node name="Nanobot2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 72, -32 )
+position = Vector2( 200, -16 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )

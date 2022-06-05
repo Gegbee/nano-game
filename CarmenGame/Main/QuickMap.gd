@@ -1,13 +1,17 @@
 tool
-extends Node
+extends Node2D
 
-
+export(bool) var reset = false setget onReset
 export var texture : Texture = null
-export var polygon : NodePath
 
-func _ready():
-	for row in texture.get_height():
-		for column in texture.get_width():
-			var color = texture.get_data().get_pixel(texture.get_width()-column, texture.get_height()-row-16)
-			if color == "0068ff":
-				print('white')
+
+func onReset(isTriggered):
+	if (isTriggered):
+		$TileMap.clear()
+		var image = texture.get_data()
+		image.lock()
+		for row in image.get_height():
+			for column in image.get_width():
+				var color = image.get_pixel(image.get_width() - column - 1, image.get_height() - row - 1)
+				if color.to_html(false) == "0068ff":
+					$TileMap.set_cell(-column, -row+16, 0)

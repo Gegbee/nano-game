@@ -7,6 +7,7 @@ var facing_dir : int = -1
 
 var hit_detection_pos : Vector2 = Vector2()
 var floor_detection_pos : Vector2 = Vector2()
+var move_vel := Vector2()
 
 func _ready():
 	floor_detection_pos = $FloorDetection.position
@@ -15,8 +16,8 @@ func _ready():
 	add_to_group('enemy')
 	
 func _process(delta):
-	if PlayerRef.player and PlayerRef.get_player_distance(global_position) < 128:
-		var player_dir : int = sign((PlayerRef.player.global_position - global_position).normalized().x)
+	if Global.player and Global.get_player_distance(global_position) < 128:
+		var player_dir : int = sign((Global.player.global_position - global_position).normalized().x)
 		if is_on_floor() and !$FloorDetection.is_colliding() and player_dir == facing_dir:
 			player_dir = 0
 			
@@ -34,21 +35,20 @@ func _process(delta):
 			$FloorDetection.position.x = floor_detection_pos.x
 			
 		if is_on_wall() and get_which_wall_collided() == player_dir:
-			vel.x = 0
+			move_vel.x = 0
 		else:
 			if is_on_floor():
-				if abs((PlayerRef.player.global_position - global_position).x) > HIT_DISTANCE:
-					vel.x = player_dir * SPEED
+				if abs((Global.player.global_position - global_position).x) > HIT_DISTANCE:
+					move_vel.x = player_dir * SPEED
 				else:
 					if !hitting:
 						hitting = true
 						$Timer.start(1.0)
-					vel.x = 0
+					move_vel.x = 0
 		
-	vel.y += GRAVITY * delta
-	move(delta)
+	move(move_vel, delta)
 	
-	if abs(vel.x) > 0:
+	if abs(move_vel.x) > 0:
 		$AnimationPlayer.play('walking')
 	else:
 		$AnimationPlayer.play('idle')
@@ -68,5 +68,5 @@ func _on_Timer_timeout():
 		var body = $HitDetection.get_collider()
 		print(body)
 		if body.is_in_group('player'):
-			body.damage(3, (-body.global_position + global_position).normalized(), 800)
+			body.damage(3, (-body.global_position + global_position).normalized(), 300)
 	hitting = false

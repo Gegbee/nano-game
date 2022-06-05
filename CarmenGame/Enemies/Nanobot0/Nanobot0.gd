@@ -4,33 +4,34 @@ const SPEED : float = 20.0
 
 var facing_dir : int = -1
 
+var move_vel := Vector2()
+
 func _ready():
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')
-	vel.x = SPEED
+	move_vel.x = SPEED
 	
 func _process(delta):
 		
 	$FloorDetection.force_raycast_update()
 	if is_on_floor() and !$FloorDetection.is_colliding():
-		vel.x = -1 * sign(vel.x) * SPEED
+		move_vel.x = -1 * sign(move_vel.x) * SPEED
 	$WallDetection.force_raycast_update()
 	if $WallDetection.is_colliding():
-		vel.x = -1 * sign(vel.x) * SPEED
+		move_vel.x = -1 * sign(move_vel.x) * SPEED
 		
-	if vel.x > 0:
+	if move_vel.x > 0:
 		$Sprite.scale.x = -1
 		$FloorDetection.position.x = 10
 		$WallDetection.cast_to.x = 16
-	elif vel.x < 0:
+	elif move_vel.x < 0:
 		$Sprite.scale.x = 1
 		$FloorDetection.position.x = -10
 		$WallDetection.cast_to.x = -16
-		
-	vel.y += GRAVITY * delta
-	move()
+
+	move(move_vel, delta)
 	
-	if abs(vel.x) > 0:
+	if abs(move_vel.x) > 0:
 		$AnimationPlayer.play('walking')
 	else:
 		$AnimationPlayer.play('idle')
@@ -48,4 +49,4 @@ func get_which_wall_collided():
 
 func _on_HitDetection_body_entered(body):
 	if body.is_in_group('player'):
-		body.damage(1)
+		body.damage(1, -body.global_position + global_position, 500)
