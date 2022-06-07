@@ -13,7 +13,7 @@ export var knockback_resistance : float = 1.0
 
 var health : int = MAX_HEALTH
 var impulse_vector : Vector2 = Vector2()
-var impulse_strength : int = 0.0
+var impulse_strength : float = 0.0
 var vel : Vector2 = Vector2()
 var grav_vel : Vector2 = Vector2()
 
@@ -35,9 +35,9 @@ func move(move_vel : Vector2, delta : float):
 	vel = move_and_slide(vel, Vector2.UP, false, 4, PI/4, false)
 	grav_vel.y = vel.y
 	
-func damage(dmg : int, impulse_dir : Vector2 = Vector2(), impulse_strength : float = 0):
+func damage(dmg : int, impulse_dir : Vector2 = Vector2(), strength : float = 0):
 	set_health(health - dmg)
-	impulse(impulse_dir.normalized(), impulse_strength)
+	impulse(impulse_dir.normalized(), strength)
 	print(self.name + " health: " + str(health) + " / " + str(MAX_HEALTH))
 
 func set_health(new_health : int):

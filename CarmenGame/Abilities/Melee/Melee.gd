@@ -7,7 +7,7 @@ func _ready():
 	$RayCast2D.add_exception(get_parent())
 	$AnimatedSprite.play('hit')
 	
-func _process(delta):
+func _process(_delta):
 	if $Timer.time_left == 0:
 		var local_mouse_pos = get_global_mouse_position()-global_position
 		rotation = atan2(local_mouse_pos.y, local_mouse_pos.x)

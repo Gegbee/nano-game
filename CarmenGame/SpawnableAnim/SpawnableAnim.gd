@@ -2,10 +2,11 @@ extends AnimatedSprite
 
 
 func _ready():
-	play('anim')
+	frame = 0
+	play('default')
 	
 	
 
 func _on_AnimatedSprite_animation_finished():
-	if animation == 'anim':
+	if animation == 'default':
 		queue_free()
