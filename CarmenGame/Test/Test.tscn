@@ -47,7 +47,7 @@ position = Vector2( 96, -32 )
 position = Vector2( 204, -64 )
 
 [node name="Nanobot2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 200, -16 )
+position = Vector2( 144, -32 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )

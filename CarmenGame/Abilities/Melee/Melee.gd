@@ -5,7 +5,6 @@ var swing_init : bool = false
 
 func _ready():
 	$RayCast2D.add_exception(get_parent())
-	$AnimatedSprite.play('hit')
 	
 func _process(_delta):
 	if $Timer.time_left == 0:
@@ -18,7 +17,6 @@ func attack():
 		swing_init = true
 		$Timer.start(SWING_TIME/2)
 		$AnimatedSprite.play('hit')
-
 
 func _on_Timer_timeout():
 	if swing_init:
@@ -37,4 +35,3 @@ func _on_Timer_timeout():
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "hit":
 		$AnimatedSprite.play('default')
-

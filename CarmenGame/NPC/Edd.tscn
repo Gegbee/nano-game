@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://NPC/EddSpritemap.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.366021, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, -14.5 ), Vector2( -3, -13 ), Vector2( -3, -14.5 ) ]
+}
+
+[node name="NPC" instance=ExtResource( 1 )]
+lines = [ "Edd: Hey kid...", "Nano: Woah! Are you okay?", "Edd: A bit rusty, but I’m fine.", "Edd: How’d you get here?", "Nano: I... don’t... know.", "Edd: Probably came out of The Wire.", "Nano: The Wire?", "Edd: What an unfortunate time to be created.", "Edd: It's a storm out there.", "Edd: Be careful." ]
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, -9.5 )
+
+[node name="InteractIndicator" parent="." index="3"]
+position = Vector2( 0, -33 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "default"
+anims/default = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="5"]
+position = Vector2( -3, -14.5 )
+z_index = 1
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+
+[node name="Sprite2" type="Sprite" parent="." index="6"]
+position = Vector2( 1, -8 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="InteractStartPos" parent="." index="7"]
+position = Vector2( 0, -22 )

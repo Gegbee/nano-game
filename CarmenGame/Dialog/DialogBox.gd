@@ -6,6 +6,7 @@ enum {
 	IDLE
 }
 var state : int = IDLE
+var cur_dialog : Array = []
 var set_dialog : Array = []
 
 onready var t = $CenterContainer/VBoxContainer/Dialog
@@ -30,7 +31,7 @@ func runDialog(new_dialog : String):
 	t.text = split_dialog[1]
 	n.text = split_dialog[0] + ":"
 	$Tween.interpolate_property(t, "percent_visible", 0, 1, 
-	float(len(t.text)) / 20.0, 
+	float(len(t.text)) / 30.0, 
 	Tween.TRANS_LINEAR, 
 	Tween.EASE_OUT)
 	$Tween.start()

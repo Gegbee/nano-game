@@ -252,5 +252,5 @@ shader_param/brightness = 1.2
 shader_param/discolor = false
 shader_param/warp_amount = 0.42
 shader_param/clip_warp = false
-shader_param/vignette_intensity = 1.2
-shader_param/vignette_opacity = 0.833
+shader_param/vignette_intensity = 1.0
+shader_param/vignette_opacity = 0.6

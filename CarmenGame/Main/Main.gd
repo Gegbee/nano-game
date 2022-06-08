@@ -8,3 +8,6 @@ func _input(event):
 		var _player = Global.preloads["player"].instance()
 		add_child(_player)
 		_player.global_position = Global.respawn_point
+
+func _ready():
+	Global.bg_elements = $QuickMap/BackgroundElements

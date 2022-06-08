@@ -42,7 +42,7 @@ func _physics_process(delta):
 				get_tree().get_root().add_child(spawnable_anim)
 				spawnable_anim.global_position = self.global_position+Vector2(0, -8)
 				spawnable_anim.scale.x = sign(dir.x)
-				slide_movement_x = SPEED * sign(dir.x) * 2
+				slide_movement_x = SPEED * sign(dir.x) * 2.2
 			slide_movement_x = lerp(slide_movement_x, 0, 2 * delta)
 			floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
 	elif can_dash and Input.is_action_just_pressed("dash") and !is_on_floor() and abs(move_vel.x) > 0:
@@ -87,7 +87,6 @@ func _physics_process(delta):
 			var spawnable_anim = Global.preloads["ground_anim"].instance()
 			get_tree().get_root().add_child(spawnable_anim)
 			spawnable_anim.global_position = self.global_position+Vector2(0, -8)
-			Global.setCameraShake(0.05)
 		can_dash = true
 		can_jump = true
 		cat_time = 0.0
@@ -114,5 +113,5 @@ func _physics_process(delta):
 	if melee != null:
 		if Input.is_action_just_pressed("attack_left"):
 			get_node(melee).attack()
-			Global.setCameraShake(0.15)
+			Global.setCameraShake(0.1)
 
