@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CharacterSpritemap.png-28a0d47319a7b45d1f2f22f052ff7a66.stex"
+path="res://.import/SmokeTexture.png-2a5637a28c10091f3ea7ef5d6980241b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SidePlayer/CharacterSpritemap.png"
-dest_files=[ "res://.import/CharacterSpritemap.png-28a0d47319a7b45d1f2f22f052ff7a66.stex" ]
+source_file="res://Main/SmokeTexture.png"
+dest_files=[ "res://.import/SmokeTexture.png-2a5637a28c10091f3ea7ef5d6980241b.stex" ]
 
 [params]
 

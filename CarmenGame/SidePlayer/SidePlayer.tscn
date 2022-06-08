@@ -590,8 +590,8 @@ anims/slide = SubResource( 5 )
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 0, -21 )
 current = true
-zoom = Vector2( 0.2, 0.2 )
-limit_bottom = 16
+zoom = Vector2( 0.17, 0.17 )
+limit_bottom = 48
 smoothing_enabled = true
 smoothing_speed = 2.0
 script = ExtResource( 7 )

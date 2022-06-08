@@ -9,5 +9,3 @@ func _input(event):
 		add_child(_player)
 		_player.global_position = Global.respawn_point
 
-func _ready():
-	Global.bg_elements = $QuickMap/BackgroundElements

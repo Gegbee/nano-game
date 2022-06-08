@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CharacterSpritemap.png-28a0d47319a7b45d1f2f22f052ff7a66.stex"
+path="res://.import/TutorialSpritemap.png-6f6655d7edb753a0f5cb84ca09fdbda5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SidePlayer/CharacterSpritemap.png"
-dest_files=[ "res://.import/CharacterSpritemap.png-28a0d47319a7b45d1f2f22f052ff7a66.stex" ]
+source_file="res://Main/TutorialSpritemap.png"
+dest_files=[ "res://.import/TutorialSpritemap.png-6f6655d7edb753a0f5cb84ca09fdbda5.stex" ]
 
 [params]
 

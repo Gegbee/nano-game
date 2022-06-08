@@ -10,9 +10,8 @@ var player : Entity2D = null
 
 var chrabr : ColorRect = null
 
-var env : ColorRect = null
+var env = null
 
-var bg_elements : TileMap = null
 
 var preloads = {
 	"jump_anim" : preload("res://SpawnableAnim/JumpAnim.tscn"),
@@ -36,9 +35,8 @@ func setChrAbr(amt : float):
 func setCameraShake(amt: float):
 	camera.add_trauma(amt)
 
-func setEnvColor(color : Color):
-	print(color - Color("00f8e8e8"))
+func setEnvColor(color : Color, offset_color : Color):
 	env.get_node('Tween').remove_all()
-	env.get_node('Tween').interpolate_property(bg_elements, "modulate", bg_elements.modulate, color - Color(0, 0.1, 0.1, 0), 2.0)
-	env.get_node('Tween').interpolate_property(env, "color", env.color, color, 2.0)
+	env.get_node('Tween').interpolate_property(env.get_node('Elements'), "modulate", env.get_node('Elements').modulate, offset_color, 3.0)
+	env.get_node('Tween').interpolate_property(env.get_node('CanvasLayer/ColorRect'), "color", env.get_node('CanvasLayer/ColorRect').color, color, 3.0)
 	env.get_node('Tween').start()
