@@ -24,6 +24,8 @@ var has_melee : bool = false
 export var shield : NodePath
 var has_shield : bool = false 
 
+onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Damage]
+
 func _ready():
 	print('player spawned')
 	Global.camera = $Camera
@@ -49,6 +51,7 @@ func _physics_process(delta):
 				spawnable_anim.global_position = self.global_position+Vector2(0, -8)
 				spawnable_anim.scale.x = sign(dir.x)
 				slide_movement_x = SPEED * sign(dir.x) * 2.2
+				audio[1].play()
 			slide_movement_x = lerp(slide_movement_x, 0, 2 * delta)
 			floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
 	elif can_dash and Input.is_action_just_pressed("dash") and !is_on_floor() and abs(move_vel.x) > 0:
@@ -62,12 +65,15 @@ func _physics_process(delta):
 		can_dash = false
 		dash_movement_x = sign(move_vel.x) * SPEED * 3
 		floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
+		audio[0].play()
 	else:
 		scale.y = 1
 		slide_movement_x = 0.0
 		if abs(dir.x) > 0:
 			if is_on_floor():
 				$AnimationPlayer.play('running')
+				if not audio[4].playing:
+					audio[4].playing = true
 				floor_movement_x += delta * ACCEL * dir.x
 			else:
 				$AnimationPlayer.play("air")
@@ -106,6 +112,8 @@ func _physics_process(delta):
 		spawnable_anim.global_position = self.global_position+Vector2(0, -8)
 		move_vel.y = -JUMP_SPEED
 		can_jump = false
+		audio[3].pitch_scale = randf()/2+1
+		audio[3].play()
 	if !can_jump and move_vel.y < 0 and Input.is_action_just_released("up"):
 		move_vel.y *= 0.5
 	
@@ -119,6 +127,7 @@ func _physics_process(delta):
 	if melee != null and has_melee:
 		if Input.is_action_just_pressed("attack_left"):
 			get_node(melee).attack()
+			audio[2].play()
 			Global.setCameraShake(0.1)
 
 func add_melee():

@@ -8,9 +8,13 @@ enum {
 var state : int = IDLE
 var cur_dialog : Array = []
 var set_dialog : Array = []
+var speaker = "BOB"
+var counter: int = 0
 
+var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
+
 
 func _ready():
 	Global.dialog_box = self
@@ -44,7 +48,24 @@ func runDialog(new_dialog : String):
 	float(len(t.text)) / 30.0, 
 	Tween.TRANS_LINEAR, 
 	Tween.EASE_OUT)
+	print(split_dialog[0])
+	if split_dialog[0] == speaker:
+		cues = get_node(speaker).get_children()
+		for cue in cues:
+			cue.playing = false
+		cues[int(split_dialog[2])-1].play()
+	elif split_dialog[0] == "Nano":
+		cues = get_node("Nano").get_children()
+		for cue in cues:
+			cue.playing = false
+		
+		cues[int(split_dialog[2])-1].play()
+	
+	counter += 1
+	if counter >= 4:
+		counter = 0
 	$Tween.start()
+	
 	
 func finishRunningDialog():
 	$Tween.reset_all()
@@ -56,6 +77,7 @@ func nextAction():
 	if state == RUNNING:
 		finishRunningDialog()
 	elif state == IDLE:
+		#insert code here to filter cutoff
 		if len(set_dialog) > 0:
 			runDialog(set_dialog[0])
 			set_dialog.remove(0)

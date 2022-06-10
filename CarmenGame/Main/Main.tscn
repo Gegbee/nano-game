@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Main/QuickMap.gd" type="Script" id=1]
 [ext_resource path="res://Main/Tilemap.png" type="Texture" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://Main/SmokeTexture.png" type="Texture" id=17]
 [ext_resource path="res://Main/Fire.gd" type="Script" id=18]
 [ext_resource path="res://Main/FgElementsBlue.png" type="Texture" id=19]
+[ext_resource path="res://Main/paralax.gd" type="Script" id=20]
+[ext_resource path="res://Audio/nanosfx_fire.mp3" type="AudioStream" id=21]
+[ext_resource path="res://Main/moveaud.gd" type="Script" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -680,6 +683,10 @@ glow_intensity = 1.1
 glow_strength = 1.21
 glow_blend_mode = 0
 
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0, 0.59116, 1 )
+colors = PoolColorArray( 1, 0.890625, 0, 1, 1, 0.515625, 0, 0.988495, 1, 0.164706, 0, 0 )
+
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0.0901639, 0.389344, 0.70082, 0.946721, 1 )
 colors = PoolColorArray( 0.963379, 0.843559, 0.466637, 1, 0.916504, 0.261053, 0.186165, 1, 0.104272, 0.0160207, 0.0122763, 1, 0.0615234, 0.00312424, 0.00312424, 1, 0, 0, 0, 0 )
@@ -707,8 +714,8 @@ scale_curve = SubResource( 9 )
 color_ramp = SubResource( 11 )
 
 [sub_resource type="Gradient" id=13]
-offsets = PoolRealArray( 0.114754, 0.786885 )
-colors = PoolColorArray( 0.967773, 0.263208, 0.241943, 1, 1, 0.755859, 0, 1 )
+offsets = PoolRealArray( 0, 0.204969, 0.786885 )
+colors = PoolColorArray( 1, 0.513726, 0, 0, 0.967773, 0.263208, 0.241943, 1, 1, 0.755859, 0, 1 )
 
 [sub_resource type="GradientTexture" id=14]
 gradient = SubResource( 13 )
@@ -803,21 +810,69 @@ tile_set = SubResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -458850, 0, 0, -327800, 3, 0, -327783, 3, 0, -262269, 2, 0, -262257, 2, 0, -262252, 1, 0, -262234, 1, 0 )
+script = ExtResource( 20 )
+layer_num = 1
+start = -1200
+end = -2200
+
+[node name="Village2" type="TileMap" parent="Background/Elements"]
+modulate = Color( 1, 1, 1, 0.588235 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -4
+tile_set = SubResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1376470, 0, 0, -1179842, 2, 0, -1114346, 3, 0, -1114288, 3, 0, -917748, 1, 0, -917690, 1, 0, -852182, 0, 0, -852173, 1, 0, -852162, 0, 0, -721130, 0, 0, -721072, 0, 0, -590067, 0, 0, -590009, 0, 0, -524493, 3, 0, -458978, 3, 0, -458972, 1, 0, -458920, 3, 0, -458914, 1, 0, -327894, 0, 0, -327874, 0, 0, -262358, 0, 0, -262338, 0, 0, -196843, 0, 0, -196842, 0, 0, -196822, 0, 0, -196802, 0, 0, -196785, 0, 0, -196784, 0, 0, -131306, 0, 0, -131293, 0, 0, -131277, 0, 0, -131266, 0, 0, -131253, 0, 0, -131248, 0, 0, -131235, 0, 0, -65792, 0, 0, -65791, 0, 0, -65790, 0, 0, -65789, 0, 0, -65788, 0, 0, -65787, 0, 0, -65786, 0, 0, -65785, 0, 0, -65784, 0, 0, -65783, 0, 0, -65782, 0, 0, -65781, 0, 0, -65780, 0, 0, -65779, 0, 0, -65778, 0, 0, -65777, 0, 0, -65776, 0, 0, -65775, 0, 0, -65774, 0, 0, -65773, 0, 0, -65772, 0, 0, -65771, 0, 0, -65770, 0, 0, -65769, 0, 0, -65768, 0, 0, -65767, 0, 0, -65766, 0, 0, -65765, 0, 0, -65764, 0, 0, -65763, 0, 0, -65762, 0, 0, -65761, 0, 0, -65760, 0, 0, -65759, 0, 0, -65758, 0, 0, -65757, 0, 0, -65756, 0, 0, -65755, 0, 0, -65754, 0, 0, -65753, 0, 0, -65752, 0, 0, -65751, 0, 0, -65750, 0, 0, -65749, 0, 0, -65748, 0, 0, -65747, 0, 0, -65746, 0, 0, -65745, 0, 0, -65744, 0, 0, -65743, 0, 0, -65742, 0, 0, -65741, 0, 0, -65740, 0, 0, -65739, 0, 0, -65738, 0, 0, -65737, 0, 0, -65736, 0, 0, -65735, 0, 0, -65734, 0, 0, -65733, 0, 0, -65732, 0, 0, -65731, 0, 0, -65730, 0, 0, -65729, 0, 0, -65728, 0, 0, -65727, 0, 0, -65726, 0, 0, -65725, 0, 0, -65724, 0, 0, -65723, 0, 0, -65722, 0, 0, -65721, 0, 0, -65720, 0, 0, -65719, 0, 0, -65718, 0, 0, -65717, 0, 0, -65716, 0, 0, -65715, 0, 0, -65714, 0, 0, -65713, 0, 0, -65712, 0, 0, -65711, 0, 0, -65710, 0, 0, -65709, 0, 0, -65708, 0, 0, -65707, 0, 0, -65706, 0, 0, -65705, 0, 0, -65704, 0, 0, -65703, 0, 0, -65702, 0, 0, -65701, 0, 0, -65700, 0, 0, -65699, 0, 0, -65698, 0, 0, -65697, 0, 0, -65696, 0, 0, -65695, 0, 0, -65694, 0, 0, -65693, 0, 0, -65692, 0, 0, -65691, 0, 0, -65690, 0, 0, -65689, 0, 0, -65688, 0, 0, -65687, 0, 0, -65686, 0, 0 )
+script = ExtResource( 20 )
+layer_num = 2
+start = -1200
+end = -2200
+
+[node name="Sewer2" type="TileMap" parent="Background/Elements/Village2"]
+visible = false
+z_index = -1
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1310770, 8, 0, -1245396, 4, 0, -1114344, 4, 0, -1114340, 2, 0, -1114327, 18, 0, -1114314, 7, 0, -1048804, 2, 0, -1048792, 18, 0, -1048750, 4, 0, -1048746, 2, 0, -983268, 2, 0, -983257, 18, 0, -983255, 4, 0, -983229, 0, 0, -983210, 2, 0, -983087, 3, 0, -983086, 6, 0, -983084, 10, 0, -983083, 5, 0, -917732, 2, 0, -917722, 18, 0, -917720, 5, 0, -917674, 2, 0, -917546, 17, 0, -852196, 2, 0, -852187, 18, 0, -852138, 2, 0, -852020, 13, 0, -852012, 10, 0, -852011, 17, 0, -786660, 2, 0, -786652, 18, 0, -786627, 18, 0, -786602, 2, 0, -786484, 14, 0, -786476, 18, 0, -721124, 2, 0, -721123, 5, 0, -721117, 18, 0, -721106, 5, 0, -721092, 18, 0, -721091, 18, 0, -721088, 3, 0, -721066, 2, 0, -720944, 4, 0, -720941, 18, 0, -655582, 18, 0, -655565, 8, 0, -655557, 18, 0, -655556, 18, 0, -655555, 5, 0, -655530, 2, 0, -655529, 5, 0, -655403, 5, 0, -590060, 5, 0, -590049, 1, 0, -590047, 18, 0, -590045, 9, 0, -590037, 0, 0, -590032, 8, 0, -590030, 3, 0, -590025, 7, 0, -590022, 18, 0, -590021, 18, 0, -590020, 3, 0, -589886, 10, 0, -589871, 18, 0, -589867, 21, 0, -524524, 5, 0, -524523, 4, 0, -524513, 1, 0, -524512, 18, 0, -524501, 0, 0, -524500, 0, 0, -524487, 18, 0, -524486, 18, 0, -524484, 5, 0, -524466, 5, 0, -524455, 1, 0, -524451, 9, 0, -524339, 21, 0, -524331, 15, 0, -524321, 10, 0, -458992, 4, 0, -458965, 0, 0, -458964, 0, 0, -458963, 0, 0, -458955, 4, 0, -458951, 18, 0, -458930, 5, 0, -458929, 4, 0, -458919, 1, 0, -458918, 18, 0, -458823, 8, 0, -458803, 11, 0, -458800, 6, 0, -458787, 18, 0, -458773, 10, 0, -458769, 7, 0, -393417, 5, 0, -393398, 4, 0, -393264, 0, 0, -393260, 5, 0, -393259, 14, 0, -393256, 4, 0, -393250, 6, 0, -393248, 4, 0, -393240, 10, 0, -393233, 5, 0, -393230, 1, 0, -393228, 4, 0, -393227, 3, 0, -393226, 7, 0, -393224, 3, 0, -393222, 1, 0, -393220, 2, 0, -393219, 9, 0, -393218, 4, 0, -393217, 6, 0, -327879, 20, 0, -327743, 10, 0, -327738, 10, 0, -327724, 1, 0, -327723, 2, 0, -327719, 17, 0, -327696, 17, 0, -327688, 6, 0, -327682, 18, 0, -393216, 18, 0, -262361, 0, 0, -262343, 20, 0, -262215, 1, 0, -262202, 15, 0, -262184, 18, 0, -262167, 20, 0, -262160, 18, 0, -196805, 0, 0, -196767, 0, 0, -196676, 14, 0, -196672, 12, 0, -196669, 5, 0, -196668, 6, 0, -196664, 1, 0, -196663, 4, 0, -196662, 3, 0, -196649, 18, 0, -196610, 17, 0, -131140, 13, 0, -131112, 18, 0, -131107, 11, 0, -131098, 13, 0, -131093, 0, 0, -131090, 11, 0, -131087, 0, 0, -65591, 0, 0, -65587, 19, 0, -65575, 20, 0, -65574, 16, 0, -65571, 19, 0, -65568, 0, 0, -65562, 13, 0, -65561, 15, 0, -65547, 16, 0, -65542, 0, 0, -65540, 20, 0, -65537, 19, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
 
 [node name="Fire" type="Node2D" parent="."]
-position = Vector2( -1640, 0 )
+position = Vector2( -1640, 6.106 )
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="FireCluster" type="Node2D" parent="Fire"]
-position = Vector2( 217, 0 )
+[node name="paralax" type="Node2D" parent="Fire"]
+position = Vector2( 0, -6.106 )
+script = ExtResource( 20 )
+layer_num = 2
+start = -1200
+end = -2200
 
-[node name="Particles2D" type="Particles2D" parent="Fire/FireCluster"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Fire/paralax"]
+modulate = Color( 1, 1, 1, 0.537255 )
+position = Vector2( 26, 0 )
+z_index = -2
+amount = 1000
+lifetime = 11.0
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 0 )
+direction = Vector2( -1, 0 )
+spread = 0.0
+gravity = Vector2( 0, -5 )
+initial_velocity = 12.93
+scale_amount = 0.5
+color = Color( 1, 0.6, 0.6, 1 )
+color_ramp = SubResource( 18 )
+
+[node name="FireCluster" type="Node2D" parent="Fire/paralax"]
+position = Vector2( 217, 6.106 )
+
+[node name="Particles2D" type="Particles2D" parent="Fire/paralax/FireCluster"]
 modulate = Color( 1.2, 1, 1, 0.67 )
 z_index = -2
 amount = 30
@@ -827,7 +882,7 @@ fixed_fps = 36
 process_material = SubResource( 7 )
 texture = ExtResource( 17 )
 
-[node name="Particles2D2" type="Particles2D" parent="Fire/FireCluster"]
+[node name="Particles2D2" type="Particles2D" parent="Fire/paralax/FireCluster"]
 modulate = Color( 1.4, 1.2, 1, 1 )
 z_index = -2
 amount = 80
@@ -835,19 +890,19 @@ lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
 
-[node name="Particles2D3" type="Particles2D" parent="Fire/FireCluster"]
+[node name="Particles2D3" type="Particles2D" parent="Fire/paralax/FireCluster"]
 modulate = Color( 1.4, 1.2, 1, 1 )
-position = Vector2( 0, -11 )
+position = Vector2( 0, -50 )
 z_index = 1
 amount = 80
 lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
 
-[node name="FireCluster2" type="Node2D" parent="Fire"]
-position = Vector2( 114, 0 )
+[node name="FireCluster2" type="Node2D" parent="Fire/paralax"]
+position = Vector2( 114, 6.106 )
 
-[node name="Particles2D" type="Particles2D" parent="Fire/FireCluster2"]
+[node name="Particles2D" type="Particles2D" parent="Fire/paralax/FireCluster2"]
 modulate = Color( 1.2, 1, 1, 0.67 )
 z_index = -2
 amount = 30
@@ -857,7 +912,7 @@ fixed_fps = 36
 process_material = SubResource( 7 )
 texture = ExtResource( 17 )
 
-[node name="Particles2D2" type="Particles2D" parent="Fire/FireCluster2"]
+[node name="Particles2D2" type="Particles2D" parent="Fire/paralax/FireCluster2"]
 modulate = Color( 1.4, 1.2, 1, 1 )
 z_index = -2
 amount = 80
@@ -865,19 +920,19 @@ lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
 
-[node name="Particles2D3" type="Particles2D" parent="Fire/FireCluster2"]
+[node name="Particles2D3" type="Particles2D" parent="Fire/paralax/FireCluster2"]
 modulate = Color( 1.4, 1.2, 1, 1 )
-position = Vector2( 0, -11 )
+position = Vector2( -19.706, -39.174 )
 z_index = 1
 amount = 80
 lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
 
-[node name="FireCluster3" type="Node2D" parent="Fire"]
-position = Vector2( -19, 1 )
+[node name="FireCluster3" type="Node2D" parent="Fire/paralax"]
+position = Vector2( -19.537, 7.106 )
 
-[node name="Particles2D" type="Particles2D" parent="Fire/FireCluster3"]
+[node name="Particles2D" type="Particles2D" parent="Fire/paralax/FireCluster3"]
 modulate = Color( 1.2, 1, 1, 0.67 )
 z_index = -2
 amount = 30
@@ -887,7 +942,7 @@ fixed_fps = 36
 process_material = SubResource( 7 )
 texture = ExtResource( 17 )
 
-[node name="Particles2D2" type="Particles2D" parent="Fire/FireCluster3"]
+[node name="Particles2D2" type="Particles2D" parent="Fire/paralax/FireCluster3"]
 modulate = Color( 1.4, 1.2, 1, 1 )
 z_index = -2
 amount = 80
@@ -895,17 +950,38 @@ lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
 
-[node name="Particles2D3" type="Particles2D" parent="Fire/FireCluster3"]
+[node name="Particles2D3" type="Particles2D" parent="Fire/paralax/FireCluster3"]
 modulate = Color( 1.4, 1.2, 1, 1 )
-position = Vector2( 0, -11 )
+position = Vector2( 31.919, -23.657 )
 z_index = 1
 amount = 80
 lifetime = 10.0
 fixed_fps = 36
 process_material = SubResource( 12 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Fire"]
+position = Vector2( 26, -6.106 )
+z_index = -1
+amount = 200
+lifetime = 5.5
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 0 )
+direction = Vector2( -1, 0 )
+spread = 0.0
+gravity = Vector2( 0, -10 )
+initial_velocity = 25.86
+color = Color( 1, 0.6, 0.6, 1 )
+color_ramp = SubResource( 18 )
+
+[node name="VisibilityNotifier2D2" type="VisibilityNotifier2D" parent="Fire"]
+modulate = Color( 1, 1, 1, 0.494118 )
+position = Vector2( 48, -119.106 )
+scale = Vector2( 45.65, 11.3 )
+z_index = -2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Fire"]
-position = Vector2( 48, -113 )
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 48, -119.106 )
 scale = Vector2( 45.65, 11.3 )
 
 [node name="RespawnPoints" type="Node2D" parent="."]
@@ -967,7 +1043,7 @@ vframes = 4
 frame = 1
 
 [node name="SidePlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1935, -20 )
+position = Vector2( -1013, -12 )
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -977,5 +1053,16 @@ position = Vector2( -215, -16 )
 [node name="Carben" parent="NPCs" instance=ExtResource( 16 )]
 position = Vector2( -1829, 0 )
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -1437, -27 )
+stream = ExtResource( 21 )
+autoplay = true
+max_distance = 1000.0
+attenuation = 1.31951
+bus = "fire"
+script = ExtResource( 22 )
+
+[connection signal="screen_entered" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="screen_entered" from="Fire/VisibilityNotifier2D" to="Fire" method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="Fire/VisibilityNotifier2D" to="Fire" method="_on_VisibilityNotifier2D_screen_exited"]

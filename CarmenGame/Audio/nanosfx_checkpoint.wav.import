@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_checkpoint.wav-0c35e1365e66cee98d3d6ce040d1d36c.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_checkpoint.wav"
+dest_files=[ "res://.import/nanosfx_checkpoint.wav-0c35e1365e66cee98d3d6ce040d1d36c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

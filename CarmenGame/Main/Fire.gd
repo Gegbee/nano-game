@@ -1,19 +1,24 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const DIST = 500
+const SCALAR = 0.3
+const SHAKE = [.1, -.1, 0.01]
+var up = false
+var mod: float = 0
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if abs(position.x - Global.player.position.x) < DIST and abs(position.x - Global.player.position.x) != 0:
+		if up:
+			mod += SHAKE[2]
+			if mod >= SHAKE[0]:
+				up = false
+		else:
+			mod -= SHAKE[2]
+			if mod <= SHAKE[1]:
+				up = true
+			
+		Global.setChrAbr((DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR + mod)
 
 
 func _on_VisibilityNotifier2D_screen_entered():

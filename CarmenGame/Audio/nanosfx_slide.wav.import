@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_slide.wav-b68769f1e278c6e53de97ce5604c65cb.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_slide.wav"
+dest_files=[ "res://.import/nanosfx_slide.wav-b68769f1e278c6e53de97ce5604c65cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

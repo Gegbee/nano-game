@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanosfx_fire.mp3-91d2b435df9a2de95b16324f342359be.mp3str"
+
+[deps]
+
+source_file="res://Audio/nanosfx_fire.mp3"
+dest_files=[ "res://.import/nanosfx_fire.mp3-91d2b435df9a2de95b16324f342359be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

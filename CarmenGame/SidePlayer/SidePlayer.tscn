@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
 [ext_resource path="res://SidePlayer/CharacterSpritemap.png" type="Texture" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://Lights/spot.png" type="Texture" id=5]
 [ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SidePlayer/Camera.gd" type="Script" id=7]
+[ext_resource path="res://Audio/nanosfx_dmg.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/nanosfx_dash.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/nanosfx_step.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/nanosfx_slice.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/nanosfx_slide2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/nanosfx_jump.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 9.5 )
@@ -598,5 +604,25 @@ script = ExtResource( 7 )
 decay = 0.3
 max_offset = Vector2( 100, 100 )
 max_roll = 0.3
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Slide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Slice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 0.57
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Step" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -12.235
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
