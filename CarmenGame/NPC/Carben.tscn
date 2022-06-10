@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [node name="NPC" instance=ExtResource( 1 )]
-lines = [ "Carben: They took my only daughter.", "Carben: My world...", "Nano: What happened here?", "Carben: The Devil! ", "Carben: That’s what happened!", "Carben: For days we maintained this village as the center of freedom for the nanobot kind.", "Carben: But then he arrived... and destroyed it all!", "Nano: Where did he go?", "Carben: West from here. Surely you won’t fight him, right?", "Nano: ...", "Carben: No... be careful young one.", "Carben: Though if you do, take this.", "Carben: The executable on the drive alters your programming.", "Carben: It will give you powers unimaginable to the young nanobot brain.", "Carben: Good luck!!!!" ]
+lines = [ "Carben: They took my only daughter.", "Carben: My world...", "Nano: What happened here?", "Carben: The Devil! ", "Carben: That’s what happened!", "Carben: For days we maintained this village as the center of freedom for the nanobot kind.", "Carben: But then he arrived... and destroyed it all!", "Nano: Where did he go?", "Carben: West from here. Surely you won’t fight him, right?", "Nano: ...", "Carben: No... be careful young one.", "Carben: Though if you do, take this.", "Carben: The executable on the drive alters your programming.", "Carben: It will give you powers unimaginable to the young nanobot brain.", "Carben: Good luck!!!!", "Melee: Right Click to use melee executable" ]
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -12 )

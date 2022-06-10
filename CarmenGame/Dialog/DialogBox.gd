@@ -25,11 +25,21 @@ func _process(_delta):
 		
 func runDialog(new_dialog : String):
 	var split_dialog = new_dialog.split(":")
+	if split_dialog[0].to_lower() == "melee":
+		n.text = "<Melee.exe>"
+		if is_instance_valid(Global.player):
+			Global.player.add_melee()
+	elif split_dialog[0].to_lower() == "shield":
+		n.text = "<Shield.exe>"
+		if is_instance_valid(Global.player):
+			Global.player.add_shield()
+	else:
+		n.text = split_dialog[0] + ":"
+		
 	state = RUNNING
 	
 	t.percent_visible = 0
 	t.text = split_dialog[1]
-	n.text = split_dialog[0] + ":"
 	$Tween.interpolate_property(t, "percent_visible", 0, 1, 
 	float(len(t.text)) / 30.0, 
 	Tween.TRANS_LINEAR, 

@@ -16,7 +16,13 @@ var floor_movement_x : float = 0.0
 var slide_movement_x : float = 0.0
 var dash_movement_x : float = 0.0
 var move_vel := Vector2()
+
 export var melee : NodePath
+var has_melee : bool = false
+
+
+export var shield : NodePath
+var has_shield : bool = false 
 
 func _ready():
 	print('player spawned')
@@ -110,8 +116,15 @@ func _physics_process(delta):
 	elif dir.x < 0:
 		$Sprite.scale.x = -1
 		
-	if melee != null:
+	if melee != null and has_melee:
 		if Input.is_action_just_pressed("attack_left"):
 			get_node(melee).attack()
 			Global.setCameraShake(0.1)
 
+func add_melee():
+	has_melee = true
+
+	
+
+func add_shield():
+	has_shield = true
