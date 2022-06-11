@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanomusic_thefire2.mp3-6034a1856d57b048c37aff7c1befab72.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/nanomusic_thefire2.mp3"
+dest_files=[ "res://.import/nanomusic_thefire2.mp3-6034a1856d57b048c37aff7c1befab72.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

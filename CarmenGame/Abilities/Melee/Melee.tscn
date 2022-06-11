@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Abilities/Melee/MeleeSpritemap.png" type="Texture" id=1]
+[ext_resource path="res://Audio/nanosfx_bothurt.wav" type="AudioStream" id=2]
 [ext_resource path="res://Abilities/Melee/Melee.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=3]
@@ -64,6 +65,10 @@ frames = SubResource( 2 )
 enabled = true
 cast_to = Vector2( 36, 0 )
 collision_mask = 7
+
+[node name="bothurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 1.67
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

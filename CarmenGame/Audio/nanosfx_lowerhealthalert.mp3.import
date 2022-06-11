@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanosfx_lowerhealthalert.mp3-126a47b543ef912604f8a33d2868cc09.mp3str"
+
+[deps]
+
+source_file="res://Audio/nanosfx_lowerhealthalert.mp3"
+dest_files=[ "res://.import/nanosfx_lowerhealthalert.mp3-126a47b543ef912604f8a33d2868cc09.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

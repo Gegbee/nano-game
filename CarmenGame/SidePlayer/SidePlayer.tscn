@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
 [ext_resource path="res://SidePlayer/CharacterSpritemap.png" type="Texture" id=2]
@@ -7,13 +7,15 @@
 [ext_resource path="res://Lights/spot.png" type="Texture" id=5]
 [ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SidePlayer/Camera.gd" type="Script" id=7]
-[ext_resource path="res://Audio/nanosfx_dmg.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/nanosfx_land.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/nanosfx_dash.wav" type="AudioStream" id=9]
-[ext_resource path="res://Audio/nanosfx_step.wav" type="AudioStream" id=10]
-[ext_resource path="res://Audio/nanosfx_slice.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/nanosfx_step2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/nanosfx_slice2.wav" type="AudioStream" id=11]
 [ext_resource path="res://Audio/nanosfx_slide2.wav" type="AudioStream" id=12]
 [ext_resource path="res://Audio/nanosfx_jump.wav" type="AudioStream" id=13]
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Audio/nanosfx_lowhealthbeat.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Audio/nanosfx_lowerhealthalert.mp3" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 9.5 )
@@ -615,17 +617,25 @@ stream = ExtResource( 12 )
 
 [node name="Slice" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-pitch_scale = 0.57
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -12.235
+volume_db = -21.339
+pitch_scale = 0.82
 
-[node name="Damage" type="AudioStreamPlayer" parent="."]
+[node name="Land" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -20.975
+pitch_scale = 2.18
+
+[node name="LowerHealth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="LowHealth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 14 )]
 margin_left = -16.0

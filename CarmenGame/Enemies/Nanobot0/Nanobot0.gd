@@ -7,6 +7,7 @@ var facing_dir : int = -1
 var move_vel := Vector2()
 
 func _ready():
+	$ambient.pitch_scale += randf()/10-0.05
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')
 	move_vel.x = SPEED
@@ -49,6 +50,7 @@ func get_which_wall_collided():
 
 func _on_HitDetection_body_entered(body):
 	if body.is_in_group('player'):
+		$playerhurt.play()
 		body.damage(1, -body.global_position + global_position, 500)
 		Global.setCameraShake(0.2)
 		Global.setChrAbr(Global.getChrAbr() + 0.5)

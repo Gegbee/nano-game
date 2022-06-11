@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+export var filter: AudioEffectFilter
+const FILTER_SPEED: float = 1.01
+const FILTER_HZ: int = 1000
+
 enum {
 	NONE,
 	RUNNING,
@@ -8,15 +12,17 @@ enum {
 var state : int = IDLE
 var set_dialog : Array = []
 var speaker = "BOB"
-var counter: int = 0
+var low = false
 
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
-var speakers = ["Edd", "Carben", "Nano", "No name"]
+var speakers = ["Edd", "Carben", "Carmen", "Nano", "No name"]
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true
+var played: bool = false
+
 
 func _ready():
 	Global.dialog_box = self
@@ -28,10 +34,16 @@ func _process(_delta):
 		if len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
 			set_dialog = [] + Global.player.cued_NPCs[0].lines
 			exited_dialog = false
+
 		nextAction()
 	if t.percent_visible == 1:
 		state = IDLE
-		
+	
+	if low and filter.cutoff_hz > FILTER_HZ:
+		filter.cutoff_hz /= FILTER_SPEED
+	elif not low and filter.cutoff_hz < 20500:
+		filter.cutoff_hz *= FILTER_SPEED
+	
 func runDialog(new_dialog : String):
 	var split_dialog = new_dialog.split(":")
 	if split_dialog[0].to_lower() == "melee":
@@ -54,21 +66,21 @@ func runDialog(new_dialog : String):
 	Tween.TRANS_LINEAR, 
 	Tween.EASE_OUT)
 	print(split_dialog[0])
-	if speakers.has(split_dialog[0]):
+	
+	
+	if speakers.has(split_dialog[0]) and split_dialog[2] != "0":
 		cues = get_node(split_dialog[0]).get_children()
-		for cue in cues:
+		for cue in cues + get_node("Nano").get_children():
 			cue.playing = false
-		cues[int(split_dialog[2])-1].play()
-	elif split_dialog[0] == "Nano":
-		cues = get_node("Nano").get_children()
-		for cue in cues:
-			cue.playing = false
-		
 		cues[int(split_dialog[2])-1].play()
 	
-	counter += 1
-	if counter >= 4:
-		counter = 0
+	if not played and split_dialog[0] == "Carben":
+		MusicController.transition_to(1)
+		played = true
+	
+	if len(set_dialog) == 2 and split_dialog[0] == "Carben":
+		MusicController.transition_to(2, true)
+		
 	$Tween.start()
 	
 	
@@ -82,12 +94,13 @@ func nextAction():
 	if state == RUNNING:
 		finishRunningDialog()
 	elif state == IDLE:
-		#insert code here to filter cutoff
+		low = true
 		if len(set_dialog) > 0:
 			runDialog(set_dialog[0])
 			set_dialog.remove(0)
 		else:
 			if exited_dialog == false:
 				exited_dialog = true
+			low = false
 			n.text = ""
 			t.text = ""

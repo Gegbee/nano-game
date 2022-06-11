@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Main/QuickMap.gd" type="Script" id=1]
 [ext_resource path="res://Main/Tilemap.png" type="Texture" id=2]
@@ -27,6 +27,11 @@
 [ext_resource path="res://Main/BgElementsPurple.png" type="Texture" id=25]
 [ext_resource path="res://NPC/Carmen.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Main/FgElementsPurple.png" type="Texture" id=27]
+[ext_resource path="res://Audio/Music/nanomusic_combat.mp3" type="AudioStream" id=28]
+[ext_resource path="res://Audio/Music/nanomusic_thefire2.mp3" type="AudioStream" id=29]
+[ext_resource path="res://Audio/Music/nanomusic_getthruthis.mp3" type="AudioStream" id=30]
+[ext_resource path="res://Main/MusicSetter.gd" type="Script" id=31]
+[ext_resource path="res://Audio/Music/nanomusic_carbenssong2.mp3" type="AudioStream" id=32]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1374,7 +1379,7 @@ vframes = 4
 frame = 1
 
 [node name="SidePlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( -2161, -58 )
+position = Vector2( -1036, -27 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -1437, -27 )
@@ -1382,7 +1387,7 @@ stream = ExtResource( 21 )
 autoplay = true
 max_distance = 1000.0
 attenuation = 1.31951
-bus = "fire"
+bus = "dialog dip"
 script = ExtResource( 22 )
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -1421,6 +1426,27 @@ position = Vector2( -1829, 0 )
 
 [node name="Carmen" parent="NPCs" instance=ExtResource( 26 )]
 position = Vector2( -3137, -192 )
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 31 )
+
+[node name="thefire" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 29 )
+autoplay = true
+bus = "music"
+
+[node name="carbenssong" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 32 )
+volume_db = -7.866
+bus = "music-master"
+
+[node name="game" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 30 )
+bus = "music"
+
+[node name="combat" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 28 )
+bus = "music"
 
 [connection signal="screen_entered" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_exited"]

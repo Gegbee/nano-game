@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_land.wav-168507406a18d7de838d6eec674c03da.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_land.wav"
+dest_files=[ "res://.import/nanosfx_land.wav-168507406a18d7de838d6eec674c03da.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

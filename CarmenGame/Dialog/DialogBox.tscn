@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Dialog/DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
@@ -10,10 +10,15 @@
 [ext_resource path="res://Audio/NPC/nanosfx_edd4.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/NPC/nanosfx_carmen1.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/NPC/nanosfx_carmen2.wav" type="AudioStream" id=10]
-[ext_resource path="res://Audio/NPC/nanosfx_nano1.wav" type="AudioStream" id=11]
-[ext_resource path="res://Audio/NPC/nanosfx_nano3.wav" type="AudioStream" id=12]
-[ext_resource path="res://Audio/NPC/nanosfx_nano2.wav" type="AudioStream" id=13]
-[ext_resource path="res://Audio/NPC/nanosfx_nano4.wav" type="AudioStream" id=14]
+[ext_resource path="res://Audio/NPC/nanosfx_nanoV2_1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/NPC/nanosfx_nanoV2_2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/NPC/nanosfx_nanoV2_3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Audio/NPC/nanosfx_nanoV2_4.wav" type="AudioStream" id=14]
+[ext_resource path="res://lowpassfilter.tres" type="AudioEffectLowPassFilter" id=15]
+[ext_resource path="res://Audio/NPC/nanosfx_carmenReal1.wav" type="AudioStream" id=16]
+[ext_resource path="res://Audio/NPC/nanosfx_carmenReal2.wav" type="AudioStream" id=17]
+[ext_resource path="res://Audio/NPC/nanosfx_carmenReal3.wav" type="AudioStream" id=18]
+[ext_resource path="res://Audio/NPC/nanosfx_carmenReal4.wav" type="AudioStream" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
@@ -34,6 +39,7 @@ font_data = ExtResource( 2 )
 [node name="DialogBox" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 1 )
+filter = ExtResource( 15 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_top = 1.0
@@ -94,22 +100,36 @@ stream = ExtResource( 3 )
 [node name="4" type="AudioStreamPlayer" parent="Carben"]
 stream = ExtResource( 4 )
 
+[node name="Carmen" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer" parent="Carmen"]
+stream = ExtResource( 16 )
+volume_db = -10.487
+
+[node name="2" type="AudioStreamPlayer" parent="Carmen"]
+stream = ExtResource( 17 )
+volume_db = -10.487
+
+[node name="3" type="AudioStreamPlayer" parent="Carmen"]
+stream = ExtResource( 18 )
+volume_db = -10.487
+
+[node name="4" type="AudioStreamPlayer" parent="Carmen"]
+stream = ExtResource( 19 )
+volume_db = -10.487
+
 [node name="Nano" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 11 )
-volume_db = -11.361
 
 [node name="2" type="AudioStreamPlayer" parent="Nano"]
-stream = ExtResource( 13 )
-volume_db = -11.361
+stream = ExtResource( 12 )
 
 [node name="3" type="AudioStreamPlayer" parent="Nano"]
-stream = ExtResource( 12 )
-volume_db = -11.361
+stream = ExtResource( 13 )
 
 [node name="4" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 14 )
-volume_db = -11.361
 
 [node name="No name" type="Node2D" parent="."]

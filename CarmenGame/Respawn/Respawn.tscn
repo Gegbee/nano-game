@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Respawn/Respawn.gd" type="Script" id=1]
 [ext_resource path="res://Respawn/Respawn2.png" type="Texture" id=2]
+[ext_resource path="res://Audio/nanosfx_checkpoint.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 24 )
@@ -26,5 +27,9 @@ shape = SubResource( 1 )
 modulate = Color( 1, 1, 1.2, 1 )
 position = Vector2( 0, -16 )
 frames = SubResource( 6 )
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -19.227
 
 [connection signal="body_entered" from="." to="." method="_on_Respawn_body_entered"]

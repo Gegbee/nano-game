@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/Nanobot0/Nanobot0.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Nanobot0/Nanobot0Spritemap.png" type="Texture" id=2]
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/nanosfx_bot.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Audio/nanosfx_dmg.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 9, 6 )
@@ -140,5 +142,14 @@ margin_left = -16.0
 margin_top = -20.0
 margin_right = 16.0
 margin_bottom = -16.0
+
+[node name="ambient" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+max_distance = 500.0
+bus = "dialog dip"
+
+[node name="playerhurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="HitDetection" to="." method="_on_HitDetection_body_entered"]

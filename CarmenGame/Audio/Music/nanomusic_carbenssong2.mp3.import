@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanomusic_carbenssong2.mp3-d2121b739b4df80b6e598d3f6efcddc6.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/nanomusic_carbenssong2.mp3"
+dest_files=[ "res://.import/nanomusic_carbenssong2.mp3-d2121b739b4df80b6e598d3f6efcddc6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
