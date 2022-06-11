@@ -8,18 +8,19 @@ var up = false
 var mod: float = 0
 
 func _process(delta):
-	if abs(position.x - Global.player.position.x) < DIST and abs(position.x - Global.player.position.x) != 0:
-		if up:
-			mod += (DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR
-			if mod >= SHAKE[0]:
-				up = false
-		else:
-			mod -= (DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR
-			if mod <= SHAKE[1]:
-				up = true
-			
-		Global.setChrAbr(mod)
-		shake()
+	if is_instance_valid(Global.player):
+		if abs(position.x - Global.player.position.x) < DIST and abs(position.x - Global.player.position.x) != 0:
+			if up:
+				mod += (DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR
+				if mod >= SHAKE[0]:
+					up = false
+			else:
+				mod -= (DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR
+				if mod <= SHAKE[1]:
+					up = true
+				
+			Global.setChrAbr(mod)
+			shake()
 		
 #        Global.setChrAbr((DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR + mod)
 

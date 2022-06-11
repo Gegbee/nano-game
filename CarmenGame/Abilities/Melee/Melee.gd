@@ -3,14 +3,16 @@ extends Node2D
 const SWING_TIME : float = 0.2
 var swing_init : bool = false
 onready var bothurt = $bothurt
+var target_pos : Vector2 = Vector2()
 
+export var damage : int = 0.0
+export var knockback_mult : float = 1.0
 func _ready():
 	$RayCast2D.add_exception(get_parent())
 	
 func _process(_delta):
 	if $Timer.time_left == 0:
-		var local_mouse_pos = get_global_mouse_position()-global_position
-		rotation = atan2(local_mouse_pos.y, local_mouse_pos.x)
+		rotation = atan2(target_pos.y, target_pos.x)
 	
 
 func attack():
@@ -29,8 +31,9 @@ func _on_Timer_timeout():
 			if collider.is_in_group('entity'):
 				bothurt.pitch_scale = 1.5 + randf()-0.5
 				bothurt.play()
-				collider.damage(1, -(collider.global_position - global_position), 200)
-				Global.setCameraShake(0.2)
+				collider.damage(damage, -(collider.global_position - global_position), 100 * knockback_mult)
+				if get_parent().is_in_group('player'):
+					Global.setCameraShake(0.2)
 		$Timer.start(SWING_TIME/2)
 	else:
 		swing_init = true

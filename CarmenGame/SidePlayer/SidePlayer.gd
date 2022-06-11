@@ -71,6 +71,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("crouch") and is_on_floor():
 		scale.y = 0.8
+		knockback_resistance = 4
 		$AnimationPlayer.play('slide')
 		if can_slide:
 			if Input.is_action_just_pressed("crouch"):
@@ -92,12 +93,14 @@ func _physics_process(delta):
 		spawnable_anim.global_position = self.global_position+Vector2(0, -8)
 		spawnable_anim.scale.x = -sign(move_vel.x)
 		scale.y = 1
+		knockback_resistance = 2
 		can_dash = false
 		dash_movement_x = sign(move_vel.x) * SPEED * 3
 		floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
 		audio[0].play()
 	else:
 		scale.y = 1
+		knockback_resistance = 2
 		slide_movement_x = 0.0
 		if abs(dir.x) > 0:
 			if is_on_floor():
@@ -155,6 +158,7 @@ func _physics_process(delta):
 		$Sprite.scale.x = -1
 		
 	if melee != null and has_melee:
+		get_node(melee).target_pos = get_global_mouse_position()-get_node(melee).global_position
 		if Input.is_action_just_pressed("attack_left"):
 			get_node(melee).attack()
 			audio[2].pitch_scale = 1+randf()/4

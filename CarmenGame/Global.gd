@@ -39,7 +39,8 @@ func setCameraShake(amt: float):
 	camera.add_trauma(amt)
 
 func setEnvColor(color : Color, offset_color : Color):
-	env.get_node('Tween').remove_all()
-	env.get_node('Tween').interpolate_property(env.get_node('Elements'), "modulate", env.get_node('Elements').modulate, offset_color, 3.0)
-	env.get_node('Tween').interpolate_property(env.get_node('CanvasLayer/ColorRect'), "color", env.get_node('CanvasLayer/ColorRect').color, color, 3.0)
-	env.get_node('Tween').start()
+	if !env.get_node('Tween').is_active():
+#	env.get_node('Tween').remove_all()
+		env.get_node('Tween').interpolate_property(env.get_node('Elements'), "modulate", env.get_node('Elements').modulate, offset_color, 2.0)
+		env.get_node('Tween').interpolate_property(env.get_node('CanvasLayer/ColorRect'), "color", env.get_node('CanvasLayer/ColorRect').color, color, 2.0)
+		env.get_node('Tween').start()

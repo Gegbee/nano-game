@@ -34,5 +34,5 @@ func impulseBar():
 	$Tween2.start()
 	yield($Tween2, "tween_completed")
 	$Tween2.interpolate_property(self, "rect_scale", rect_scale,
-	Vector2(1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.1)
+	Vector2(1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween2.start()

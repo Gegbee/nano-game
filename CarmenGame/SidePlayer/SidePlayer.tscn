@@ -502,6 +502,8 @@ one_shot = true
 
 [node name="Melee" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, -10 )
+damage = 1
+knockback_mult = 2.0
 
 [node name="NPCDetection" type="Area2D" parent="."]
 __meta__ = {

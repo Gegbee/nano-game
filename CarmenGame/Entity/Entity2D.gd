@@ -7,7 +7,8 @@ export var health_bar_path : NodePath
 export var damage_audio : NodePath
 var health_bar = null
 
-const GRAVITY : float = 500.0
+var GRAVITY : float = 500.0
+export var no_grav : bool = false
 
 export var MAX_HEALTH : int = 10.0
 export var knockback_resistance : float = 1.0
@@ -40,10 +41,12 @@ func _physics_process(delta):
 		impulse_strength = 0.0
 		
 func move(move_vel : Vector2, delta : float):
-	grav_vel.y += GRAVITY * delta
+	if !no_grav:
+		grav_vel.y += GRAVITY * delta
 	vel = -impulse_vector + move_vel + grav_vel
 	vel = move_and_slide(vel, Vector2.UP, false, 4, PI/4, false)
-	grav_vel.y = vel.y
+	if !no_grav:
+		grav_vel.y = vel.y
 	
 func damage(dmg : int, impulse_dir : Vector2 = Vector2(), strength : float = 0):
 	set_health(health - dmg)
