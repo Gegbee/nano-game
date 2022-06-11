@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/CarbenSpritemap.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 10.5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -25,7 +28,8 @@ _name = "Carben"
 lines = [ "Carben: They took my only daughter.:2", "Carben: My world...:1", "Nano: What happened here?:2", "Carben: The Devil!:1", "Carben: That’s what happened!:4", "Carben: For days we maintained this village as the center of freedom for the nanobot kind.:3", "Carben: But then he arrived... and destroyed it all...:4", "Nano: Where did he go?:1", "Carben: West from here. Surely you won’t fight him, right?:3", "Nano: ...:4", "Carben: No... be careful young one.:2", "Carben: Though if you do, take this.:1", "Carben: The executable on the drive alters your programming.:4", "Carben: It will give you powers unimaginable to the young nanobot brain.:2", "Carben: Good luck!!!!:1", "Melee: Right Click to use melee executable" ]
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2( 0, -12 )
+position = Vector2( 0, -10.5 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = "default"
