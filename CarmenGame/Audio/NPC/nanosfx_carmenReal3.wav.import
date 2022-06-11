@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_carmenReal3.wav-c39d9fb2ec309036e83540c07562fcd3.sample"
+
+[deps]
+
+source_file="res://Audio/NPC/nanosfx_carmenReal3.wav"
+dest_files=[ "res://.import/nanosfx_carmenReal3.wav-c39d9fb2ec309036e83540c07562fcd3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -2,6 +2,7 @@ extends Node2D
 
 const SWING_TIME : float = 0.2
 var swing_init : bool = false
+onready var bothurt = $bothurt
 
 func _ready():
 	$RayCast2D.add_exception(get_parent())
@@ -26,6 +27,8 @@ func _on_Timer_timeout():
 		if $RayCast2D.is_colliding():
 			var collider = $RayCast2D.get_collider()
 			if collider.is_in_group('entity'):
+				bothurt.pitch_scale = 1.5 + randf()-0.5
+				bothurt.play()
 				collider.damage(1, -(collider.global_position - global_position), 200)
 				Global.setCameraShake(0.2)
 		$Timer.start(SWING_TIME/2)

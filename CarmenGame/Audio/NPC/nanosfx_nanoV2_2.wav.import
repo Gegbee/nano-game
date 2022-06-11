@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_nanoV2_2.wav-36598b19959f082e4d7505a68a6b25af.sample"
+
+[deps]
+
+source_file="res://Audio/NPC/nanosfx_nanoV2_2.wav"
+dest_files=[ "res://.import/nanosfx_nanoV2_2.wav-36598b19959f082e4d7505a68a6b25af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

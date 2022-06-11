@@ -23,19 +23,39 @@ var has_melee : bool = true
 
 
 export var shield : NodePath
-var has_shield : bool = false 
+var has_shield : bool = false
+var was_on_floor = true 
 
 var cued_NPCs := []
-onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Damage]
 
+# <audio>
+onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Land, $LowHealth, $LowerHealth]
+onready var enimies = get_node("../Enemies").get_children()
+const ENEMY_MUSIC_DIST = 250
+#</audio>
 func _ready():
 	print('player spawned')
 	Global.camera = $Camera
 	$NPCDetection.add_to_group("player_npc_area")
 	add_to_group('player')
 	Global.player = self
+
+func _process(delta):
+	var closest_dist = 1000.0
+	enimies = get_node("../Enemies").get_children()
+	for enemy in enimies:
+		var temp = position.distance_to(enemy.global_position)
+		if temp < closest_dist and temp != 0:
+			closest_dist = temp
+			
+	if closest_dist <= ENEMY_MUSIC_DIST:
+		MusicController.combat_ratio = closest_dist/ENEMY_MUSIC_DIST
+#		print(MusicController.combat_ratio)
 	
+
+
 func _physics_process(delta):
+	
 	cued_NPCs.clear()
 	for npc in $NPCDetection.get_overlapping_areas():
 		cued_NPCs.append(npc)
@@ -44,6 +64,10 @@ func _physics_process(delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
+	
+	if is_on_floor() and not was_on_floor:
+		audio[5].play()
+	was_on_floor = is_on_floor()
 	
 	if Input.is_action_pressed("crouch") and is_on_floor():
 		scale.y = 0.8
@@ -133,6 +157,7 @@ func _physics_process(delta):
 	if melee != null and has_melee:
 		if Input.is_action_just_pressed("attack_left"):
 			get_node(melee).attack()
+			audio[2].pitch_scale = 1+randf()/4
 			audio[2].play()
 			Global.setCameraShake(0.1)
 

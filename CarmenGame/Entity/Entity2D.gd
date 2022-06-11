@@ -4,6 +4,7 @@ class_name Entity2D
 
 export var damage_particles : NodePath
 export var health_bar_path : NodePath
+export var damage_audio : NodePath
 var health_bar = null
 
 const GRAVITY : float = 500.0
@@ -17,6 +18,9 @@ var impulse_strength : float = 0.0
 var vel : Vector2 = Vector2()
 var grav_vel : Vector2 = Vector2()
 
+var timer = 0.0
+var lowhel = false
+
 func _ready():
 	spawned_color_change()
 	health = MAX_HEALTH
@@ -24,6 +28,11 @@ func _ready():
 	health_bar = get_node(health_bar_path)
 
 func _physics_process(delta):
+	timer += delta
+	if lowhel and timer >= 0.5:
+		timer = 0.0
+		Global.setChrAbr(0.5)
+		
 	impulse_vector.x = lerp(impulse_vector.x, 0, 5.0 * delta)
 	impulse_vector.y = 0.0
 	if impulse_vector.length() < 0.2:
@@ -38,6 +47,19 @@ func move(move_vel : Vector2, delta : float):
 	
 func damage(dmg : int, impulse_dir : Vector2 = Vector2(), strength : float = 0):
 	set_health(health - dmg)
+	if name == "SidePlayer":
+		if health <= 1:
+			self.audio[7].playing = true
+			lowhel = true
+		else:
+			self.audio[7].playing = false
+			
+		if health <= 3:
+			self.audio[6].playing = true
+		else:
+			self.audio[6].playing = false
+		
+	
 	impulse(impulse_dir.normalized(), strength)
 	print(self.name + " health: " + str(health) + " / " + str(MAX_HEALTH))
 
@@ -45,6 +67,7 @@ func set_health(new_health : int):
 	if new_health < health:
 		damage_color_change()
 	elif new_health > health:
+		lowhel = false
 		healing_color_change()
 	health = new_health
 	if health <= 0:
