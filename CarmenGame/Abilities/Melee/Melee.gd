@@ -27,6 +27,7 @@ func _on_Timer_timeout():
 			var collider = $RayCast2D.get_collider()
 			if collider.is_in_group('entity'):
 				collider.damage(1, -(collider.global_position - global_position), 200)
+				Global.setCameraShake(0.2)
 		$Timer.start(SWING_TIME/2)
 	else:
 		swing_init = true

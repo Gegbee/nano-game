@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
 [ext_resource path="res://SidePlayer/CharacterSpritemap.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Audio/nanosfx_slice.wav" type="AudioStream" id=11]
 [ext_resource path="res://Audio/nanosfx_slide2.wav" type="AudioStream" id=12]
 [ext_resource path="res://Audio/nanosfx_jump.wav" type="AudioStream" id=13]
+[ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 9.5 )
@@ -473,6 +474,7 @@ tracks/5/keys = {
 [node name="SidePlayer" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
+health_bar_path = NodePath("HealthBar")
 knockback_resistance = 2.0
 melee = NodePath("Melee")
 
@@ -624,5 +626,11 @@ volume_db = -12.235
 
 [node name="Damage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 14 )]
+margin_left = -16.0
+margin_top = -33.0
+margin_right = 16.0
+margin_bottom = -29.0
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

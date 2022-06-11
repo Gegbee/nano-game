@@ -50,3 +50,5 @@ func get_which_wall_collided():
 func _on_HitDetection_body_entered(body):
 	if body.is_in_group('player'):
 		body.damage(1, -body.global_position + global_position, 500)
+		Global.setCameraShake(0.2)
+		Global.setChrAbr(Global.getChrAbr() + 0.5)

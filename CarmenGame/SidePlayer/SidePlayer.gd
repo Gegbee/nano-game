@@ -18,12 +18,14 @@ var dash_movement_x : float = 0.0
 var move_vel := Vector2()
 
 export var melee : NodePath
-var has_melee : bool = false
+# MUST CHANGE WHEN RELEASING GAME
+var has_melee : bool = true
 
 
 export var shield : NodePath
 var has_shield : bool = false 
 
+var cued_NPCs := []
 onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Damage]
 
 func _ready():
@@ -34,6 +36,10 @@ func _ready():
 	Global.player = self
 	
 func _physics_process(delta):
+	cued_NPCs.clear()
+	for npc in $NPCDetection.get_overlapping_areas():
+		cued_NPCs.append(npc)
+		
 	var dir = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")

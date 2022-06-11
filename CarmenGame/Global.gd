@@ -32,6 +32,9 @@ func set_camera_limits(left, right, top, bottom):
 func setChrAbr(amt : float):
 	chrabr.material.set_shader_param("aberration", amt)
 
+func getChrAbr() -> float:
+	return chrabr.material.get_shader_param("aberration")
+	
 func setCameraShake(amt: float):
 	camera.add_trauma(amt)
 

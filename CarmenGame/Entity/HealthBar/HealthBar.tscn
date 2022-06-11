@@ -5,6 +5,7 @@
 [ext_resource path="res://Entity/HealthBar/HealthBarBack.png" type="Texture" id=3]
 
 [node name="HealthBar" type="TextureProgress"]
+modulate = Color( 1.33333, 1, 1, 1 )
 margin_right = 32.0
 margin_bottom = 4.0
 rect_pivot_offset = Vector2( 16, 2 )
@@ -12,12 +13,7 @@ value = 40.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="Tween2" type="Tween" parent="."]

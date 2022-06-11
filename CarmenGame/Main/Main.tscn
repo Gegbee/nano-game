@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Main/QuickMap.gd" type="Script" id=1]
 [ext_resource path="res://Main/Tilemap.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Main/paralax.gd" type="Script" id=20]
 [ext_resource path="res://Audio/nanosfx_fire.mp3" type="AudioStream" id=21]
 [ext_resource path="res://Main/moveaud.gd" type="Script" id=22]
+[ext_resource path="res://Main/FgElementsRed.png" type="Texture" id=23]
+[ext_resource path="res://Enemies/Nanobot0/Nanobot0.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -304,6 +306,92 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 13/shape_one_way_margin = 0.0
 13/shapes = [  ]
 13/z_index = 0
+
+[sub_resource type="TileSet" id=19]
+0/name = "FgElementsRed.png 0"
+0/texture = ExtResource( 23 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "FgElementsRed.png 1"
+1/texture = ExtResource( 23 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 16, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "FgElementsRed.png 2"
+2/texture = ExtResource( 23 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "FgElementsRed.png 3"
+3/texture = ExtResource( 23 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 48, 0, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "FgElementsRed.png 4"
+4/texture = ExtResource( 23 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 64, 0, 16, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "FgElementsRed.png 5"
+5/texture = ExtResource( 23 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 80, 0, 16, 16 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
 
 [sub_resource type="TileSet" id=3]
 0/name = "BackgroundElements.png 0"
@@ -781,6 +869,12 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -983093, 8, 0, -852018, 12, 0, -852015, 13, 0, -720944, 7, 0, -720940, 11, 0, -589877, 9, 0, -589871, 10, 0, -589866, 5, 0, -458803, 12, 0, -458800, 8, 0, -458797, 11, 0, -393256, 8, 0, -393227, 6, 0, -393223, 7, 0, -327727, 10, 0, -196676, 8, 0, -196669, 8, 0, -196659, 12, 0, -196654, 2, 0, -196652, 0, 0, -196651, 0, 0, -196648, 13, 0, -196642, 11, 0, -196637, 11, 0, -196635, 10, 0, -196629, 10, 0, -196626, 12, 0, -65590, 11, 0, -65588, 0, 0, -65556, 2, 0, -65554, 4, 0, -65545, 0, 0, -37, 0, 0, -35, 9, 0, -32, 1, 0, -30, 9, 0, -29, 3, 0, -7, 2, 0 )
 
+[node name="Red" type="TileMap" parent="Foreground"]
+tile_set = SubResource( 19 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -124, 2, 0, -123, 0, 0, -122, 3, 0, -117, 2, 0, -112, 0, 0, -111, 5, 0, -110, 3, 0, -103, 2, 0, -102, 3, 0, -101, 0, 0, -100, 4, 0, -97, 5, 0, -96, 1, 0, -95, 2, 0, -90, 3, 0, -89, 2, 0, -85, 3, 0 )
+
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource( 12 )
 
@@ -810,19 +904,15 @@ tile_set = SubResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -458850, 0, 0, -327800, 3, 0, -327783, 3, 0, -262269, 2, 0, -262257, 2, 0, -262252, 1, 0, -262234, 1, 0 )
-script = ExtResource( 20 )
-layer_num = 1
-start = -1200
-end = -2200
 
 [node name="Village2" type="TileMap" parent="Background/Elements"]
-modulate = Color( 1, 1, 1, 0.588235 )
+modulate = Color( 1, 1, 1, 0.54902 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -4
 tile_set = SubResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -1376470, 0, 0, -1179842, 2, 0, -1114346, 3, 0, -1114288, 3, 0, -917748, 1, 0, -917690, 1, 0, -852182, 0, 0, -852173, 1, 0, -852162, 0, 0, -721130, 0, 0, -721072, 0, 0, -590067, 0, 0, -590009, 0, 0, -524493, 3, 0, -458978, 3, 0, -458972, 1, 0, -458920, 3, 0, -458914, 1, 0, -327894, 0, 0, -327874, 0, 0, -262358, 0, 0, -262338, 0, 0, -196843, 0, 0, -196842, 0, 0, -196822, 0, 0, -196802, 0, 0, -196785, 0, 0, -196784, 0, 0, -131306, 0, 0, -131293, 0, 0, -131277, 0, 0, -131266, 0, 0, -131253, 0, 0, -131248, 0, 0, -131235, 0, 0, -65792, 0, 0, -65791, 0, 0, -65790, 0, 0, -65789, 0, 0, -65788, 0, 0, -65787, 0, 0, -65786, 0, 0, -65785, 0, 0, -65784, 0, 0, -65783, 0, 0, -65782, 0, 0, -65781, 0, 0, -65780, 0, 0, -65779, 0, 0, -65778, 0, 0, -65777, 0, 0, -65776, 0, 0, -65775, 0, 0, -65774, 0, 0, -65773, 0, 0, -65772, 0, 0, -65771, 0, 0, -65770, 0, 0, -65769, 0, 0, -65768, 0, 0, -65767, 0, 0, -65766, 0, 0, -65765, 0, 0, -65764, 0, 0, -65763, 0, 0, -65762, 0, 0, -65761, 0, 0, -65760, 0, 0, -65759, 0, 0, -65758, 0, 0, -65757, 0, 0, -65756, 0, 0, -65755, 0, 0, -65754, 0, 0, -65753, 0, 0, -65752, 0, 0, -65751, 0, 0, -65750, 0, 0, -65749, 0, 0, -65748, 0, 0, -65747, 0, 0, -65746, 0, 0, -65745, 0, 0, -65744, 0, 0, -65743, 0, 0, -65742, 0, 0, -65741, 0, 0, -65740, 0, 0, -65739, 0, 0, -65738, 0, 0, -65737, 0, 0, -65736, 0, 0, -65735, 0, 0, -65734, 0, 0, -65733, 0, 0, -65732, 0, 0, -65731, 0, 0, -65730, 0, 0, -65729, 0, 0, -65728, 0, 0, -65727, 0, 0, -65726, 0, 0, -65725, 0, 0, -65724, 0, 0, -65723, 0, 0, -65722, 0, 0, -65721, 0, 0, -65720, 0, 0, -65719, 0, 0, -65718, 0, 0, -65717, 0, 0, -65716, 0, 0, -65715, 0, 0, -65714, 0, 0, -65713, 0, 0, -65712, 0, 0, -65711, 0, 0, -65710, 0, 0, -65709, 0, 0, -65708, 0, 0, -65707, 0, 0, -65706, 0, 0, -65705, 0, 0, -65704, 0, 0, -65703, 0, 0, -65702, 0, 0, -65701, 0, 0, -65700, 0, 0, -65699, 0, 0, -65698, 0, 0, -65697, 0, 0, -65696, 0, 0, -65695, 0, 0, -65694, 0, 0, -65693, 0, 0, -65692, 0, 0, -65691, 0, 0, -65690, 0, 0, -65689, 0, 0, -65688, 0, 0, -65687, 0, 0, -65686, 0, 0 )
+tile_data = PoolIntArray( -1376470, 0, 0, -1179842, 2, 0, -1114288, 3, 0, -917690, 1, 0, -852182, 0, 0, -852173, 1, 0, -852162, 0, 0, -721072, 0, 0, -590009, 0, 0, -524493, 3, 0, -458972, 1, 0, -458920, 3, 0, -458914, 1, 0, -327894, 0, 0, -327874, 0, 0, -262358, 0, 0, -262338, 0, 0, -196822, 0, 0, -196802, 0, 0, -196785, 0, 0, -196784, 0, 0, -131293, 0, 0, -131277, 0, 0, -131266, 0, 0, -131253, 0, 0, -131248, 0, 0, -131235, 0, 0, -65764, 0, 0, -65763, 0, 0, -65762, 0, 0, -65761, 0, 0, -65760, 0, 0, -65759, 0, 0, -65758, 0, 0, -65757, 0, 0, -65756, 0, 0, -65755, 0, 0, -65754, 0, 0, -65753, 0, 0, -65752, 0, 0, -65751, 0, 0, -65750, 0, 0, -65749, 0, 0, -65748, 0, 0, -65747, 0, 0, -65746, 0, 0, -65745, 0, 0, -65744, 0, 0, -65743, 0, 0, -65742, 0, 0, -65741, 0, 0, -65740, 0, 0, -65739, 0, 0, -65738, 0, 0, -65737, 0, 0, -65736, 0, 0, -65735, 0, 0, -65734, 0, 0, -65733, 0, 0, -65732, 0, 0, -65731, 0, 0, -65730, 0, 0, -65729, 0, 0, -65728, 0, 0, -65727, 0, 0, -65726, 0, 0, -65725, 0, 0, -65724, 0, 0, -65723, 0, 0, -65722, 0, 0, -65721, 0, 0, -65720, 0, 0, -65719, 0, 0, -65718, 0, 0, -65717, 0, 0, -65716, 0, 0, -65715, 0, 0, -65714, 0, 0, -65713, 0, 0, -65712, 0, 0, -65711, 0, 0, -65710, 0, 0, -65709, 0, 0, -65708, 0, 0, -65707, 0, 0, -65706, 0, 0, -65705, 0, 0, -65704, 0, 0, -65703, 0, 0, -65702, 0, 0, -65701, 0, 0, -65700, 0, 0, -65699, 0, 0, -65698, 0, 0, -65697, 0, 0, -65696, 0, 0, -65695, 0, 0, -65694, 0, 0, -65693, 0, 0, -65692, 0, 0, -65691, 0, 0, -65690, 0, 0, -65689, 0, 0, -65688, 0, 0, -65687, 0, 0, -65686, 0, 0, 327492, 2, 0, 655192, 0, 0 )
 script = ExtResource( 20 )
 layer_num = 2
 start = -1200
@@ -848,10 +938,6 @@ __meta__ = {
 
 [node name="paralax" type="Node2D" parent="Fire"]
 position = Vector2( 0, -6.106 )
-script = ExtResource( 20 )
-layer_num = 2
-start = -1200
-end = -2200
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Fire/paralax"]
 modulate = Color( 1, 1, 1, 0.537255 )
@@ -993,7 +1079,7 @@ position = Vector2( -344, -48 )
 position = Vector2( -1050, 0 )
 
 [node name="Respawn3" parent="RespawnPoints" instance=ExtResource( 9 )]
-position = Vector2( -2076, -32 )
+position = Vector2( -2091, -32 )
 
 [node name="Respawn4" parent="RespawnPoints" instance=ExtResource( 9 )]
 position = Vector2( -3041, -288 )
@@ -1043,7 +1129,7 @@ vframes = 4
 frame = 1
 
 [node name="SidePlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1013, -12 )
+position = Vector2( -2158, -55 )
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -1061,6 +1147,29 @@ max_distance = 1000.0
 attenuation = 1.31951
 bus = "fire"
 script = ExtResource( 22 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Nanobot0" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2340, -48 )
+
+[node name="Nanobot2" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2448, -112 )
+
+[node name="Nanobot3" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2643, -128 )
+
+[node name="Nanobot4" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2660, -128 )
+
+[node name="Nanobot5" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2882, -96 )
+
+[node name="Nanobot6" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2879, -192 )
+
+[node name="Nanobot1" parent="Enemies" instance=ExtResource( 24 )]
+position = Vector2( -2542, -16 )
 
 [connection signal="screen_entered" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="Fire/VisibilityNotifier2D2" to="Fire" method="_on_VisibilityNotifier2D_screen_exited"]

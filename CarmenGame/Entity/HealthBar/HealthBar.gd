@@ -1,9 +1,12 @@
 extends TextureProgress
 
+var glow_r : int = 330
+
 func _ready():
+	modulate = Color8(glow_r, 255, 255, 255)
 	max_value = get_parent().MAX_HEALTH
-	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1),
-	Color(1, 1, 1, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 3)
+	$Tween.interpolate_property(self, "modulate", Color8(glow_r, 255, 255, 255),
+	Color8(glow_r, 255, 255, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 3)
 	$Tween.start()
 
 func updateHealth(new_health : int):
@@ -14,15 +17,22 @@ func updateHealth(new_health : int):
 #	$Tween.interpolate_property(self, "rect_scale", rect_scale, 
 #	Vector2(1, 1), 2, Tween.TRANS_LINEAR, Tween.EASE_IN, 2)
 	$Tween.remove_all()
-	modulate = Color(1, 1, 1, 1)
-	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1),
-	Color(1, 1, 1, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 3)
+	modulate = Color8(glow_r, 255, 255, 255)
+	
+	$Tween.interpolate_property(self, "modulate", Color8(glow_r, 255, 255, 255),
+	Color8(glow_r, 255, 255, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 3)
 	$Tween.start()
 #	$Timer.stop()
 #	$Timer.start(3)
 	value = new_health
+	impulseBar()
 	
-func _on_Timer_timeout():
-	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1),
-	Color(1, 1, 1, 0), 1, Tween.TRANS_EXPO, Tween.EASE_OUT)
-	$Tween.start()
+func impulseBar():
+	$Tween2.remove_all()
+	$Tween2.interpolate_property(self, "rect_scale", rect_scale,
+	Vector2(1.5, 1.5), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween2.start()
+	yield($Tween2, "tween_completed")
+	$Tween2.interpolate_property(self, "rect_scale", rect_scale,
+	Vector2(1, 1), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.1)
+	$Tween2.start()

@@ -19,16 +19,14 @@ func _process(delta):
 	
 func _on_NPC_area_entered(area):
 	if area.is_in_group('player_npc_area'):
-		Global.dialog_box.cur_dialog = [] + lines
-		Global.dialog_box.set_dialog = [] + lines
-		Global.dialog_box.speaker = _name 
+#		Global.dialog_box.set_dialog = [] + lines
+#		Global.dialog_box.speaker = _name 
 		$InteractIndicator.modulate = Color(1, 1, 1, 1)
 		
 		
 func _on_NPC_area_exited(area):
 	if area.is_in_group("player_npc_area"):
-		if Global.dialog_box.set_dialog == lines:
-			Global.dialog_box.cur_dialog = []
-			Global.dialog_box.set_dialog = []
-			Global.dialog_box.speaker = "No name"
+#		if Global.dialog_box.set_dialog == lines:
+#			Global.dialog_box.set_dialog = []
+#			Global.dialog_box.speaker = "No name"
 		$InteractIndicator.modulate = Color(1, 1, 1, 0)

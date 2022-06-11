@@ -6,7 +6,6 @@ enum {
 	IDLE
 }
 var state : int = IDLE
-var cur_dialog : Array = []
 var set_dialog : Array = []
 var speaker = "BOB"
 var counter: int = 0
@@ -14,7 +13,10 @@ var counter: int = 0
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
+var speakers = ["Edd", "Carben", "Nano", "No name"]
 
+# sees if player has exited dialog to know if dialog should be replyaed
+var exited_dialog : bool = true
 
 func _ready():
 	Global.dialog_box = self
@@ -23,6 +25,9 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
+		if len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
+			set_dialog = [] + Global.player.cued_NPCs[0].lines
+			exited_dialog = false
 		nextAction()
 	if t.percent_visible == 1:
 		state = IDLE
@@ -49,8 +54,8 @@ func runDialog(new_dialog : String):
 	Tween.TRANS_LINEAR, 
 	Tween.EASE_OUT)
 	print(split_dialog[0])
-	if split_dialog[0] == speaker:
-		cues = get_node(speaker).get_children()
+	if speakers.has(split_dialog[0]):
+		cues = get_node(split_dialog[0]).get_children()
 		for cue in cues:
 			cue.playing = false
 		cues[int(split_dialog[2])-1].play()
@@ -82,5 +87,7 @@ func nextAction():
 			runDialog(set_dialog[0])
 			set_dialog.remove(0)
 		else:
+			if exited_dialog == false:
+				exited_dialog = true
 			n.text = ""
 			t.text = ""
