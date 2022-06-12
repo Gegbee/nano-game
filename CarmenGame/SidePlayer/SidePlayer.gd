@@ -29,9 +29,10 @@ var was_on_floor = true
 var cued_NPCs := []
 
 # <audio>
+export var filter: AudioEffectFilter
 onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Land, $LowHealth, $LowerHealth]
 onready var enimies = get_node("../Enemies").get_children()
-const ENEMY_MUSIC_DIST = 250
+const ENEMY_MUSIC_DIST = 200
 #</audio>
 func _ready():
 	print('player spawned')

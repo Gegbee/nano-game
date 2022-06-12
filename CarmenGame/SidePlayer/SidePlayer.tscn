@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://SidePlayer/SidePlayer.gd" type="Script" id=1]
 [ext_resource path="res://SidePlayer/CharacterSpritemap.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Audio/nanosfx_lowhealthbeat.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Audio/nanosfx_lowerhealthalert.mp3" type="AudioStream" id=16]
+[ext_resource path="res://lowpassfilter2.tres" type="AudioEffectLowPassFilter" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 9.5 )
@@ -479,6 +480,7 @@ script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
 knockback_resistance = 2.0
 melee = NodePath("Melee")
+filter = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -613,25 +615,31 @@ max_roll = 0.3
 
 [node name="Dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "dialog dip"
 
 [node name="Slide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "dialog dip"
 
 [node name="Slice" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "dialog dip"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+bus = "dialog dip"
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -21.339
 pitch_scale = 0.82
+bus = "dialog dip"
 
 [node name="Land" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -20.975
 pitch_scale = 2.18
+bus = "dialog dip"
 
 [node name="LowerHealth" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )

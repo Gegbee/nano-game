@@ -5,7 +5,7 @@ var music: Array
 var fading = []
 var playing = [0]
 var combat_ratio: float = 1.0 
-const EASE = 1.5
+const EASE = 1.7
 
 
 func _process(delta):

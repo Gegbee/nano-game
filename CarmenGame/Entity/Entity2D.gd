@@ -22,6 +22,10 @@ var grav_vel : Vector2 = Vector2()
 var timer = 0.0
 var lowhel = false
 
+var low: int = 0
+const FILTER_HZ = 1000
+const FILTER_SPEED: float = 1.01
+
 func _ready():
 	spawned_color_change()
 	health = MAX_HEALTH
@@ -29,6 +33,14 @@ func _ready():
 	health_bar = get_node(health_bar_path)
 
 func _physics_process(delta):
+	if name == "SidePlayer":
+		print(self.filter.cutoff_hz / FILTER_SPEED)
+		if low == 1 and self.filter.cutoff_hz > FILTER_HZ:
+			self.filter.cutoff_hz /= FILTER_SPEED
+		elif low == 2 and self.filter.cutoff_hz > FILTER_HZ/3: 
+			self.filter.cutoff_hz /= FILTER_SPEED
+		elif low == 0 and self.filter.cutoff_hz < 20500:
+			self.filter.cutoff_hz *= FILTER_SPEED
 	timer += delta
 	if lowhel and timer >= 0.5:
 		timer = 0.0
@@ -51,16 +63,20 @@ func move(move_vel : Vector2, delta : float):
 func damage(dmg : int, impulse_dir : Vector2 = Vector2(), strength : float = 0):
 	set_health(health - dmg)
 	if name == "SidePlayer":
+		if health <= 3:
+			self.audio[6].playing = true
+			low = 1
+		else:
+			self.audio[6].playing = false
+			low = 0
+			
 		if health <= 1:
 			self.audio[7].playing = true
 			lowhel = true
+			low = 2
 		else:
 			self.audio[7].playing = false
 			
-		if health <= 3:
-			self.audio[6].playing = true
-		else:
-			self.audio[6].playing = false
 		
 	
 	impulse(impulse_dir.normalized(), strength)
