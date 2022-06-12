@@ -14,6 +14,7 @@ var set_dialog : Array = []
 var speaker = "BOB"
 var low = false
 
+
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
@@ -43,6 +44,7 @@ func _process(_delta):
 		filter.cutoff_hz /= FILTER_SPEED
 	elif not low and filter.cutoff_hz < 20500:
 		filter.cutoff_hz *= FILTER_SPEED
+	
 	
 func runDialog(new_dialog : String):
 	var split_dialog = new_dialog.split(":")

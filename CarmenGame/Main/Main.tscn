@@ -1387,7 +1387,7 @@ vframes = 4
 frame = 2
 
 [node name="SidePlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( -3248, -235 )
+position = Vector2( -1228, -82 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -1437, -27 )
