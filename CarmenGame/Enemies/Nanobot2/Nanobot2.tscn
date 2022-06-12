@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/Nanobot2/Nanobot2.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Nanobot2/Nanobot2Spritemap.png" type="Texture" id=2]
 [ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/nanosfx_dmg.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/nanosfx_bot.mp3" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 6.5
@@ -176,5 +178,15 @@ texture = ExtResource( 2 )
 hframes = 3
 vframes = 3
 frame = 2
+
+[node name="playerhurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="ambient" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.25
+autoplay = true
+max_distance = 500.0
+bus = "nano2"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

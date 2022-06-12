@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [node name="NPC" instance=ExtResource( 1 )]
 _name = "Edd"
-lines = [ "Edd: Hey kid...:4", "Nano: Woah! Are you okay?:2", "Edd: A bit rusty, but I’m fine.:3", "Edd: How’d you get here?:1", "Nano: I... don’t... know.:4", "Edd: Probably came out of The Wire.:3", "Nano: The Wire?:1", "Edd: What an unfortunate time to be created.:2", "Edd: It's a storm out there.:4", "Edd: Be careful.:1" ]
+lines = [ "Edd: Hey kid...:4", "Nano: Woah! Are you okay?:2", "Edd: A bit rusty, but it ain't nothin'.:3", "Edd: So how’d you end up in the sewer, partner?:1", "Nano: I... don’t... know.:4", "Edd: Probably came out of The Wire.:3", "Nano: The Wire?:1", "Edd: What an unfortunate time to be created.:2", "Edd: It's a storm out there.:4", "Edd: I guess it gives something nice to look at in this hellhole:1" ]
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -9.5 )

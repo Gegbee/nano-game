@@ -10,6 +10,7 @@ const CAT_MAX_TIME = 0.2
 var cat_time : float = 0.0
 var can_jump := false
 var can_dash : bool = true
+var can_move: bool = true
 
 var jump_movement_y : float = 0.0
 var floor_movement_x : float = 0.0
@@ -31,12 +32,9 @@ var cued_NPCs := []
 # <audio>
 export var filter: AudioEffectFilter
 onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Land, $LowHealth, $LowerHealth]
-
-# THIS LINE BELOW NEEDS TO BE GLOBALIZED
-onready var enimies = get_node("../Enemies").get_children()
-
 const ENEMY_MUSIC_DIST = 200
 #</audio>
+
 func _ready():
 	print('player spawned')
 	Global.camera = $Camera
@@ -46,11 +44,13 @@ func _ready():
 
 func _process(delta):
 	var closest_dist = 1000.0
-	enimies = get_node("../Enemies").get_children()
-	for enemy in enimies:
-		var temp = position.distance_to(enemy.global_position)
-		if temp < closest_dist and temp != 0:
-			closest_dist = temp
+	for enemy in Global.enimies:
+		# checks if it exists
+		if enemy.get_ref():
+			#checks if its the closest
+			var temp = position.distance_to(enemy.get_ref().global_position)
+			if temp < closest_dist and temp != 0:
+				closest_dist = temp
 			
 	if closest_dist <= ENEMY_MUSIC_DIST:
 		MusicController.combat_ratio = closest_dist/ENEMY_MUSIC_DIST
@@ -64,67 +64,70 @@ func _physics_process(delta):
 	for npc in $NPCDetection.get_overlapping_areas():
 		cued_NPCs.append(npc)
 		
-	var dir = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
+	var dir: Vector2
+	if can_move:
+		dir = Vector2(
+			Input.get_action_strength("right") - Input.get_action_strength("left"),
+			Input.get_action_strength("down") - Input.get_action_strength("up")
+		)
+	else: dir = Vector2.ZERO
 	
 	if is_on_floor() and not was_on_floor:
 		audio[5].play()
 	was_on_floor = is_on_floor()
-	
-	if Input.is_action_pressed("crouch") and is_on_floor():
-		scale.y = 0.8
-		knockback_resistance = 4
-		$AnimationPlayer.play('slide')
-		if can_slide:
-			if Input.is_action_just_pressed("crouch"):
-				Global.setChrAbr(0.4)
-				Global.setCameraShake(0.1)
-				var spawnable_anim = Global.preloads["slide_anim"].instance()
-				get_tree().get_root().add_child(spawnable_anim)
-				spawnable_anim.global_position = self.global_position+Vector2(0, -8)
-				spawnable_anim.scale.x = sign(dir.x)
-				slide_movement_x = SPEED * sign(dir.x) * 2.2
-				audio[1].play()
-			slide_movement_x = lerp(slide_movement_x, 0, 2 * delta)
+	if can_move:
+		if Input.is_action_pressed("crouch") and is_on_floor() and can_move:
+			scale.y = 0.8
+			knockback_resistance = 4
+			$AnimationPlayer.play('slide')
+			if can_slide:
+				if Input.is_action_just_pressed("crouch"):
+					Global.setChrAbr(0.4)
+					Global.setCameraShake(0.1)
+					var spawnable_anim = Global.preloads["slide_anim"].instance()
+					get_tree().get_root().add_child(spawnable_anim)
+					spawnable_anim.global_position = self.global_position+Vector2(0, -8)
+					spawnable_anim.scale.x = sign(dir.x)
+					slide_movement_x = SPEED * sign(dir.x) * 2.2
+					audio[1].play()
+				slide_movement_x = lerp(slide_movement_x, 0, 2 * delta)
+				floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
+		elif can_dash and Input.is_action_just_pressed("dash") and !is_on_floor() and abs(move_vel.x) > 0:
+			Global.setChrAbr(0.9)
+			Global.setCameraShake(0.15)
+			var spawnable_anim = Global.preloads["dash_anim"].instance()
+			get_tree().get_root().add_child(spawnable_anim)
+			spawnable_anim.global_position = self.global_position+Vector2(0, -8)
+			spawnable_anim.scale.x = -sign(move_vel.x)
+			scale.y = 1
+			knockback_resistance = 2
+			can_dash = false
+			dash_movement_x = sign(move_vel.x) * SPEED * 3
 			floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
-	elif can_dash and Input.is_action_just_pressed("dash") and !is_on_floor() and abs(move_vel.x) > 0:
-		Global.setChrAbr(0.9)
-		Global.setCameraShake(0.15)
-		var spawnable_anim = Global.preloads["dash_anim"].instance()
-		get_tree().get_root().add_child(spawnable_anim)
-		spawnable_anim.global_position = self.global_position+Vector2(0, -8)
-		spawnable_anim.scale.x = -sign(move_vel.x)
-		scale.y = 1
-		knockback_resistance = 2
-		can_dash = false
-		dash_movement_x = sign(move_vel.x) * SPEED * 3
-		floor_movement_x = lerp(floor_movement_x, 0, 20 * delta)
-		audio[0].play()
-	else:
-		scale.y = 1
-		knockback_resistance = 2
-		slide_movement_x = 0.0
-		if abs(dir.x) > 0:
-			if is_on_floor():
-				$AnimationPlayer.play('running')
-				if not audio[4].playing:
-					audio[4].playing = true
-				floor_movement_x += delta * ACCEL * dir.x
-			else:
-				$AnimationPlayer.play("air")
-				floor_movement_x += delta * ACCEL / 6 * dir.x
+			audio[0].play()
 		else:
-			if is_on_floor():
-				$AnimationPlayer.play('idle')
-				floor_movement_x = lerp(floor_movement_x, 0, 30 * delta)
+			scale.y = 1
+			knockback_resistance = 2
+			slide_movement_x = 0.0
+			if abs(dir.x) > 0:
+				if is_on_floor():
+					$AnimationPlayer.play('running')
+					if not audio[4].playing:
+						audio[4].playing = true
+					floor_movement_x += delta * ACCEL * dir.x
+				else:
+					$AnimationPlayer.play("air")
+					floor_movement_x += delta * ACCEL / 6 * dir.x
 			else:
-				$AnimationPlayer.play("air")
-				floor_movement_x = lerp(floor_movement_x, 0, 1 * delta)
+				if is_on_floor():
+					$AnimationPlayer.play('idle')
+					floor_movement_x = lerp(floor_movement_x, 0, 30 * delta)
+				else:
+					$AnimationPlayer.play("air")
+					floor_movement_x = lerp(floor_movement_x, 0, 1 * delta)
+			
+			dash_movement_x = lerp(dash_movement_x, 0, 5 * delta)
 		
-		dash_movement_x = lerp(dash_movement_x, 0, 5 * delta)
-	
 	floor_movement_x = clamp(floor_movement_x, -SPEED, SPEED)
 	move_vel.x = dash_movement_x + slide_movement_x + floor_movement_x
 	
@@ -143,7 +146,7 @@ func _physics_process(delta):
 		cat_time += delta
 	
 	move_vel.y = 0
-	if can_jump and Input.is_action_just_pressed("up"):
+	if can_jump and can_move and Input.is_action_just_pressed("up"):
 		var spawnable_anim = Global.preloads["jump_anim"].instance()
 		get_tree().get_root().add_child(spawnable_anim)
 		spawnable_anim.global_position = self.global_position+Vector2(0, -8)
@@ -162,7 +165,7 @@ func _physics_process(delta):
 		$Sprite.scale.x = -1
 		
 	get_node(melee).target_pos = get_global_mouse_position()-get_node(melee).global_position
-	if Input.is_action_just_pressed("attack_left") and has_melee:
+	if Input.is_action_just_pressed("attack_left") and has_melee and can_move:
 		get_node(melee).aim(get_global_mouse_position()-get_node(melee).global_position)
 		get_node(melee).attack()
 		audio[2].pitch_scale = 1+randf()/4
@@ -181,5 +184,6 @@ func add_shield():
 
 func _exit_tree():
 	var _player = Global.preloads["player"].instance()
+	# this can't be good
 	get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).add_child(_player)
 	_player.global_position = Global.respawn_point

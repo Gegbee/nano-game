@@ -19,5 +19,6 @@ func _process(delta):
 				Global.camera.smoothing_speed += 0.1
 			# (pos_relative/maximum) goes from 0-1
 			position.x = -((PARALAX_AMT*(pos_relative/maximum))*layer_num)+ogx
+			modulate = Color(1, 1, 1, 1-pow((pos_relative/maximum), 2))
 		elif Global.camera.smoothing_speed > 2:
 			Global.camera.smoothing_speed -= 0.01

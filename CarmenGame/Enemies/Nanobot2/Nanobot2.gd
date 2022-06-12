@@ -43,7 +43,7 @@ func _process(delta):
 		$AnimationPlayer.play('moving')
 	elif state == HITTING:
 		$AnimationPlayer.play('idle')
-		if !hitting:
+		if !hitting and Global.enemies_can_hurt:
 			$Melee.attack()
 			hitting = true
 			$Timer.start(1.0)

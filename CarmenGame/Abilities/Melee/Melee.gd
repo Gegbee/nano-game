@@ -36,6 +36,9 @@ func _on_Timer_timeout():
 				bothurt.play()
 				collider.damage(damage, -(collider.global_position - global_position), 100 * knockback_mult)
 				if get_parent().is_in_group('player'):
+					#jank af but im not paid enough for this
+					if get_parent().name[0] == "N":
+						get_parent().get_node("playerhurt").play()
 					Global.setCameraShake(0.2)
 			elif collider.is_in_group('shield') and !get_parent().get_children().has(collider):
 				get_parent().damage(0, (collider.global_position - global_position), 100 * collider.knockback_mult)
