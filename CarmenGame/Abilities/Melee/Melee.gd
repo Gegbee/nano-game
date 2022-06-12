@@ -11,8 +11,7 @@ func _ready():
 	$RayCast2D.add_exception(get_parent())
 	
 func _process(_delta):
-	if $Timer.time_left == 0:
-		rotation = atan2(target_pos.y, target_pos.x)
+	pass
 	
 
 func attack():
@@ -21,6 +20,10 @@ func attack():
 		$Timer.start(SWING_TIME/2)
 		$AnimatedSprite.play('hit')
 
+func aim(pos : Vector2):
+	if $Timer.time_left == 0:
+		rotation = atan2(pos.y, pos.x)
+		
 func _on_Timer_timeout():
 	if swing_init:
 		# WHERE THE REAL HIT HAPPENS
@@ -34,6 +37,8 @@ func _on_Timer_timeout():
 				collider.damage(damage, -(collider.global_position - global_position), 100 * knockback_mult)
 				if get_parent().is_in_group('player'):
 					Global.setCameraShake(0.2)
+			elif collider.is_in_group('shield') and !get_parent().get_children().has(collider):
+				get_parent().damage(0, (collider.global_position - global_position), 100 * collider.knockback_mult)
 		$Timer.start(SWING_TIME/2)
 	else:
 		swing_init = true

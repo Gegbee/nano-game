@@ -5,39 +5,121 @@
 [ext_resource path="res://Abilities/Melee/Melee.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 5.5 )
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 6.5
+height = 8.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0.5 ), Vector2( 0, -0.5 ), Vector2( 0, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/WingBehind:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.2 ), Vector2( 1, -1.2 ), Vector2( 1, 1.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/WingFront:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.2 ), Vector2( 1, -1.2 ), Vector2( 1, 1.2 ) ]
+}
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 resource_name = "moving"
+length = 0.3
+loop = true
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0.5 ), Vector2( 0, -0.5 ), Vector2( 0, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/WingBehind:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.2 ), Vector2( 1, -1.2 ), Vector2( 1, 1.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/WingFront:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.2 ), Vector2( 1, -1.2 ), Vector2( 1, 1.2 ) ]
+}
 
 [node name="Nanobot2" type="KinematicBody2D"]
 collision_layer = 4
 script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
 no_grav = true
-MAX_HEALTH = 2
+MAX_HEALTH = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6.5 )
-shape = SubResource( 1 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="S" type="Sprite" parent="."]
+visible = false
 position = Vector2( -11, -7 )
 texture = ExtResource( 2 )
 vframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.1
 anims/idle = SubResource( 2 )
-anims/moving = SubResource( 3 )
+anims/moving = SubResource( 5 )
 
 [node name="Melee" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -6 )
 damage = 2
+knockback_mult = 5.0
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -51,5 +133,48 @@ margin_left = -16.0
 margin_top = -25.0
 margin_right = 16.0
 margin_bottom = -21.0
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2( 0, 0.0600793 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 1, -8 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 3
+
+[node name="WingBehind" type="Node2D" parent="Sprite"]
+position = Vector2( -4, -10 )
+scale = Vector2( 1, 1.49061 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite/WingBehind"]
+position = Vector2( 1, 5 )
+z_index = -1
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="WingFront" type="Node2D" parent="Sprite"]
+position = Vector2( 0, -7 )
+scale = Vector2( 1, 1.49061 )
+
+[node name="Sprite3" type="Sprite" parent="Sprite/WingFront"]
+position = Vector2( 7, 3 )
+z_index = 1
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="Spinny" type="Node2D" parent="Sprite"]
+position = Vector2( 1, -9 )
+
+[node name="Sprite4" type="Sprite" parent="Sprite/Spinny"]
+position = Vector2( 4.5, -9 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

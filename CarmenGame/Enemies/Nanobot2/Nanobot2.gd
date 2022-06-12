@@ -2,7 +2,7 @@ extends Entity2D
 
 
 const SPEED : float = 12.0
-const HIT_DISTANCE = 24
+const HIT_DISTANCE = 32
 var hitting : bool = false
 
 var move_vel := Vector2()
@@ -37,19 +37,23 @@ func _process(delta):
 				
 	if state == IDLE:
 		move_vel = Vector2()
+		$AnimationPlayer.play('idle')
 	elif state == MOVING:
 		move_vel = player_dir.normalized() * SPEED
+		$AnimationPlayer.play('moving')
 	elif state == HITTING:
+		$AnimationPlayer.play('idle')
 		if !hitting:
-			$Melee.target_pos = player_dir
 			$Melee.attack()
 			hitting = true
-			$Timer.start(0.5)
+			$Timer.start(1.0)
 			
 		move_vel = Vector2()
 	else:
 		state = IDLE
-		
+	
+	$Melee.aim(player_dir)
+	$Sprite.scale.x = -sign(player_dir.x)
 	move(move_vel, delta)
 
 

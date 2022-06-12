@@ -31,7 +31,10 @@ var cued_NPCs := []
 # <audio>
 export var filter: AudioEffectFilter
 onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Land, $LowHealth, $LowerHealth]
+
+# THIS LINE BELOW NEEDS TO BE GLOBALIZED
 onready var enimies = get_node("../Enemies").get_children()
+
 const ENEMY_MUSIC_DIST = 200
 #</audio>
 func _ready():
@@ -158,18 +161,25 @@ func _physics_process(delta):
 	elif dir.x < 0:
 		$Sprite.scale.x = -1
 		
-	if melee != null and has_melee:
-		get_node(melee).target_pos = get_global_mouse_position()-get_node(melee).global_position
-		if Input.is_action_just_pressed("attack_left"):
-			get_node(melee).attack()
-			audio[2].pitch_scale = 1+randf()/4
-			audio[2].play()
-			Global.setCameraShake(0.1)
-
+	get_node(melee).target_pos = get_global_mouse_position()-get_node(melee).global_position
+	if Input.is_action_just_pressed("attack_left") and has_melee:
+		get_node(melee).aim(get_global_mouse_position()-get_node(melee).global_position)
+		get_node(melee).attack()
+		audio[2].pitch_scale = 1+randf()/4
+		audio[2].play()
+		Global.setCameraShake(0.1)
+			
+#	elif Input.is_action_just_pressed("attack_right") and has_shield:
+#		get_node(shield).aim(get_global_mouse_position()-get_node(melee).global_position)
+#		get_node(shield).attack()
+			
 func add_melee():
 	has_melee = true
 
-	
-
 func add_shield():
 	has_shield = true
+
+func _exit_tree():
+	var _player = Global.preloads["player"].instance()
+	get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).add_child(_player)
+	_player.global_position = Global.respawn_point

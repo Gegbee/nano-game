@@ -653,4 +653,9 @@ margin_top = -33.0
 margin_right = 16.0
 margin_bottom = -29.0
 
+[node name="CrouchCast" type="RayCast2D" parent="."]
+position = Vector2( 0, -19 )
+enabled = true
+cast_to = Vector2( 0, -10 )
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

@@ -1,7 +1,7 @@
 extends Entity2D
 
-const SPEED : float = 10.0
-const HIT_DISTANCE = 24
+const SPEED : float = 15.0
+const HIT_DISTANCE = 32
 var hitting : bool = false
 var facing_dir : int = -1
 
@@ -64,6 +64,7 @@ func _process(delta):
 		move_vel.x = 0
 	else:
 		state = IDLE
+	$Melee.aim(Vector2(-$Sprite.scale.x * HIT_DISTANCE, 0))
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):
@@ -75,7 +76,6 @@ func get_which_wall_collided():
 	return 0
 
 func _on_Timer_timeout():
-	$Melee.target_pos = Vector2(-$Sprite.scale.x * HIT_DISTANCE, 0)
 	$Melee.attack()
 #	$HitDetection.force_raycast_update()
 #	if $HitDetection.is_colliding():

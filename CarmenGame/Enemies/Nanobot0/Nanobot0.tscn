@@ -75,7 +75,7 @@ extents = Vector2( 5, 5 )
 collision_layer = 4
 script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
-MAX_HEALTH = 4
+MAX_HEALTH = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )

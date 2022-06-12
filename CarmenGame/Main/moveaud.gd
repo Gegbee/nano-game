@@ -6,7 +6,7 @@ var tripped = false
 func _process(delta):
 	if not playing:
 		playing = true
-	if Global.player.position.x < position.x and position.x > og-500 and not tripped:
+	if is_instance_valid(Global.player) and Global.player.position.x < position.x and position.x > og-500 and not tripped:
 		position.x = Global.player.position.x
 	elif position.x < og-500:
 		tripped = true

@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [node name="NPC" instance=ExtResource( 1 )]
 _name = "Carben"
-lines = [ "Carben: They took my only daughter.:2", "Carben: My world...:1", "Nano: What happened here?:2", "Carben: The Devil!:1", "Carben: That’s what happened!:4", "Carben: For days we maintained this village as the center of freedom for the nanobot kind.:3", "Carben: But then he arrived... and destroyed it all...:4", "Nano: Where did he go?:1", "Carben: West from here. Surely you won’t fight him, right?:3", "Nano: ...:0", "Carben: No... be careful young one.:2", "Carben: Though if you do, take this.:1", "Carben: The executable on the drive alters your programming.:4", "Carben: It will give you powers unimaginable to the young nanobot brain.:2", "Carben: Good luck!!!!:1", "Melee: Right Click to use melee executable" ]
+lines = [ "Carben: They took my only daughter.:2", "Carben: My world...:1", "Nano: What happened here?:2", "Carben: The Devil!:1", "Carben: That’s what happened!:4", "Carben: For days we maintained this village as the center of freedom for the nanobot kind.:3", "Carben: But then he arrived... and destroyed it all...:4", "Nano: Where did he go?:1", "Carben: West from here. Surely you won’t fight him, right?:3", "Nano: ...:0", "Carben: No... be careful young one.:2", "Carben: Though if you do, take this.:1", "Carben: The executable on the drive alters your programming.:4", "Carben: It will give you powers unimaginable to the young nanobot brain.:2", "Carben: Good luck!!!!:1", "Melee: Left Click to use melee executable" ]
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -10.5 )
