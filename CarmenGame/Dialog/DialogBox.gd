@@ -1,8 +1,11 @@
 extends CanvasLayer
 
 export var filter: AudioEffectFilter
+#export var volume_lower: AudioEffectLimiter
 const FILTER_SPEED: float = 1.01
-const FILTER_HZ: int = 1000
+const FILTER_HZ: int = 300
+#const AMPLIFY_SPEED: float = 0.1
+#const AMPLIFY_HZ: int = -10
 
 enum {
 	NONE,
@@ -13,7 +16,7 @@ var state : int = IDLE
 var set_dialog : Array = []
 var speaker = "BOB"
 var low = false
-
+var cinematic_mode: bool = false
 
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
@@ -26,6 +29,8 @@ var played: bool = false
 
 
 func _ready():
+	$cinematic.show()
+	$cinematic1.show()
 	Global.dialog_box = self
 	t.text = ""
 	n.text = ""
@@ -33,6 +38,10 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
+			if not cinematic_mode:
+				$AnimationPlayer.play("RESET")
+				Global.player.can_move = false
+				cinematic_mode = true
 			set_dialog = [] + Global.player.cued_NPCs[0].lines
 			exited_dialog = false
 
@@ -44,12 +53,20 @@ func _process(_delta):
 		filter.cutoff_hz /= FILTER_SPEED
 	elif not low and filter.cutoff_hz < 20500:
 		filter.cutoff_hz *= FILTER_SPEED
-	
+#
+#	if low and volume_lower.ceiling_db > AMPLIFY_HZ:
+#		volume_lower.ceiling_db -= AMPLIFY_SPEED
+#	elif not low and volume_lower.ceiling_db < -4:
+#		volume_lower.ceiling_db += AMPLIFY_SPEED
+#	print(volume_lower.ceiling_db)
+	# using limiter cause ear protection (I got noise blasted bruv im going to lose my hearing from bugs like this someday)
+	# EDIT: Fuck I did it again, maybe, you know, we dont need it...
 	
 func runDialog(new_dialog : String):
 	var split_dialog = new_dialog.split(":")
 	if split_dialog[0].to_lower() == "melee":
 		n.text = "<Melee.exe>"
+		get_node("SFX/melee").play()
 		if is_instance_valid(Global.player):
 			Global.player.add_melee()
 	elif split_dialog[0].to_lower() == "shield":
@@ -103,6 +120,13 @@ func nextAction():
 		else:
 			if exited_dialog == false:
 				exited_dialog = true
+				$AnimationPlayer.play_backwards("RESET")
+				Global.player.can_move = true
+				cinematic_mode = false
 			low = false
 			n.text = ""
 			t.text = ""
+			
+func fade(to_black: bool):
+	if to_black: $AnimationPlayer.play("fade")
+	else: $AnimationPlayer.play_backwards("fade")

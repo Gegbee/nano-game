@@ -49,7 +49,7 @@ func get_which_wall_collided():
 
 
 func _on_HitDetection_body_entered(body):
-	if body.is_in_group('player'):
+	if body.is_in_group('player') and Global.enemies_can_hurt:
 		$playerhurt.play()
 		body.damage(1, -body.global_position + global_position, 400)
 		Global.setCameraShake(0.2)

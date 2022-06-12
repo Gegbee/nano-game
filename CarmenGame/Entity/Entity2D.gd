@@ -23,6 +23,7 @@ var timer = 0.0
 var lowhel = false
 
 var low: int = 0
+var death = preload("res://SidePlayer/death_particles.tscn")
 const FILTER_HZ = 1000
 const FILTER_SPEED: float = 1.01
 
@@ -33,8 +34,9 @@ func _ready():
 	health_bar = get_node(health_bar_path)
 
 func _physics_process(delta):
+	if health > 3: 
+		low = 0
 	if name == "SidePlayer":
-		print(self.filter.cutoff_hz / FILTER_SPEED)
 		if low == 1 and self.filter.cutoff_hz > FILTER_HZ:
 			self.filter.cutoff_hz /= FILTER_SPEED
 		elif low == 2 and self.filter.cutoff_hz > FILTER_HZ/3: 
@@ -62,13 +64,12 @@ func move(move_vel : Vector2, delta : float):
 	
 func damage(dmg : int, impulse_dir : Vector2 = Vector2(), strength : float = 0):
 	set_health(health - dmg)
-	if name == "SidePlayer":
+	if is_instance_valid(Global.player) and self == Global.player:
 		if health <= 3:
 			self.audio[6].playing = true
 			low = 1
 		else:
 			self.audio[6].playing = false
-			low = 0
 			
 		if health <= 1:
 			self.audio[7].playing = true
@@ -96,8 +97,16 @@ func set_health(new_health : int):
 		health_bar.updateHealth(health)
 	
 func kys():
-#	if is_instance_valid($AnimationPlayer):
-#		$AnimationPlayer.play("kys")
+	if is_instance_valid(Global.player) and self == Global.player:
+		var particles = death.instance()
+		add_child(particles)
+		self.can_move = false
+		self.get_node("Sprite").hide()
+		self.get_node("HealthBar").hide()
+		yield(get_tree().create_timer(2.0), "timeout")
+		Global.dialog_box.fade(true)
+		yield(get_tree().create_timer(1.0), "timeout")
+		Global.dialog_box.fade(false)
 	queue_free()
 	
 func impulse(dir : Vector2, strength: float):

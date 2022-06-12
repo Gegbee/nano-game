@@ -1,7 +1,7 @@
 extends Entity2D
 
 const SPEED : float = 15.0
-const HIT_DISTANCE = 32
+const HIT_DISTANCE = 48
 var hitting : bool = false
 var facing_dir : int = -1
 
@@ -16,6 +16,7 @@ enum {
 var state = IDLE
 
 func _ready():
+	$ambient.pitch_scale += randf()/10-0.05-0.75
 	floor_detection_pos = $FloorDetection.position
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')
@@ -58,7 +59,7 @@ func _process(delta):
 	elif state == MOVING:
 		move_vel.x = player_dir * SPEED
 	elif state == HITTING:
-		if !hitting:
+		if !hitting and Global.enemies_can_hurt:
 			hitting = true
 			$Timer.start(1.0)
 		move_vel.x = 0

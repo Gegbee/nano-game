@@ -10,7 +10,11 @@ var player : Entity2D = null
 
 var chrabr : ColorRect = null
 
+var enemies_can_hurt: bool = true
+
 var env = null
+
+var enimies = []
 
 
 var preloads = {
