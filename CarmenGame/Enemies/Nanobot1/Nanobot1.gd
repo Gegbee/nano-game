@@ -16,7 +16,7 @@ enum {
 var state = IDLE
 
 func _ready():
-	$ambient.pitch_scale += randf()/10-0.05-0.75
+	$ambient.pitch_scale += randf()/10.0-0.05-0.75
 	floor_detection_pos = $FloorDetection.position
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')

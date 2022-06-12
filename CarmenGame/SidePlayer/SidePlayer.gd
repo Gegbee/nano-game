@@ -181,9 +181,3 @@ func add_melee():
 
 func add_shield():
 	has_shield = true
-
-func _exit_tree():
-	var _player = Global.preloads["player"].instance()
-	# this can't be good
-	get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).add_child(_player)
-	_player.global_position = Global.respawn_point

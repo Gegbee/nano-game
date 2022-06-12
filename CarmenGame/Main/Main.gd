@@ -4,7 +4,11 @@ func _input(event):
 	if Input.is_action_just_pressed("respawn"):
 		if is_instance_valid(Global.player):
 			Global.player.queue_free()
-
+		var _player = Global.preloads["player"].instance()
+		# this can't be good TRUE LOL, changed
+		get_tree().get_root().add_child(_player)
+		_player.global_position = Global.respawn_point
+		
 func _process(delta):
 	# CODE TO CHANGE ENVIRONMENT BASED ON PLAYERS X COORD
 	if is_instance_valid(Global.player):

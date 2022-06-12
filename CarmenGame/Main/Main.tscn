@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Main/QuickMap.gd" type="Script" id=1]
 [ext_resource path="res://Main/Tilemap.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Audio/Music/nanomusic_carbenssong2.mp3" type="AudioStream" id=32]
 [ext_resource path="res://Enemies/Nanobot1/Nanobot1.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Main/enemies_setter.gd" type="Script" id=34]
+[ext_resource path="res://NPC/Nanov1.tscn" type="PackedScene" id=35]
 
 [sub_resource type="DynamicFont" id=22]
 size = 12
@@ -1521,6 +1522,9 @@ position = Vector2( -1050, 0 )
 [node name="Respawn3" parent="RespawnPoints" instance=ExtResource( 9 )]
 position = Vector2( -2118, -32 )
 
+[node name="Respawn5" parent="RespawnPoints" instance=ExtResource( 9 )]
+position = Vector2( -2199, -880 )
+
 [node name="Respawn4" parent="RespawnPoints" instance=ExtResource( 9 )]
 position = Vector2( -3084, -192 )
 
@@ -1550,7 +1554,7 @@ vframes = 4
 frame = 2
 
 [node name="SidePlayer" parent="." instance=ExtResource( 4 )]
-position = Vector2( -2104, -50 )
+position = Vector2( -2251, -863 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -1437, -27 )
@@ -1561,17 +1565,6 @@ max_distance = 1000.0
 attenuation = 1.31951
 bus = "dialog dip"
 script = ExtResource( 22 )
-
-[node name="NPCs" type="Node2D" parent="."]
-
-[node name="Edd" parent="NPCs" instance=ExtResource( 6 )]
-position = Vector2( -215, -16 )
-
-[node name="Carben" parent="NPCs" instance=ExtResource( 16 )]
-position = Vector2( -1829, 0 )
-
-[node name="Carmen" parent="NPCs" instance=ExtResource( 26 )]
-position = Vector2( -3362, -432 )
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 34 )
@@ -1674,6 +1667,20 @@ position = Vector2( -2719, -850 )
 
 [node name="Nanobot27" parent="Enemies" instance=ExtResource( 13 )]
 position = Vector2( -2602, -826 )
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Edd" parent="NPCs" instance=ExtResource( 6 )]
+position = Vector2( -215, -16 )
+
+[node name="Carben" parent="NPCs" instance=ExtResource( 16 )]
+position = Vector2( -1829, 0 )
+
+[node name="Carmen" parent="NPCs" instance=ExtResource( 26 )]
+position = Vector2( -3362, -432 )
+
+[node name="Nanov1" parent="NPCs" instance=ExtResource( 35 )]
+position = Vector2( -2073, -880 )
 
 [node name="Music" type="Node" parent="."]
 script = ExtResource( 31 )

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://NPC/Nanov1Spritemap.png" type="Texture" id=1]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 11.5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4, -20.5 ), Vector2( 4, -19.5 ), Vector2( 4, -20.5 ) ]
+}
+
+[node name="Nanov1" instance=ExtResource( 2 )]
+_name = "Nanov1"
+lines = [ "Nano: The rogue nanobot!!", "Nano: Stand down you terrorist!!!", "Nano v1: Dr. Oshiro have mercy… I’m not corrupted, I swear!", "Nano: Who are you?", "Nano v1: I’m you… or at least I think so.", "Nano v1: We are nanobots made to protect New Nanobot City.", "Nano v1: Employed by the great creator, a mysterious being who is only assumed to be the god of this world. ", "Nano v1: You are the second version of me. ", "Nano v1: It is your duty to defeat Edd once and for all.", "Nano: Edd!!?!??!?!", "Nano v1: Yes, Edd, The Nanoboss. He fled to the sewers after I almost destroyed him.", "Nano v1: I was too injured to chase him.", "Nano v1: Kill him, Nano version 2.0, do what I could not.", "Nano v1: Save our world, I believe in you." ]
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, -12 )
+shape = SubResource( 1 )
+
+[node name="InteractIndicator" parent="." index="3"]
+position = Vector2( 1, -34 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "default"
+anims/default = SubResource( 2 )
+
+[node name="InteractStartPos" parent="." index="5"]
+position = Vector2( 0, -29 )
+
+[node name="Sprite" type="Sprite" parent="." index="6"]
+position = Vector2( 3, -16 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+
+[node name="Sprite2" type="Sprite" parent="." index="7"]
+position = Vector2( 4, -19.5 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 1

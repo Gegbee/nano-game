@@ -99,7 +99,7 @@ func set_health(new_health : int):
 func kys():
 	if is_instance_valid(Global.player) and self == Global.player:
 		var particles = death.instance()
-		add_child(particles)
+		call_deferred("add_child", particles)
 		self.can_move = false
 		self.get_node("Sprite").hide()
 		self.get_node("HealthBar").hide()
@@ -116,16 +116,20 @@ func impulse(dir : Vector2, strength: float):
 func damage_color_change():
 	modulate = "f32222"
 	yield(get_tree().create_timer(0.3), "timeout")
-	modulate = "ffffff"
+	if is_instance_valid(self):
+		modulate = "ffffff"
 	
 func healing_color_change():
 	modulate = "1de845"
 	yield(get_tree().create_timer(0.3), "timeout")
-	modulate = "ffffff"
+	if is_instance_valid(self):
+		modulate = "ffffff"
 
 func spawned_color_change():
 	for i in range(0, 4):
-		modulate = "5782ee"
-		yield(get_tree().create_timer(0.3), "timeout")
-		modulate = "ffffff"
-		yield(get_tree().create_timer(0.3), "timeout")
+		if is_instance_valid(self):
+			modulate = "5782ee"
+			yield(get_tree().create_timer(0.3), "timeout")
+		if is_instance_valid(self):
+			modulate = "ffffff"
+			yield(get_tree().create_timer(0.3), "timeout")
