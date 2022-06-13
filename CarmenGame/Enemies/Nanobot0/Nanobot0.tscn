@@ -147,9 +147,10 @@ margin_bottom = -16.0
 stream = ExtResource( 4 )
 autoplay = true
 max_distance = 500.0
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="playerhurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "sfx"
 
 [connection signal="body_entered" from="HitDetection" to="." method="_on_HitDetection_body_entered"]

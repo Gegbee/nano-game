@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Main/QuickMap.gd" type="Script" id=1]
 [ext_resource path="res://Main/Tilemap.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://Main/BackgroundElements.png" type="Texture" id=10]
 [ext_resource path="res://Main/Main.gd" type="Script" id=11]
 [ext_resource path="res://Main/Background.gd" type="Script" id=12]
-[ext_resource path="res://Enemies/Nanobot2/Nanobot2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Enemies.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Main/TutorialSpritemap.png" type="Texture" id=14]
 [ext_resource path="res://Main/BgElementsRed.png" type="Texture" id=15]
 [ext_resource path="res://NPC/Carben.tscn" type="PackedScene" id=16]
@@ -23,7 +23,6 @@
 [ext_resource path="res://Audio/nanosfx_fire.mp3" type="AudioStream" id=21]
 [ext_resource path="res://Main/moveaud.gd" type="Script" id=22]
 [ext_resource path="res://Main/FgElementsRed.png" type="Texture" id=23]
-[ext_resource path="res://Enemies/Nanobot0/Nanobot0.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Main/BgElementsPurple.png" type="Texture" id=25]
 [ext_resource path="res://NPC/Carmen.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Main/FgElementsPurple.png" type="Texture" id=27]
@@ -32,8 +31,6 @@
 [ext_resource path="res://Audio/Music/nanomusic_getthruthis.mp3" type="AudioStream" id=30]
 [ext_resource path="res://Main/MusicSetter.gd" type="Script" id=31]
 [ext_resource path="res://Audio/Music/nanomusic_carbenssong2.mp3" type="AudioStream" id=32]
-[ext_resource path="res://Enemies/Nanobot1/Nanobot1.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Main/enemies_setter.gd" type="Script" id=34]
 [ext_resource path="res://NPC/Nanov1.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Menus/PauseMenu.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Audio/Music/nanomusic_preboss.mp3" type="AudioStream" id=37]
@@ -1573,110 +1570,10 @@ volume_db = 6.442
 autoplay = true
 max_distance = 1000.0
 attenuation = 1.31951
-bus = "dialog dip"
+bus = "sfx"
 script = ExtResource( 22 )
 
-[node name="Enemies" type="Node2D" parent="."]
-script = ExtResource( 34 )
-
-[node name="Nanobot0" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2340, -48 )
-
-[node name="Nanobot2" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2448, -112 )
-
-[node name="Nanobot3" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2643, -128 )
-
-[node name="Nanobot4" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2660, -128 )
-
-[node name="Nanobot5" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -3006, -32 )
-
-[node name="Nanobot6" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2879, -192 )
-
-[node name="Nanobot10" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2782, -288 )
-
-[node name="Nanobot17" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2807, -416 )
-
-[node name="Nanobot22" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2631, -576 )
-
-[node name="Nanobot25" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2245, -608 )
-
-[node name="Nanobot28" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2616, -704 )
-
-[node name="Nanobot29" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2721, -704 )
-
-[node name="Nanobot13" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2731, -288 )
-
-[node name="Nanobot14" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2307, -416 )
-
-[node name="Nanobot7" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2764, 0 )
-
-[node name="Nanobot8" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2396, 0 )
-
-[node name="Nanobot1" parent="Enemies" instance=ExtResource( 24 )]
-position = Vector2( -2542, -16 )
-
-[node name="Nanobot9" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2879, -287 )
-
-[node name="Nanobot11" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2477, -320 )
-
-[node name="Nanobot12" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2561, -400 )
-
-[node name="Nanobot15" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2985, -416 )
-
-[node name="Nanobot16" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2902, -416 )
-
-[node name="Nanobot30" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2529, -735 )
-
-[node name="Nanobot32" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2302, -703 )
-
-[node name="Nanobot31" parent="Enemies" instance=ExtResource( 33 )]
-position = Vector2( -2855, -767 )
-
-[node name="Nanobot18" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2730, -612 )
-
-[node name="Nanobot19" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2667, -660 )
-
-[node name="Nanobot20" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2667, -660 )
-
-[node name="Nanobot21" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2667, -660 )
-
-[node name="Nanobot23" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2422, -685 )
-
-[node name="Nanobot24" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2261, -665 )
-
-[node name="Nanobot26" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2719, -850 )
-
-[node name="Nanobot27" parent="Enemies" instance=ExtResource( 13 )]
-position = Vector2( -2602, -826 )
+[node name="Enemies" parent="." instance=ExtResource( 13 )]
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -1715,7 +1612,7 @@ bus = "music"
 
 [node name="nanoshope" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 38 )
-volume_db = -6.992
+volume_db = -4.37
 bus = "music"
 
 [node name="preboss" type="AudioStreamPlayer" parent="Music"]

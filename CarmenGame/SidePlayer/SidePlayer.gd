@@ -19,7 +19,7 @@ var dash_movement_x : float = 0.0
 var move_vel := Vector2()
 
 export var melee : NodePath
-# MUST CHANGE WHEN RELEASING GAME
+# MUST CHANGE WHEN RELEASING GAME (ANOTHER DOWN LOWER TOO)
 var has_melee : bool = true
 
 
@@ -43,6 +43,8 @@ func _ready():
 	$NPCDetection.add_to_group("player_npc_area")
 	add_to_group('player')
 	Global.player = self
+	#here
+#	position = Global.respawn_point
 
 func _process(delta):
 	if !disabled:

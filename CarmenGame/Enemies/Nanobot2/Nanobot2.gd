@@ -1,7 +1,7 @@
 extends Entity2D
 
 
-const SPEED : float = 12.0
+const SPEED : float = 3.0
 const HIT_DISTANCE = 32
 var hitting : bool = false
 var facing_dir : int = -1
@@ -27,7 +27,6 @@ func _process(delta):
 		$RayCast2D.force_raycast_update()
 		if $RayCast2D.is_colliding():
 			var c = $RayCast2D.get_collider()
-			print(c)
 			if c.is_in_group('player'):
 				if player_dir.length() < HIT_DISTANCE:
 					state = HITTING
@@ -40,16 +39,17 @@ func _process(delta):
 		move_vel = Vector2()
 		$AnimationPlayer.play('idle')
 	elif state == MOVING:
-		move_vel = player_dir.normalized() * SPEED
+		move_vel += player_dir.normalized() * SPEED
 		$AnimationPlayer.play('moving')
 	elif state == HITTING:
 		$AnimationPlayer.play('idle')
+		move_vel -= player_dir.normalized() * SPEED
 		if !hitting and Global.enemies_can_hurt:
 			$Melee.attack()
 			hitting = true
 			$Timer.start(1.0)
 			
-		move_vel = Vector2()
+#		move_vel = Vector2()
 	else:
 		state = IDLE
 	if player_dir.x > 0:

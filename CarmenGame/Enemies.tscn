@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main/enemies_setter.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Nanobot1/Nanobot1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Nanobot0/Nanobot0.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Nanobot2/Nanobot2.tscn" type="PackedScene" id=7]
+
+[node name="Enemies" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Nanobot0" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2340, -48 )
+
+[node name="Nanobot2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2448, -112 )
+
+[node name="Nanobot3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2643, -128 )
+
+[node name="Nanobot4" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2660, -128 )
+
+[node name="Nanobot5" parent="." instance=ExtResource( 6 )]
+position = Vector2( -3006, -32 )
+
+[node name="Nanobot6" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2879, -192 )
+
+[node name="Nanobot10" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2782, -288 )
+
+[node name="Nanobot17" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2807, -416 )
+
+[node name="Nanobot22" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2631, -576 )
+
+[node name="Nanobot25" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2245, -608 )
+
+[node name="Nanobot28" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2616, -704 )
+
+[node name="Nanobot29" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2721, -704 )
+
+[node name="Nanobot13" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2731, -288 )
+
+[node name="Nanobot14" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2307, -416 )
+
+[node name="Nanobot7" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2764, 0 )
+
+[node name="Nanobot8" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2396, 0 )
+
+[node name="Nanobot1" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2542, -16 )
+
+[node name="Nanobot9" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2879, -287 )
+
+[node name="Nanobot11" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2477, -320 )
+
+[node name="Nanobot12" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2561, -400 )
+
+[node name="Nanobot15" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2985, -416 )
+
+[node name="Nanobot16" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2902, -416 )
+
+[node name="Nanobot30" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2529, -735 )
+
+[node name="Nanobot32" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2302, -703 )
+
+[node name="Nanobot31" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2855, -767 )
+
+[node name="Nanobot18" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2730, -612 )
+
+[node name="Nanobot19" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2667, -660 )
+
+[node name="Nanobot20" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2667, -660 )
+
+[node name="Nanobot21" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2667, -660 )
+
+[node name="Nanobot23" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2422, -685 )
+
+[node name="Nanobot24" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2261, -665 )
+
+[node name="Nanobot26" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2719, -850 )
+
+[node name="Nanobot27" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2602, -826 )
