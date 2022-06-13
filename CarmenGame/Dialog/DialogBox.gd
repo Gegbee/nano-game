@@ -25,12 +25,16 @@ var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name"]
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true
-var played: bool = false
+var played = [false, false, false]
 
+
+var spoken_to = []
+var disable: bool = false
 
 func _ready():
 	$cinematic.show()
 	$cinematic1.show()
+	$AnimationPlayer.play_backwards("fade")
 	Global.dialog_box = self
 	t.text = ""
 	n.text = ""
@@ -39,12 +43,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
 			if not cinematic_mode:
+				spoken_to.append(Global.player.cued_NPCs)
 				$AnimationPlayer.play("RESET")
 				Global.player.can_move = false
 				cinematic_mode = true
+					
 			set_dialog = [] + Global.player.cued_NPCs[0].lines
 			exited_dialog = false
-
 		nextAction()
 	if t.percent_visible == 1:
 		state = IDLE
@@ -93,13 +98,20 @@ func runDialog(new_dialog : String):
 			cue.playing = false
 		cues[int(split_dialog[2])-1].play()
 	
-	if not played and split_dialog[0] == "Carben":
+	if not played[0] and split_dialog[0] == "Carben":
 		MusicController.transition_to(1)
-		played = true
+		played[0] = true
 	
 	if len(set_dialog) == 2 and split_dialog[0] == "Carben":
 		MusicController.transition_to(2, true)
+	
+	if not played[1] and set_dialog[13].split(":")[0] == "Nano v1":
+		MusicController.transition_to(4, true)
+		played[1] = true
 		
+	if not played[2] and len(set_dialog) == 1 and split_dialog[0] == "Nano v1":
+		MusicController.transition_to(5, true)
+		played[2] = true
 	$Tween.start()
 	
 	

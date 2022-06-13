@@ -1,14 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menus/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Main/MusicSetter.gd" type="Script" id=3]
-[ext_resource path="res://Audio/Music/nanomusic_carbenssong2.mp3" type="AudioStream" id=4]
-[ext_resource path="res://Audio/Music/nanomusic_combat.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Audio/Music/nanomusic_thefire2.mp3" type="AudioStream" id=6]
-[ext_resource path="res://Audio/Music/nanomusic_getthruthis.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Menus/maineMenuArt.png" type="Texture" id=8]
 [ext_resource path="res://ScreenShaders/ChrAbr.tres" type="Material" id=9]
+[ext_resource path="res://Audio/nanosfx_menu2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/nanosfx_menu1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Menus/flash.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -22,34 +20,72 @@ extra_spacing_char = 2
 extra_spacing_space = 3
 font_data = ExtResource( 2 )
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "toblack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="PauseMenu" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="Music" type="Node" parent="."]
-script = ExtResource( 3 )
-
-[node name="thefire" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 6 )
-autoplay = true
-bus = "music"
-
-[node name="carbenssong" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 4 )
-volume_db = -7.866
-bus = "music-master"
-
-[node name="game" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 7 )
-bus = "music"
-
-[node name="combat" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 5 )
-bus = "music"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -97,8 +133,31 @@ custom_fonts/font = SubResource( 2 )
 text = "main Menu <Enter>"
 align = 1
 valign = 1
+script = ExtResource( 12 )
+key = "enter"
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
+margin_left = -765.0
+margin_top = 8.0
+margin_right = 2413.0
+margin_bottom = 1078.0
+rect_pivot_offset = Vector2( -2703, -701 )
+color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 
 [node name="ChrAbr" type="ColorRect" parent="CanvasLayer"]
 material = ExtResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/fade = SubResource( 4 )
+anims/toblack = SubResource( 5 )
+
+[node name="resume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -14.832
+
+[node name="menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -14.832
