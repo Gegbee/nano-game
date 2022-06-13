@@ -90,34 +90,35 @@ func set_health(new_health : int):
 	elif new_health > health:
 		lowhel = false
 		healing_color_change()
-	health = new_health
-	if health <= 0:
-		health = 0
+	if new_health <= 0 and health > 0:
 		kys()
+	health = new_health
 	if health_bar:
 		health_bar.updateHealth(health)
 	
 func kys():
-	if is_instance_valid(Global.player) and self == Global.player:
+	if is_instance_valid(Global.player) and is_in_group('player'):
 		var particles = death.instance()
-		call_deferred("add_child", particles)
+		get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).add_child(particles)
+		particles.global_position = self.global_position + Vector2(0, -8)
 		self.can_move = false
 		self.get_node("Sprite").hide()
 		self.get_node("HealthBar").hide()
-		yield(get_tree().create_timer(2.0), "timeout")
 		Global.dialog_box.fade(true)
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		Global.dialog_box.fade(false)
+		Global.player = null
+		queue_free()
+		var _player = Global.preloads["player"].instance()
+		# this can't be good TRUE LOL, changed
+		get_tree().get_root().add_child(_player)
+		_player.global_position = Global.respawn_point
 	else: 
 		var particles = robo_death.instance()
-		add_child(particles)
-		self.deathpos = self.position
-		self.get_node("CollisionShape2D").queue_free()
-		self.get_node("HitDetection").queue_free()
-		self.get_node("HealthBar").hide()
-		self.get_node("Sprite").hide()
-		yield(get_tree().create_timer(0.5), "timeout")
-	queue_free()
+		get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).call_deferred("add_child", particles)
+		particles.global_position = self.global_position
+#		self.deathpos = self.position
+		queue_free()
 	
 func impulse(dir : Vector2, strength: float):
 	impulse_strength = strength

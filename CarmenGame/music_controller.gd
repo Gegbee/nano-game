@@ -9,7 +9,6 @@ const EASE = 1.7
 
 
 func _process(delta):
-
 	music[2].volume_db = linear2db(pow(combat_ratio, EASE))
 	music[3].volume_db = linear2db(1-pow(combat_ratio, EASE))
 	for fade in fading:
