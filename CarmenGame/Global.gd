@@ -23,6 +23,7 @@ var preloads = {
 	"ground_anim" : preload("res://SpawnableAnim/GroundAnim.tscn"),
 	"dash_anim" : preload("res://SpawnableAnim/DashAnim.tscn"),
 	"player" : preload("res://SidePlayer/SidePlayer.tscn"),
+	"enemies" : preload("res://Enemies.tscn"),
 	"explosion_anim" : preload("res://SpawnableAnim/ExplosionAnim.tscn"),
 	"exploding_particles" : preload("res://SpawnableAnim/ExplodingParticles.tscn")
 }

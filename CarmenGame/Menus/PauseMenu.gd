@@ -1,5 +1,6 @@
 extends Node
 var going = false
+var save = File.new()
 
 func _ready():
 	going = false
@@ -22,6 +23,9 @@ func _input(_event):
 		going = true
 		$menu.play()
 		$AnimationPlayer.play("toblack")
+		save.open("res://save_game.txt", File.WRITE)
+		save.store_string(str(Global.respawn_point.x) + "," + str(Global.respawn_point.y))
+		save.close()
 		yield(get_tree().create_timer(1.5), "timeout")
 		get_tree().change_scene("res://Menus/MainMenu.tscn")
 		get_tree().paused = false

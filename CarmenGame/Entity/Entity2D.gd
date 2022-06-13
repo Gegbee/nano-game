@@ -28,9 +28,9 @@ const FILTER_SPEED: float = 1.01
 
 var disabled : bool = false
 
+
 func _ready():
 	spawned_color_change()
-	health = MAX_HEALTH
 	add_to_group('entity')
 	health_bar = get_node(health_bar_path)
 
@@ -122,8 +122,12 @@ func kys():
 		set_process(true)
 		queue_free()
 		var _player = Global.preloads["player"].instance()
+		var _enemies = Global.preloads["enemies"].instance()
+		self.get_node("../Enemies").queue_free()
 		# this can't be good TRUE LOL, changed
 		get_tree().get_current_scene().call_deferred("add_child", _player)
+		get_tree().get_current_scene().call_deferred("add_child", _enemies)
+		
 		_player.global_position = Global.respawn_point
 	else: 
 		var particles = Global.preloads["exploding_particles"].instance()

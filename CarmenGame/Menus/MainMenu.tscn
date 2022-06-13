@@ -85,9 +85,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 615.0
-margin_top = 418.0
+margin_top = 381.0
 margin_right = 1305.0
-margin_bottom = 662.0
+margin_bottom = 699.0
 custom_constants/separation = 40
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
@@ -120,6 +120,31 @@ align = 1
 valign = 1
 script = ExtResource( 13 )
 
+[node name="clearsave" type="Label" parent="CenterContainer/VBoxContainer"]
+modulate = Color( 1.05, 1, 1, 1 )
+margin_top = 284.0
+margin_right = 690.0
+margin_bottom = 318.0
+custom_fonts/font = SubResource( 6 )
+text = "Clear save <Tab>"
+align = 1
+valign = 1
+script = ExtResource( 13 )
+
+[node name="Difficulty" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+modulate = Color( 1.05, 1, 1, 1 )
+margin_top = 284.0
+margin_right = 690.0
+margin_bottom = 392.0
+custom_fonts/font = SubResource( 6 )
+text = "
+Difficulty:
+<tab> - medium"
+align = 1
+valign = 1
+script = ExtResource( 13 )
+
 [node name="ChrAbr" type="ColorRect" parent="."]
 material = ExtResource( 10 )
 anchor_right = 1.0
@@ -145,10 +170,12 @@ anims/in = SubResource( 10 )
 [node name="startgame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -14.832
+bus = "sfx"
 
 [node name="leave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = 2.789
+bus = "sfx"
 
 [node name="carbenssong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

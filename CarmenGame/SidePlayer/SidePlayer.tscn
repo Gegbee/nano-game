@@ -699,31 +699,31 @@ max_roll = 0.3
 
 [node name="Dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="Slide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="Slice" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -21.339
 pitch_scale = 0.82
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="Land" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -20.975
 pitch_scale = 2.18
-bus = "dialog dip"
+bus = "sfx"
 
 [node name="LowerHealth" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )

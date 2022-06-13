@@ -8,6 +8,7 @@ var move_vel := Vector2()
 
 var deathpos = Vector2.ZERO
 
+
 func _ready():
 	$ambient.pitch_scale += randf()/10-0.05
 	$AnimationPlayer.play('idle')
