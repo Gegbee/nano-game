@@ -70,7 +70,12 @@ func _physics_process(delta):
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
 			Input.get_action_strength("down") - Input.get_action_strength("up")
 		)
-	else: dir = Vector2.ZERO
+	else: 
+		dir = Vector2.ZERO
+		$AnimationPlayer.play('idle')
+		floor_movement_x = 0
+		slide_movement_x = 0 
+		
 	
 	if is_on_floor() and not was_on_floor:
 		audio[5].play()

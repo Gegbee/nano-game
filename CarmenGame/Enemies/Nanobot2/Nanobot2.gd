@@ -6,6 +6,7 @@ const HIT_DISTANCE = 32
 var hitting : bool = false
 
 var move_vel := Vector2()
+var deathpos = Vector2.ZERO
 
 enum {
 	IDLE,
@@ -55,6 +56,8 @@ func _process(delta):
 	$Melee.aim(player_dir)
 	$Sprite.scale.x = -sign(player_dir.x)
 	move(move_vel, delta)
+	if deathpos != Vector2.ZERO:
+		position = deathpos
 
 
 func _on_Timer_timeout():
