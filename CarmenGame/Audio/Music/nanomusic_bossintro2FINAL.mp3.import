@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanomusic_bossintro2FINAL.mp3-3e2dbb817e93c89e358baea2fba94342.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/nanomusic_bossintro2FINAL.mp3"
+dest_files=[ "res://.import/nanomusic_bossintro2FINAL.mp3-3e2dbb817e93c89e358baea2fba94342.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

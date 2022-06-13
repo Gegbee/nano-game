@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ScreenShaders/ScreenShaders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/maineMenuArt.png" type="Texture" id=3]
-[ext_resource path="res://Main/MusicSetter.gd" type="Script" id=4]
 [ext_resource path="res://Audio/Music/nanomusic_carbenssong2.mp3" type="AudioStream" id=5]
-[ext_resource path="res://Audio/Music/nanomusic_combat.mp3" type="AudioStream" id=6]
-[ext_resource path="res://Audio/Music/nanomusic_thefire2.mp3" type="AudioStream" id=7]
-[ext_resource path="res://Audio/Music/nanomusic_getthruthis.mp3" type="AudioStream" id=8]
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=9]
 [ext_resource path="res://ScreenShaders/ChrAbr.tres" type="Material" id=10]
+[ext_resource path="res://Audio/nanosfx_menu3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/seeya.wav" type="AudioStream" id=12]
+[ext_resource path="res://Menus/flash2.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -29,9 +28,44 @@ glow_enabled = true
 glow_levels/2 = true
 glow_levels/5 = false
 glow_levels/6 = true
-glow_intensity = 1.1
+glow_intensity = 0.45
 glow_strength = 1.21
+glow_bloom = 0.08
 glow_blend_mode = 0
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "in"
+length = 3.0
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -73,6 +107,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Start <Enter>"
 align = 1
 valign = 1
+script = ExtResource( 13 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 modulate = Color( 1.05, 1, 1, 1 )
@@ -83,27 +118,7 @@ custom_fonts/font = SubResource( 6 )
 text = "Quit <Escape>"
 align = 1
 valign = 1
-
-[node name="Music" type="Node" parent="."]
-script = ExtResource( 4 )
-
-[node name="thefire" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 7 )
-autoplay = true
-bus = "music"
-
-[node name="carbenssong" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 5 )
-volume_db = -7.866
-bus = "music-master"
-
-[node name="game" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 8 )
-bus = "music"
-
-[node name="combat" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 6 )
-bus = "music"
+script = ExtResource( 13 )
 
 [node name="ChrAbr" type="ColorRect" parent="."]
 material = ExtResource( 10 )
@@ -112,3 +127,31 @@ anchor_bottom = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
+
+[node name="Fade" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1080.0
+margin_top = -53.0
+margin_right = 2879.0
+margin_bottom = 1132.0
+rect_pivot_offset = Vector2( -2703, -701 )
+color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/fade = SubResource( 9 )
+anims/in = SubResource( 10 )
+
+[node name="startgame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -14.832
+
+[node name="leave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 2.789
+
+[node name="carbenssong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -7.866
+autoplay = true
+bus = "music-master"

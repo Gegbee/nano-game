@@ -37,13 +37,16 @@ func _ready():
 func _physics_process(delta):
 	if health > 3: 
 		low = 0
-	if name == "SidePlayer":
+	if is_instance_valid(Global.player) and self == Global.player:
 		if low == 1 and self.filter.cutoff_hz > FILTER_HZ:
 			self.filter.cutoff_hz /= FILTER_SPEED
 		elif low == 2 and self.filter.cutoff_hz > FILTER_HZ/3: 
 			self.filter.cutoff_hz /= FILTER_SPEED
 		elif low == 0 and self.filter.cutoff_hz < 20500:
 			self.filter.cutoff_hz *= FILTER_SPEED
+			self.audio[6].playing = false
+			self.audio[7].playing = false
+			
 	timer += delta
 	if lowhel and timer >= 0.5:
 		timer = 0.0
@@ -112,9 +115,10 @@ func kys():
 		particles.global_position = self.global_position + Vector2(0, -8)
 		disabled = true
 		hide()
-#		Global.dialog_box.fade(true)
-		yield(get_tree().create_timer(2.5), "timeout")
-#		Global.dialog_box.fade(false)
+		yield(get_tree().create_timer(2.0), "timeout")
+		Global.dialog_box.fade(true)
+		yield(get_tree().create_timer(2.0), "timeout")
+		Global.dialog_box.fade(false)
 		set_process(true)
 		queue_free()
 		var _player = Global.preloads["player"].instance()

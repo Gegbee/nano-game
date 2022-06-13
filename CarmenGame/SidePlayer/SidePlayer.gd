@@ -28,6 +28,8 @@ var has_shield : bool = false
 var was_on_floor = true 
 
 var cued_NPCs := []
+var save
+var first: bool = true
 
 # <audio>
 export var filter: AudioEffectFilter
@@ -65,15 +67,21 @@ func _physics_process(delta):
 			
 		var dir: Vector2
 		if can_move:
+			first = true
 			dir = Vector2(
 				Input.get_action_strength("right") - Input.get_action_strength("left"),
 				Input.get_action_strength("down") - Input.get_action_strength("up")
 			)
 		else: 
+			if first:
+				save = position
+				first = false
+			position = save
 			dir = Vector2.ZERO
 			$AnimationPlayer.play('idle')
 			floor_movement_x = 0
 			slide_movement_x = 0 
+			
 			
 		
 		if is_on_floor() and not was_on_floor:

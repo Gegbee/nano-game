@@ -2,4 +2,5 @@ extends Node
 
 
 func _ready():
-	MusicController.music = [$thefire, $carbenssong, $game, $combat]
+	$thefire.playing = true
+	MusicController.music = [$thefire, $carbenssong, $game, $combat, $nanoshope, $preboss, $eddsong, $eviledd]
