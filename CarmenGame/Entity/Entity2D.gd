@@ -23,10 +23,10 @@ var timer = 0.0
 var lowhel = false
 
 var low: int = 0
-var death = preload("res://SidePlayer/death_particles.tscn")
-var robo_death = preload("res://Enemies/robo_death_particles.tscn")
 const FILTER_HZ = 1000
 const FILTER_SPEED: float = 1.01
+
+var disabled : bool = false
 
 func _ready():
 	spawned_color_change()
@@ -98,26 +98,39 @@ func set_health(new_health : int):
 	
 func kys():
 	if is_instance_valid(Global.player) and is_in_group('player'):
-		var particles = death.instance()
-		get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).add_child(particles)
-		particles.global_position = self.global_position + Vector2(0, -8)
-		self.can_move = false
-		self.get_node("Sprite").hide()
-		self.get_node("HealthBar").hide()
-		Global.dialog_box.fade(true)
-		yield(get_tree().create_timer(2.0), "timeout")
-		Global.dialog_box.fade(false)
 		Global.player = null
+		var particles = Global.preloads["exploding_particles"].instance()
+		particles.time_before_clear = 3.0
+		particles.particle_textures = [
+			load("res://Sideplayer/destroyed_part1.png"),
+			load("res://Sideplayer/destroyed_part2.png"),
+			load("res://Sideplayer/destroyed_part3.png"),
+			load("res://Sideplayer/destroyed_part4.png"),
+			load("res://Sideplayer/destroyed_part5.png")
+		]
+		get_tree().get_current_scene().call_deferred("add_child", particles)
+		particles.global_position = self.global_position + Vector2(0, -8)
+		disabled = true
+		hide()
+#		Global.dialog_box.fade(true)
+		yield(get_tree().create_timer(2.5), "timeout")
+#		Global.dialog_box.fade(false)
+		set_process(true)
 		queue_free()
 		var _player = Global.preloads["player"].instance()
 		# this can't be good TRUE LOL, changed
-		get_tree().get_root().add_child(_player)
+		get_tree().get_current_scene().call_deferred("add_child", _player)
 		_player.global_position = Global.respawn_point
 	else: 
-		var particles = robo_death.instance()
-		get_tree().get_root().get_child(len(get_tree().get_root().get_children())-1).call_deferred("add_child", particles)
-		particles.global_position = self.global_position
-#		self.deathpos = self.position
+		var particles = Global.preloads["exploding_particles"].instance()
+		particles.time_before_clear = 3.0
+		particles.particle_textures = [
+			load("res://Enemies/botpart1.png"),
+			load("res://Enemies/botpart2.png"),
+			load("res://Enemies/botpart3.png")
+		]
+		get_tree().get_current_scene().call_deferred("add_child", particles)
+		particles.global_position = self.global_position + Vector2(0, -8)
 		queue_free()
 	
 func impulse(dir : Vector2, strength: float):

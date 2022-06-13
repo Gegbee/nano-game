@@ -22,8 +22,14 @@ var preloads = {
 	"slide_anim" : preload("res://SpawnableAnim/SlideAnim.tscn"),
 	"ground_anim" : preload("res://SpawnableAnim/GroundAnim.tscn"),
 	"dash_anim" : preload("res://SpawnableAnim/DashAnim.tscn"),
-	"player" : preload("res://SidePlayer/SidePlayer.tscn")
+	"player" : preload("res://SidePlayer/SidePlayer.tscn"),
+	"explosion_anim" : preload("res://SpawnableAnim/ExplosionAnim.tscn"),
+	"exploding_particles" : preload("res://SpawnableAnim/ExplodingParticles.tscn")
 }
+
+func _ready():
+	pause_mode = PAUSE_MODE_PROCESS
+	
 func get_player_distance(global_pos):
 	if player:
 		return (player.global_position - global_pos).length()

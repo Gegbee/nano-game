@@ -4,9 +4,9 @@ extends Entity2D
 const SPEED : float = 12.0
 const HIT_DISTANCE = 32
 var hitting : bool = false
+var facing_dir : int = -1
 
 var move_vel := Vector2()
-var deathpos = Vector2.ZERO
 
 enum {
 	IDLE,
@@ -52,12 +52,14 @@ func _process(delta):
 		move_vel = Vector2()
 	else:
 		state = IDLE
-	
+	if player_dir.x > 0:
+		facing_dir = sign(player_dir.x)
+	elif player_dir.x < 0:
+		facing_dir = sign(player_dir.x)
+		
 	$Melee.aim(player_dir)
-	$Sprite.scale.x = -sign(player_dir.x)
+	$Sprite.scale.x = -facing_dir
 	move(move_vel, delta)
-	if deathpos != Vector2.ZERO:
-		position = deathpos
 
 
 func _on_Timer_timeout():
