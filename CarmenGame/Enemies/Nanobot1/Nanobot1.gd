@@ -7,6 +7,7 @@ var facing_dir : int = -1
 
 var floor_detection_pos : Vector2 = Vector2()
 var move_vel := Vector2()
+var deathpos = Vector2.ZERO
 
 enum {
 	IDLE,
@@ -66,6 +67,8 @@ func _process(delta):
 	else:
 		state = IDLE
 	$Melee.aim(Vector2(-$Sprite.scale.x * HIT_DISTANCE, 0))
+	if deathpos != Vector2.ZERO:
+		position = deathpos
 	
 func get_which_wall_collided():
 	for i in range(get_slide_count()):

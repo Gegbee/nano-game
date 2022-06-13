@@ -21,7 +21,7 @@ var cinematic_mode: bool = false
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
-var speakers = ["Edd", "Carben", "Carmen", "Nano", "No name"]
+var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name"]
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true

@@ -6,6 +6,8 @@ var facing_dir : int = -1
 
 var move_vel := Vector2()
 
+var deathpos = Vector2.ZERO
+
 func _ready():
 	$ambient.pitch_scale += randf()/10-0.05
 	$AnimationPlayer.play('idle')
@@ -13,14 +15,13 @@ func _ready():
 	move_vel.x = SPEED
 	
 func _process(delta):
-		
 	$FloorDetection.force_raycast_update()
 	if is_on_floor() and !$FloorDetection.is_colliding():
 		move_vel.x = -1 * sign(move_vel.x) * SPEED
 	$WallDetection.force_raycast_update()
 	if $WallDetection.is_colliding():
 		move_vel.x = -1 * sign(move_vel.x) * SPEED
-		
+
 	if move_vel.x > 0:
 		$Sprite.scale.x = -1
 		$FloorDetection.position.x = 10
@@ -31,11 +32,14 @@ func _process(delta):
 		$WallDetection.cast_to.x = -16
 
 	move(move_vel, delta)
-	
+
 	if abs(move_vel.x) > 0:
 		$AnimationPlayer.play('walking')
 	else:
 		$AnimationPlayer.play('idle')
+		
+	if deathpos != Vector2.ZERO:
+		position = deathpos
 
 func get_which_wall_collided():
 	for i in range(get_slide_count()):

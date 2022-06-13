@@ -24,6 +24,7 @@ var lowhel = false
 
 var low: int = 0
 var death = preload("res://SidePlayer/death_particles.tscn")
+var robo_death = preload("res://Enemies/robo_death_particles.tscn")
 const FILTER_HZ = 1000
 const FILTER_SPEED: float = 1.01
 
@@ -107,6 +108,15 @@ func kys():
 		Global.dialog_box.fade(true)
 		yield(get_tree().create_timer(1.0), "timeout")
 		Global.dialog_box.fade(false)
+	else: 
+		var particles = robo_death.instance()
+		add_child(particles)
+		self.deathpos = self.position
+		self.get_node("CollisionShape2D").queue_free()
+		self.get_node("HitDetection").queue_free()
+		self.get_node("HealthBar").hide()
+		self.get_node("Sprite").hide()
+		yield(get_tree().create_timer(0.5), "timeout")
 	queue_free()
 	
 func impulse(dir : Vector2, strength: float):
