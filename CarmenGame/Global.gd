@@ -1,6 +1,6 @@
 extends Node
 
-var difficulty : float = 1.0
+var difficulty : int = 1
 
 var respawn_point : Vector2 = Vector2()
 

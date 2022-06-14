@@ -46,7 +46,7 @@ func _process(delta):
 		move_vel = player_dir.normalized() * SPEED
 		if !hitting and Global.enemies_can_hurt:
 			hitting = true
-			$Timer.start(1.0)
+			$Timer.start(0.7)
 			
 #		move_vel = Vector2()
 	else:

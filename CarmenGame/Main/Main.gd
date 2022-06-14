@@ -33,13 +33,16 @@ func _on_BossTrigger_body_exited(body):
 			Global.in_boss_fight = true
 			for wall in $BossFight/Walls.get_children():
 				wall.rise()
-			$NPCs/Carben.queue_free()
+			if is_instance_valid($NPCs/Carben):
+				$NPCs/Carben.queue_free()
 			Global.boss.show()
 			Global.boss.disabled = false
 			$BossFight/CarbenDestroyed.show()
 
 func change_boss_blocks():
 	for block in $BossFight/Blocks.get_children():
-			block.rise()
+		block.rise()
+			
 func end_game():
+	yield(get_tree().create_timer(20.0), "timeout")
 	get_tree().change_scene("res://Main/TheEnd.tscn")

@@ -254,7 +254,7 @@ animations = [ {
 collision_layer = 4
 script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
-MAX_HEALTH = 26
+MAX_HEALTH = 5
 knockback_resistance = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -338,8 +338,8 @@ cast_to = Vector2( 36, 0 )
 collision_mask = 7
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 22, -11 )
-scale = Vector2( 2.5, 2 )
+position = Vector2( 18, -4 )
+scale = Vector2( 2.25, 1.875 )
 frames = SubResource( 14 )
 animation = "hit"
 frame = 7

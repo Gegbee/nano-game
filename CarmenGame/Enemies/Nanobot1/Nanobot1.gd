@@ -1,7 +1,7 @@
 extends Entity2D
 
 var SPEED : float = 20.0
-var HIT_DISTANCE = 38
+var HIT_DISTANCE = 32
 var hitting : bool = false
 var facing_dir : int = -1
 
@@ -92,6 +92,6 @@ func _on_Timer_timeout():
 func _on_HitDetection_body_entered(body):
 	if body.is_in_group('player') and Global.enemies_can_hurt:
 		$playerhurt.play()
-		body.damage(1, -body.global_position + global_position, 400)
+		body.damage(1 * Global.difficulty, -body.global_position + global_position, 400)
 		Global.setCameraShake(0.2)
 		Global.setChrAbr(Global.getChrAbr() + 0.5)

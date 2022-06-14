@@ -2,12 +2,13 @@ extends Control
 var going = false
 #var save = File.new()
 var is_empty = true
-var diff = 1
+var diff : int = 1
 onready var difficulty_text = $CenterContainer/VBoxContainer/Difficulty
 export var filter1: AudioEffectFilter
 export var filter2: AudioEffectFilter
 
 func _ready():
+	Global.difficulty = diff + 1
 	filter1.cutoff_hz = 20500
 	filter2.cutoff_hz = 20500
 #	save.open("res://save_game.txt", File.READ)
@@ -55,11 +56,11 @@ func _input(_event):
 			diff = 0
 
 		if diff == 0:
-			Global.difficulty = 0.75
+			Global.difficulty = diff + 1
 			difficulty_text.text = "\nDifficulty:\n[tab] -> easy"
-		if diff == 1:
-			Global.difficulty = 1.0
+		elif diff == 1:
+			Global.difficulty = diff + 1
 			difficulty_text.text = "\nDifficulty:\n[tab] -> medium"
-		if diff == 2:
-			Global.difficulty = 1.25
+		elif diff == 2:
+			Global.difficulty = diff + 1
 			difficulty_text.text = "\nDifficulty:\n[tab] -> hard"

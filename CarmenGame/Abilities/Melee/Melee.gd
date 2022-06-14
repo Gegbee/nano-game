@@ -36,12 +36,15 @@ func attack():
 			if collider.is_in_group('entity'):
 				bothurt.pitch_scale = 1.5 + randf()-0.5
 				bothurt.play()
-				collider.damage(damage, -(collider.global_position - global_position), 100 * knockback_mult)
+				var damage_mult : int = 0
 				if get_parent().is_in_group('player'):
 					#jank af but im not paid enough for this
 					if get_parent().name[0] == "N":
 						get_parent().get_node("playerhurt").play()
-					Global.setCameraShake(0.2)
+				else:
+					damage_mult = Global.difficulty - 1
+				collider.damage(damage + damage_mult, -(collider.global_position - global_position), 100 * knockback_mult)
+				Global.setCameraShake(0.2)
 		$Timer.start(SWING_TIME/2)
 
 func aim(pos : Vector2):

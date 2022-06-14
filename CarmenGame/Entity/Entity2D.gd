@@ -115,15 +115,19 @@ func kys():
 		particles.global_position = self.global_position + Vector2(0, -8)
 		disabled = true
 		hide()
-		yield(get_tree().create_timer(2.0), "timeout")
+		Global.dialog_box.set_dialog = []
+		Global.dialog_box.nextAction()
+		yield(get_tree().create_timer(2.0, false), "timeout")
 		Global.dialog_box.fade(true)
-		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(2.0, false), "timeout")
 		Global.dialog_box.fade(false)
 		set_process(true)
 		queue_free()
 		var _player = Global.preloads["player"].instance()
 		var _enemies = Global.preloads["enemies"].instance()
 		Global.enemies_container.queue_free()
+		Global.boss = null
+		Global.in_boss_fight = false
 		Global.enemies_container = null
 		get_tree().get_current_scene().call_deferred("add_child", _player)
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)
@@ -146,7 +150,6 @@ func kys():
 			]
 			get_tree().get_current_scene().call_deferred("add_child", particles)
 			particles.global_position = self.global_position + Vector2(0, -8)
-			yield(get_tree().create_timer(10.0), "timeout")
 			get_tree().get_current_scene().end_game()
 			queue_free()
 		else:

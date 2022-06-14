@@ -117,7 +117,7 @@ func big_slash():
 		var collider = $RayCast2D.get_collider()
 		print(collider)
 		if collider.is_in_group('player'):
-			collider.damage(2, -(collider.global_position - global_position), 500)
+			collider.damage(2 + Global.diffilcuty - 1, -(collider.global_position - global_position), 500)
 				#jank af but im not paid enough for this, Greg: lmao L bozo
 			if get_parent().name[0] == "N":
 				get_parent().get_node("playerhurt").play()

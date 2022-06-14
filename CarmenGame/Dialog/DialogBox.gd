@@ -129,7 +129,8 @@ func nextAction():
 				if speaker == "Edd, The Nanoboss":
 					Global.boss.gone_through_dialogue = true
 					get_tree().get_current_scene().change_boss_blocks()
-				Global.player.can_move = true
+				if is_instance_valid(Global.player):
+					Global.player.can_move = true
 				cinematic_mode = false
 			low = false
 			n.text = ""

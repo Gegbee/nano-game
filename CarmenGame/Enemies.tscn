@@ -15,9 +15,6 @@ position = Vector2( -2518, -48 )
 [node name="Nanobot2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -2626, -112 )
 
-[node name="Nanobot3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -2821, -128 )
-
 [node name="Nanobot4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -2838, -128 )
 
@@ -72,9 +69,6 @@ position = Vector2( -2739, -400 )
 [node name="Nanobot15" parent="." instance=ExtResource( 5 )]
 position = Vector2( -3163, -416 )
 
-[node name="Nanobot16" parent="." instance=ExtResource( 5 )]
-position = Vector2( -3080, -416 )
-
 [node name="Nanobot30" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2707, -735 )
 
@@ -88,13 +82,7 @@ position = Vector2( -3033, -767 )
 position = Vector2( -2908, -612 )
 
 [node name="Nanobot19" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2845, -660 )
-
-[node name="Nanobot20" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2845, -660 )
-
-[node name="Nanobot21" parent="." instance=ExtResource( 7 )]
-position = Vector2( -2845, -660 )
+position = Vector2( -2840, -655 )
 
 [node name="Nanobot23" parent="." instance=ExtResource( 7 )]
 position = Vector2( -2600, -685 )
@@ -109,4 +97,4 @@ position = Vector2( -2897, -850 )
 position = Vector2( -2780, -826 )
 
 [node name="Nanoboss" parent="." instance=ExtResource( 2 )]
-position = Vector2( -1543, 0 )
+position = Vector2( -1554, 0 )

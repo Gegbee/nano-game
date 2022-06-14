@@ -8,7 +8,7 @@
 [ext_resource path="res://Audio/nanosfx_bot.mp3" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12.5, 11 )
+extents = Vector2( 9, 11 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "attacking"
@@ -159,7 +159,7 @@ cast_to = Vector2( 0, 10 )
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -11 )
+position = Vector2( 0, -11 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Node2D" parent="."]
