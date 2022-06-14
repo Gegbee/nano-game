@@ -25,7 +25,7 @@ var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name", "Edd, T
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true
-var played = [false, false, false]
+var played = [false, false, false, false]
 
 
 var spoken_to = []
@@ -46,7 +46,6 @@ func _process(_delta):
 		nextAction()
 	if t.percent_visible == 1:
 		state = IDLE
-	
 	if low and filter.cutoff_hz > FILTER_HZ:
 		filter.cutoff_hz /= FILTER_SPEED
 	elif not low and filter.cutoff_hz < 20500:
@@ -91,18 +90,18 @@ func runDialog(new_dialog : String):
 			cue.playing = false
 		cues[int(split_dialog[2])-1].play()
 	
-	if speaker == "Carben":
+	if speaker == "Carben" and not played[0]:
 		MusicController.transition_to(1)
 		played[0] = true
 	
-	elif speaker == "Carben":
+	elif speaker == "Carben" and split_dialog[1].begins_with(" Good luck"):
 		MusicController.transition_to(2, true)
 	
-	elif speaker == "Nano v1":
+	elif speaker == "Nano v1" and not played[1]:
 		MusicController.transition_to(4, true)
 		played[1] = true
 		
-	elif speaker == "Nano v1":
+	elif speaker == "Nano v1" and split_dialog[1].begins_with(" Kill him"):
 		MusicController.transition_to(5, true)
 		played[2] = true
 		

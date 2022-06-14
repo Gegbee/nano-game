@@ -1,5 +1,7 @@
 extends Node
 
+var difficulty : float = 1.0
+
 var respawn_point : Vector2 = Vector2()
 
 var camera : Camera2D = null
@@ -15,6 +17,7 @@ var enemies_can_hurt: bool = true
 var env = null
 
 var enimies = []
+
 var enemies_container = null
 
 var in_boss_fight : bool = false

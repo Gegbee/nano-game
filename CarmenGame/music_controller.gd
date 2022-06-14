@@ -4,9 +4,11 @@ extends Node
 var music: Array
 var fading = []
 var playing = [0]
-var combat_ratio: float = 1.0 
+var combat_ratio: float = 1.0
+var musvol = -6.0
+var sfxvol = 0.0
+ 
 const EASE = 1.7
-
 
 func _process(delta):
 	if len(music) > 0 and is_instance_valid(music[2]):

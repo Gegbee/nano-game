@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Menus/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/flash2.gd" type="Script" id=3]
 [ext_resource path="res://Menus/Tick.png" type="Texture" id=4]
+[ext_resource path="res://Menus/volume.gd" type="Script" id=5]
+[ext_resource path="res://Audio/nanosfx_dash.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/nanosfx_musictest.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Menus/maineMenuArt.png" type="Texture" id=8]
 [ext_resource path="res://ScreenShaders/ChrAbr.tres" type="Material" id=9]
 [ext_resource path="res://Audio/nanosfx_menu2.wav" type="AudioStream" id=10]
@@ -169,23 +172,23 @@ margin_bottom = 318.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol"]
 margin_left = 192.0
-margin_right = 498.0
+margin_right = 497.0
 margin_bottom = 34.0
 custom_constants/separation = 10
 
 [node name="Label3" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer"]
 modulate = Color( 1.05, 1, 1, 1 )
-margin_right = 96.0
+margin_right = 95.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 6 )
-text = "Vol. "
+text = "Mus. "
 align = 1
 valign = 1
 script = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer"]
-margin_left = 106.0
-margin_right = 306.0
+margin_left = 105.0
+margin_right = 305.0
 margin_bottom = 34.0
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer/CenterContainer"]
@@ -200,7 +203,14 @@ custom_styles/slider = SubResource( 7 )
 custom_styles/grabber_area_highlight = SubResource( 8 )
 custom_styles/grabber_area = SubResource( 8 )
 max_value = 10.0
-value = 5.0
+value = 8.0
+script = ExtResource( 5 )
+music = true
+
+[node name="test" type="AudioStreamPlayer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer/CenterContainer/HSlider"]
+stream = ExtResource( 7 )
+volume_db = -7.866
+bus = "music-master"
 
 [node name="Sfx" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
 margin_top = 358.0
@@ -240,10 +250,14 @@ custom_styles/slider = SubResource( 7 )
 custom_styles/grabber_area_highlight = SubResource( 8 )
 custom_styles/grabber_area = SubResource( 8 )
 max_value = 10.0
-value = 5.0
+value = 8.0
+script = ExtResource( 5 )
+
+[node name="test" type="AudioStreamPlayer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/Sfx/HBoxContainer/CenterContainer/HSlider"]
+stream = ExtResource( 6 )
+bus = "sfx"
 
 [node name="Fade" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -2703, -701 )
@@ -271,3 +285,6 @@ bus = "sfx"
 stream = ExtResource( 11 )
 volume_db = -14.832
 bus = "sfx"
+
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer/CenterContainer/HSlider" to="CanvasLayer/Control/CenterContainer/VBoxContainer/Vol/HBoxContainer/CenterContainer/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Sfx/HBoxContainer/CenterContainer/HSlider" to="CanvasLayer/Control/CenterContainer/VBoxContainer/Sfx/HBoxContainer/CenterContainer/HSlider" method="_on_HSlider_value_changed"]
