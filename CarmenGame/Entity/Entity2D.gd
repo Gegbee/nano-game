@@ -131,8 +131,8 @@ func kys():
 		_player.global_position = Global.respawn_point
 	else: 
 		if is_in_group("boss"):
-			Global.dialog_box.start_talk(["Edd, The Nanoboss: Aauhh f*** I'm dying!:3"], "Edd, The Nanoboss")
-			Global.dialog_box.nextAction()
+#			Global.dialog_box.start_talk(["Edd, The Nanoboss: Aauhh f*** I'm dying!:3"], "Edd, The Nanoboss")
+#			Global.dialog_box.nextAction()
 			var particles = Global.preloads["exploding_particles"].instance()
 			particles.time_before_clear = 20.0
 			particles.particle_textures = [
@@ -146,6 +146,8 @@ func kys():
 			]
 			get_tree().get_current_scene().call_deferred("add_child", particles)
 			particles.global_position = self.global_position + Vector2(0, -8)
+			yield(get_tree().create_timer(10.0), "timeout")
+			get_tree().get_current_scene().end_game()
 			queue_free()
 		else:
 			var particles = Global.preloads["exploding_particles"].instance()

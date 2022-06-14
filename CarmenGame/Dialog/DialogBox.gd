@@ -127,7 +127,8 @@ func nextAction():
 				exited_dialog = true
 				$AnimationPlayer.play_backwards("RESET")
 				if speaker == "Edd, The Nanoboss":
-					pass
+					Global.boss.gone_through_dialogue = true
+					get_tree().get_current_scene().change_boss_blocks()
 				Global.player.can_move = true
 				cinematic_mode = false
 			low = false

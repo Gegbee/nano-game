@@ -112,6 +112,7 @@ damage = 2
 knockback_mult = 5.0
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 0, -6 )

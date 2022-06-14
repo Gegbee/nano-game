@@ -88,3 +88,10 @@ func _on_Timer_timeout():
 #			body.damage(3, (-body.global_position + global_position).normalized(), 300)
 	hitting = false
 	state = IDLE
+
+func _on_HitDetection_body_entered(body):
+	if body.is_in_group('player') and Global.enemies_can_hurt:
+		$playerhurt.play()
+		body.damage(1, -body.global_position + global_position, 400)
+		Global.setCameraShake(0.2)
+		Global.setChrAbr(Global.getChrAbr() + 0.5)

@@ -20,6 +20,8 @@ var enimies = []
 
 var enemies_container = null
 
+var boss : Entity2D = null
+
 var in_boss_fight : bool = false
 
 var preloads = {

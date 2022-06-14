@@ -45,7 +45,6 @@ func _process(delta):
 		$AnimationPlayer.play('idle')
 		move_vel = player_dir.normalized() * SPEED
 		if !hitting and Global.enemies_can_hurt:
-			$Melee.attack()
 			hitting = true
 			$Timer.start(1.0)
 			
@@ -63,5 +62,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
+	$Melee.attack()
 	hitting = false
 	state = IDLE

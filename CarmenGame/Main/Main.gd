@@ -1,5 +1,9 @@
 extends Node2D
 
+
+func _ready():
+	Global.respawn_point = Vector2()
+	
 func _input(_event):
 	if Input.is_action_just_pressed("respawn"):
 		if is_instance_valid(Global.player):
@@ -30,9 +34,12 @@ func _on_BossTrigger_body_exited(body):
 			for wall in $BossFight/Walls.get_children():
 				wall.rise()
 			$NPCs/Carben.queue_free()
-			$BossFight/Nanoboss.show()
-			$BossFight/Nanoboss.disabled = false
+			Global.boss.show()
+			Global.boss.disabled = false
 			$BossFight/CarbenDestroyed.show()
 
+func change_boss_blocks():
+	for block in $BossFight/Blocks.get_children():
+			block.rise()
 func end_game():
-	pass
+	get_tree().change_scene("res://Main/TheEnd.tscn")

@@ -56,10 +56,10 @@ func _input(_event):
 
 		if diff == 0:
 			Global.difficulty = 0.75
-			difficulty_text.text = "\nDifficulty:\n<tab> - easy"
+			difficulty_text.text = "\nDifficulty:\n[tab] -> easy"
 		if diff == 1:
 			Global.difficulty = 1.0
-			difficulty_text.text = "\nDifficulty:\n<tab> - medium"
+			difficulty_text.text = "\nDifficulty:\n[tab] -> medium"
 		if diff == 2:
 			Global.difficulty = 1.25
-			difficulty_text.text = "\nDifficulty:\n<tab> - hard"
+			difficulty_text.text = "\nDifficulty:\n[tab] -> hard"

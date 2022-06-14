@@ -26,7 +26,7 @@ enum {
 enum {
 	SLASH, 
 	ORBS,
-	NONE
+	RECHARGE
 }
 var cur_attack : int = SLASH
 var state : int = IDLE
@@ -35,6 +35,7 @@ const SPEED = 20.0
 var attacking : bool = false
 
 func _ready():
+	Global.boss = self
 	disabled = true
 	hide()
 	$AnimatedSprite.play('default')
@@ -43,13 +44,12 @@ func _ready():
 	add_to_group('boss')
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group('player') and !gone_through_dialogue:
+	if body.is_in_group('player') and !gone_through_dialogue and !disabled:
 		init_dialogue()
 
 func init_dialogue():
 	Global.dialog_box.start_talk(init_lines, "Edd, The Nanoboss")
 	Global.dialog_box.nextAction()
-	gone_through_dialogue = true
 	
 func _process(delta):
 	if disabled:
@@ -65,6 +65,11 @@ func _process(delta):
 					state = SLASHING
 				else:
 					state = WALKING
+			elif cur_attack == RECHARGE:
+				if !attacking:
+					attacking = true
+					$Timer.start(4.0)
+				state == IDLE
 		else:
 			state = IDLE
 			
@@ -128,14 +133,17 @@ func plasma_orbs():
 		get_tree().get_current_scene().add_child(orb)
 		orb.global_position = global_position + Vector2(0, -8)
 		yield(get_tree().create_timer(0.8), "timeout")
-	cur_attack = SLASH
+	cur_attack = RECHARGE
 	attacking = false
 	state = IDLE
-	
-func _exit_tree():
-	get_tree().get_current_scene().end_game()
 
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "hit":
 		$AnimatedSprite.play('default')
+
+
+func _on_Timer_timeout():
+	cur_attack = SLASH
+	attacking = false
+	state = IDLE
