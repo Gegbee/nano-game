@@ -22,6 +22,7 @@ func _process(delta):
 			
 func fade(song: int):
 	fading.append
+	
 func transition_to(song: int, fade: bool = false):
 	print("playing ", music[song].name)
 	if fade:

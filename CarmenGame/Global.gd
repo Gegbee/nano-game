@@ -15,7 +15,9 @@ var enemies_can_hurt: bool = true
 var env = null
 
 var enimies = []
+var enemies_container = null
 
+var in_boss_fight : bool = false
 
 var preloads = {
 	"jump_anim" : preload("res://SpawnableAnim/JumpAnim.tscn"),
@@ -37,7 +39,10 @@ func get_player_distance(global_pos):
 
 func set_camera_limits(left, right, top, bottom):
 	if camera:
-		pass
+		camera.limit_left = left
+		camera.limit_right = right
+		camera.limit_top = top
+		camera.limit_bottom = bottom
 
 		
 func setChrAbr(amt : float):
@@ -52,6 +57,6 @@ func setCameraShake(amt: float):
 func setEnvColor(color : Color, offset_color : Color):
 	if !env.get_node('Tween').is_active():
 #	env.get_node('Tween').remove_all()
-		env.get_node('Tween').interpolate_property(env.get_node('Elements'), "modulate", env.get_node('Elements').modulate, offset_color, 2.0)
-		env.get_node('Tween').interpolate_property(env.get_node('CanvasLayer/ColorRect'), "color", env.get_node('CanvasLayer/ColorRect').color, color, 2.0)
+		env.get_node('Tween').interpolate_property(env.get_node('Elements'), "modulate", env.get_node('Elements').modulate, offset_color, 0.5)
+		env.get_node('Tween').interpolate_property(env.get_node('CanvasLayer/ColorRect'), "color", env.get_node('CanvasLayer/ColorRect').color, color, 0.5)
 		env.get_node('Tween').start()

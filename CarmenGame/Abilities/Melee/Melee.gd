@@ -40,8 +40,6 @@ func _on_Timer_timeout():
 					if get_parent().name[0] == "N":
 						get_parent().get_node("playerhurt").play()
 					Global.setCameraShake(0.2)
-			elif collider.is_in_group('shield') and !get_parent().get_children().has(collider):
-				get_parent().damage(0, (collider.global_position - global_position), 100 * collider.knockback_mult)
 		$Timer.start(SWING_TIME/2)
 	else:
 		swing_init = true

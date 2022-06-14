@@ -28,11 +28,11 @@ const FILTER_SPEED: float = 1.01
 
 var disabled : bool = false
 
-
 func _ready():
 	spawned_color_change()
 	add_to_group('entity')
 	health_bar = get_node(health_bar_path)
+	health = MAX_HEALTH
 
 func _physics_process(delta):
 	if health > 3: 
@@ -100,7 +100,7 @@ func set_health(new_health : int):
 		health_bar.updateHealth(health)
 	
 func kys():
-	if is_instance_valid(Global.player) and is_in_group('player'):
+	if is_in_group('player'):
 		Global.player = null
 		var particles = Global.preloads["exploding_particles"].instance()
 		particles.time_before_clear = 3.0
@@ -123,23 +123,41 @@ func kys():
 		queue_free()
 		var _player = Global.preloads["player"].instance()
 		var _enemies = Global.preloads["enemies"].instance()
-		self.get_node("../Enemies").queue_free()
-		# this can't be good TRUE LOL, changed
+		Global.enemies_container.queue_free()
+		Global.enemies_container = null
 		get_tree().get_current_scene().call_deferred("add_child", _player)
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)
 		
 		_player.global_position = Global.respawn_point
 	else: 
-		var particles = Global.preloads["exploding_particles"].instance()
-		particles.time_before_clear = 3.0
-		particles.particle_textures = [
-			load("res://Enemies/botpart1.png"),
-			load("res://Enemies/botpart2.png"),
-			load("res://Enemies/botpart3.png")
-		]
-		get_tree().get_current_scene().call_deferred("add_child", particles)
-		particles.global_position = self.global_position + Vector2(0, -8)
-		queue_free()
+		if is_in_group("boss"):
+			Global.dialog_box.start_talk(["Edd, The Nanoboss: Aauhh f*** I'm dying!:3"], "Edd, The Nanoboss")
+			Global.dialog_box.nextAction()
+			var particles = Global.preloads["exploding_particles"].instance()
+			particles.time_before_clear = 20.0
+			particles.particle_textures = [
+				load("res://Enemies/bosspart1.png"),
+				load("res://Enemies/bosspart1.png"),
+				load("res://Enemies/bosspart1.png"),
+				load("res://Enemies/bosspart2.png"),
+				load("res://Enemies/bosspart2.png"),
+				load("res://Enemies/bosspart3.png"),
+				load("res://Enemies/bosspart3.png")
+			]
+			get_tree().get_current_scene().call_deferred("add_child", particles)
+			particles.global_position = self.global_position + Vector2(0, -8)
+			queue_free()
+		else:
+			var particles = Global.preloads["exploding_particles"].instance()
+			particles.time_before_clear = 3.0
+			particles.particle_textures = [
+				load("res://Enemies/botpart1.png"),
+				load("res://Enemies/botpart2.png"),
+				load("res://Enemies/botpart3.png")
+			]
+			get_tree().get_current_scene().call_deferred("add_child", particles)
+			particles.global_position = self.global_position + Vector2(0, -8)
+			queue_free()
 	
 func impulse(dir : Vector2, strength: float):
 	impulse_strength = strength
@@ -165,3 +183,4 @@ func spawned_color_change():
 		if is_instance_valid(self):
 			modulate = "ffffff"
 			yield(get_tree().create_timer(0.3), "timeout")
+

@@ -1,6 +1,6 @@
 extends Entity2D
 
-var SPEED : float = 15.0
+var SPEED : float = 20.0
 var HIT_DISTANCE = 38
 var hitting : bool = false
 var facing_dir : int = -1

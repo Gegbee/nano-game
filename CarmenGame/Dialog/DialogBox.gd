@@ -21,7 +21,7 @@ var cinematic_mode: bool = false
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
-var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name"]
+var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name", "Edd, The Nanoboss"]
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true
@@ -41,15 +41,8 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
-		if len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
-			if not cinematic_mode:
-				spoken_to.append(Global.player.cued_NPCs)
-				$AnimationPlayer.play("RESET")
-				Global.player.can_move = false
-				cinematic_mode = true
-					
-			set_dialog = [] + Global.player.cued_NPCs[0].lines
-			exited_dialog = false
+		if is_instance_valid(Global.player) and len(Global.player.cued_NPCs) > 0 and len(set_dialog) < 1 and exited_dialog:
+			start_talk(Global.player.cued_NPCs[0].lines, Global.player.cued_NPCs[0]._name)
 		nextAction()
 	if t.percent_visible == 1:
 		state = IDLE
@@ -98,20 +91,21 @@ func runDialog(new_dialog : String):
 			cue.playing = false
 		cues[int(split_dialog[2])-1].play()
 	
-	if not played[0] and split_dialog[0] == "Carben":
+	if speaker == "Carben":
 		MusicController.transition_to(1)
 		played[0] = true
 	
-	if len(set_dialog) == 2 and split_dialog[0] == "Carben":
+	elif speaker == "Carben":
 		MusicController.transition_to(2, true)
 	
-	if not played[1] and set_dialog[13].split(":")[0] == "Nano v1":
+	elif speaker == "Nano v1":
 		MusicController.transition_to(4, true)
 		played[1] = true
 		
-	if not played[2] and len(set_dialog) == 1 and split_dialog[0] == "Nano v1":
+	elif speaker == "Nano v1":
 		MusicController.transition_to(5, true)
 		played[2] = true
+		
 	$Tween.start()
 	
 	
@@ -133,6 +127,8 @@ func nextAction():
 			if exited_dialog == false:
 				exited_dialog = true
 				$AnimationPlayer.play_backwards("RESET")
+				if speaker == "Edd, The Nanoboss":
+					pass
 				Global.player.can_move = true
 				cinematic_mode = false
 			low = false
@@ -142,3 +138,14 @@ func nextAction():
 func fade(to_black: bool):
 	if to_black: $AnimationPlayer.play("fade")
 	else: $AnimationPlayer.play_backwards("fade")
+
+func start_talk(lines : Array, _speaker : String):
+	if not cinematic_mode:
+#		spoken_to.append(Global.player.cued_NPCs)
+		$AnimationPlayer.play("RESET")
+		if is_instance_valid(Global.player):
+			Global.player.can_move = false
+		cinematic_mode = true
+	speaker = _speaker
+	set_dialog = [] + lines
+	exited_dialog = false

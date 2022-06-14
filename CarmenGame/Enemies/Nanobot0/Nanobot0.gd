@@ -1,6 +1,6 @@
 extends Entity2D
 
-const SPEED : float = 20.0
+const SPEED : float = 25.0
 
 var facing_dir : int = -1
 
