@@ -11,7 +11,8 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -8.7
+volume_db = -19.188
 autoplay = true
+bus = "sfx"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

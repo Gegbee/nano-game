@@ -221,97 +221,124 @@ valign = 1
 
 [node name="1" type="AudioStreamPlayer" parent="Edd"]
 stream = ExtResource( 5 )
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Edd"]
 stream = ExtResource( 6 )
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Edd"]
 stream = ExtResource( 7 )
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Edd"]
 stream = ExtResource( 8 )
+bus = "sfx-master"
 
 [node name="Edd, The Nanoboss" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
 stream = ExtResource( 5 )
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
 stream = ExtResource( 6 )
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
 stream = ExtResource( 7 )
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
 stream = ExtResource( 8 )
+bus = "sfx-master"
 
 [node name="Carben" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Carben"]
 stream = ExtResource( 9 )
+volume_db = 5.244
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Carben"]
 stream = ExtResource( 10 )
+volume_db = 5.244
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Carben"]
 stream = ExtResource( 3 )
+volume_db = 5.244
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Carben"]
 stream = ExtResource( 4 )
+volume_db = 5.244
+bus = "sfx-master"
 
 [node name="Carmen" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Carmen"]
 stream = ExtResource( 16 )
-volume_db = -10.487
+volume_db = -3.496
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Carmen"]
 stream = ExtResource( 17 )
-volume_db = -10.487
+volume_db = -3.496
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Carmen"]
 stream = ExtResource( 18 )
-volume_db = -10.487
+volume_db = -3.496
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Carmen"]
 stream = ExtResource( 19 )
-volume_db = -10.487
+volume_db = -3.496
+bus = "sfx-master"
 
 [node name="Nano" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 11 )
-volume_db = 4.37
+volume_db = 6.118
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 12 )
-volume_db = 4.37
+volume_db = 6.118
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 13 )
 volume_db = 4.37
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Nano"]
 stream = ExtResource( 14 )
-volume_db = 4.37
+bus = "sfx-master"
 
 [node name="Nano v1" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Nano v1"]
 stream = ExtResource( 21 )
 volume_db = -6.938
+bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Nano v1"]
 stream = ExtResource( 22 )
 volume_db = -6.938
+bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Nano v1"]
 stream = ExtResource( 24 )
 volume_db = -6.938
+bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Nano v1"]
 stream = ExtResource( 23 )
 volume_db = -6.938
+bus = "sfx-master"
 
 [node name="No name" type="Node2D" parent="."]
 
@@ -319,6 +346,7 @@ volume_db = -6.938
 
 [node name="melee" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 20 )
+bus = "sfx-master"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )

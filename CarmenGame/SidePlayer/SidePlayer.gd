@@ -19,7 +19,7 @@ var dash_movement_x : float = 0.0
 var move_vel := Vector2()
 
 export var melee : NodePath
-# MUST CHANGE WHEN RELEASING GAME (ANOTHER DOWN LOWER TOO)
+# MUST CHANGE WHEN RELEASING GAME
 var has_melee : bool = true
 
 
@@ -28,7 +28,6 @@ var has_shield : bool = false
 var was_on_floor = true 
 
 var cued_NPCs := []
-var save
 var first: bool = true
 
 # <audio>
@@ -174,12 +173,9 @@ func _physics_process(delta):
 		$Sprite.scale.x = -1
 		
 	get_node(melee).target_pos = get_global_mouse_position()-get_node(melee).global_position
-	if Input.is_action_just_pressed("attack_left") and has_melee and can_move:
+	if Input.is_action_pressed("attack_left") and has_melee and can_move:
 		get_node(melee).aim(get_global_mouse_position()-get_node(melee).global_position)
 		get_node(melee).attack()
-		audio[2].pitch_scale = 1+randf()/4
-		audio[2].play()
-		Global.setCameraShake(0.1)
 			
 func add_melee():
 	has_melee = true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nanosfx_musictest.mp3-81de7ceeee0080258d2e9726f3ce8185.mp3str"
+
+[deps]
+
+source_file="res://Audio/nanosfx_musictest.mp3"
+dest_files=[ "res://.import/nanosfx_musictest.mp3-81de7ceeee0080258d2e9726f3ce8185.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
