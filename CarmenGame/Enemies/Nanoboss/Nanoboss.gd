@@ -1,7 +1,7 @@
 extends Entity2D
 
 
-var init_lines := [
+export var init_lines := [
 	"Nano: HEE HEE HEE HAH:2", 
 	"Edd, The Nanoboss: LETS FIGHT!:3"
 ]
@@ -110,6 +110,7 @@ func _process(delta):
 func big_slash():
 	yield(get_tree().create_timer(1.25), "timeout")
 	$AnimatedSprite.play('hit')
+	$sword.play()
 	yield(get_tree().create_timer(0.25), "timeout")
 	$RayCast2D.enabled = true
 	$RayCast2D.force_raycast_update()
@@ -117,7 +118,7 @@ func big_slash():
 		var collider = $RayCast2D.get_collider()
 		print(collider)
 		if collider.is_in_group('player'):
-			collider.damage(2 + Global.diffilcuty - 1, -(collider.global_position - global_position), 500)
+			collider.damage(2 + Global.difficulty - 1, -(collider.global_position - global_position), 500)
 				#jank af but im not paid enough for this, Greg: lmao L bozo
 			if get_parent().name[0] == "N":
 				get_parent().get_node("playerhurt").play()
@@ -129,6 +130,7 @@ func big_slash():
 	
 func plasma_orbs():
 	for i in plasma_orbs_released:
+		$plasma.play()
 		var orb = plasma_orb.instance()
 		get_tree().get_current_scene().add_child(orb)
 		orb.global_position = global_position + Vector2(0, -8)

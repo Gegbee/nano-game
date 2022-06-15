@@ -21,11 +21,11 @@ var cinematic_mode: bool = false
 var cues
 onready var t = $CenterContainer/VBoxContainer/Dialog
 onready var n = $CenterContainer/VBoxContainer/Name
-var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano", "No name", "Edd, The Nanoboss"]
+var speakers = ["Edd", "Carben", "Carmen", "Nano v1", "Nano v2", "Nano", "No name", "Edd, The Nanoboss"]
 
 # sees if player has exited dialog to know if dialog should be replyaed
 var exited_dialog : bool = true
-var played = [false, false, false, false]
+var played = [false, false, false, false, false]
 
 
 var spoken_to = []
@@ -90,20 +90,25 @@ func runDialog(new_dialog : String):
 			cue.playing = false
 		cues[int(split_dialog[2])-1].play()
 	
-	if speaker == "Carben" and not played[0]:
+	if split_dialog[0] == "Carben" and not played[0]:
 		MusicController.transition_to(1)
 		played[0] = true
 	
-	elif speaker == "Carben" and split_dialog[1].begins_with(" Good luck"):
+	elif split_dialog[0] == "Carben" and split_dialog[1].begins_with(" Good luck"):
 		MusicController.transition_to(2, true)
 	
-	elif speaker == "Nano v1" and not played[1]:
+	elif split_dialog[0] == "Nano" and split_dialog[1].begins_with(" The rogue"):
 		MusicController.transition_to(4, true)
-		played[1] = true
 		
-	elif speaker == "Nano v1" and split_dialog[1].begins_with(" Kill him"):
+	elif split_dialog[0] == "Nano v1" and split_dialog[1].begins_with(" Kill him"):
 		MusicController.transition_to(5, true)
+		
+	elif split_dialog[0] == "Nano v2" and not played[2]:
+		MusicController.transition_to(6, true)
 		played[2] = true
+	
+	elif split_dialog[0] == "Edd, The Nanoboss" and split_dialog[1].begins_with(" or I melt"):
+		MusicController.transition_to(7, true)
 		
 	$Tween.start()
 	
@@ -143,7 +148,7 @@ func fade(to_black: bool):
 func start_talk(lines : Array, _speaker : String):
 	if not cinematic_mode:
 #		spoken_to.append(Global.player.cued_NPCs)
-		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("in")
 		if is_instance_valid(Global.player):
 			Global.player.can_move = false
 		cinematic_mode = true
