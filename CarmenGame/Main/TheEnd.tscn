@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ScreenShaders/ChrAbr.tres" type="Material" id=1]
 [ext_resource path="res://ScreenShaders/ScreenShaders.tscn" type="PackedScene" id=2]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Menus/flash2.gd" type="Script" id=4]
 [ext_resource path="res://Main/TheEnd.gd" type="Script" id=5]
+[ext_resource path="res://Audio/nanosfx_bootbeep.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/nanosfx_bootloop.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/nanosfx_bootintro.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/moodysfx_bootype.wav" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=5]
 size = 26
@@ -120,5 +124,22 @@ anims/fade = SubResource( 3 )
 anims/in = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "sfx-master"
+
+[node name="start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "sfx-master"
+
+[node name="beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "sfx-master"
+
+[node name="type" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -4.369
+bus = "sfx-master"
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

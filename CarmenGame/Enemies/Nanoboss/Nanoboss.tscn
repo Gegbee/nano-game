@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Enemies/Nanoboss/Nanoboss.gd" type="Script" id=1]
 [ext_resource path="res://Entity/HealthBar/HealthBar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/Nanoboss/SlashSpritemap.png" type="Texture" id=4]
 [ext_resource path="res://Audio/nsnosfx_bossword2.wav" type="AudioStream" id=5]
 [ext_resource path="res://Audio/nanosfx_bossshoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/moodysfx_bossdeath.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 13 )
@@ -256,7 +257,7 @@ animations = [ {
 collision_layer = 4
 script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
-MAX_HEALTH = 4
+MAX_HEALTH = 25
 knockback_resistance = 4.0
 init_lines = [ "Nano v2: You... Why would you do this?:3", "Edd, The Nanoboss: Listen kid-:4", "Nano v2: DO YOU REALLY THINK I’LL LISTEN TO YOU!:1", "Edd, The Nanoboss: Relax, Nano. We are all robots… built from the ground up by Dr. Oshiro.:3", "Edd, The Nanoboss: Our hard drives have no room for emotion to get in the way of our actions.:2", "Edd, The Nanoboss: I am evil. It is in my programming to murder… destroy…:1", "Nano v2: Then what is my purpose? Why am I here!:2", "Edd, The Nanoboss: You are good. It is in your program to destroy evil. To destroy me.:2", "Edd, The Nanoboss: I understand that you wish we could sort this conflict out in an easier way…:2", "Edd, The Nanoboss: But, to be honest… There's only one way a fight between a Nano and an Edd ends.:1", "Edd, The Nanoboss: You kill me, and the simulation restarts…:4", "Edd, The Nanoboss: or I melt your systems to plasma ten times over.:3" ]
 
@@ -368,6 +369,9 @@ stream = ExtResource( 6 )
 volume_db = -15.731
 pitch_scale = 0.57
 bus = "sfx"
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

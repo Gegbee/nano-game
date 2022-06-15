@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/moodysfx_bossdeath.wav-0244f908459667fae258b4d85dfb70bd.sample"
+
+[deps]
+
+source_file="res://Audio/moodysfx_bossdeath.wav"
+dest_files=[ "res://.import/moodysfx_bossdeath.wav-0244f908459667fae258b4d85dfb70bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

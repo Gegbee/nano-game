@@ -47,5 +47,6 @@ func change_boss_blocks():
 		block.rise()
 			
 func end_game():
+	MusicController.transition_to(8, true)
 	yield(get_tree().create_timer(12.0), "timeout")
 	get_tree().change_scene("res://Main/TheEnd.tscn")

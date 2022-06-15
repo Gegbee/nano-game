@@ -150,6 +150,7 @@ func kys():
 			]
 			get_tree().get_current_scene().call_deferred("add_child", particles)
 			particles.global_position = self.global_position + Vector2(0, -8)
+			self.get_node("die").play()
 			get_tree().get_current_scene().end_game()
 			queue_free()
 		else:
