@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_bootintro.wav-9ebedaa614b152e53150ed24b9924447.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_bootintro.wav"
+dest_files=[ "res://.import/nanosfx_bootintro.wav-9ebedaa614b152e53150ed24b9924447.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

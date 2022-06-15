@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_bootbeep.wav-58dd447ec784694d1b08dcb16b190ce0.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_bootbeep.wav"
+dest_files=[ "res://.import/nanosfx_bootbeep.wav-58dd447ec784694d1b08dcb16b190ce0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

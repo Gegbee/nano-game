@@ -7,6 +7,14 @@ onready var difficulty_text = $CenterContainer/VBoxContainer/Difficulty
 export var filter1: AudioEffectFilter
 export var filter2: AudioEffectFilter
 
+var vol = 1.0
+
+func _process(delta):
+	if going:
+		vol -= 0.3333*delta
+	$carbenssong.volume_db = linear2db(vol)-7.866
+
+
 func _ready():
 	Global.difficulty = diff + 1
 	filter1.cutoff_hz = 20500
@@ -36,6 +44,7 @@ func _input(_event):
 		$CenterContainer/VBoxContainer/Label2.flash = true
 		going = true
 		$AnimationPlayer.play("fade")
+		
 		$leave.play()
 		# see ya next time
 #		save.open("res://save_game.txt", File.WRITE)

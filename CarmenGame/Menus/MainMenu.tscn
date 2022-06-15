@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://ScreenShaders/ScreenShaders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
@@ -15,6 +15,74 @@
 [ext_resource path="res://Menus/flash2.gd" type="Script" id=13]
 [ext_resource path="res://lowpassfilter2.tres" type="AudioEffectLowPassFilter" id=14]
 [ext_resource path="res://Audio/nanosfx_menu1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Menus/anim/a0037.png" type="Texture" id=16]
+[ext_resource path="res://Menus/anim/a0052.png" type="Texture" id=17]
+[ext_resource path="res://Menus/anim/a0049.png" type="Texture" id=18]
+[ext_resource path="res://Menus/anim/a0041.png" type="Texture" id=19]
+[ext_resource path="res://Menus/anim/a0045.png" type="Texture" id=20]
+[ext_resource path="res://Menus/anim/a0057.png" type="Texture" id=21]
+[ext_resource path="res://Menus/anim/a0035.png" type="Texture" id=22]
+[ext_resource path="res://Menus/anim/a0058.png" type="Texture" id=23]
+[ext_resource path="res://Menus/anim/a0036.png" type="Texture" id=24]
+[ext_resource path="res://Menus/anim/a0040.png" type="Texture" id=25]
+[ext_resource path="res://Menus/anim/a0047.png" type="Texture" id=26]
+[ext_resource path="res://Menus/anim/a0043.png" type="Texture" id=27]
+[ext_resource path="res://Menus/anim/a0056.png" type="Texture" id=28]
+[ext_resource path="res://Menus/anim/a0042.png" type="Texture" id=29]
+[ext_resource path="res://Menus/anim/a0059.png" type="Texture" id=30]
+[ext_resource path="res://Menus/anim/a0051.png" type="Texture" id=31]
+[ext_resource path="res://Menus/anim/a0039.png" type="Texture" id=32]
+[ext_resource path="res://Menus/anim/a0048.png" type="Texture" id=33]
+[ext_resource path="res://Menus/anim/a0050.png" type="Texture" id=34]
+[ext_resource path="res://Menus/anim/a0055.png" type="Texture" id=35]
+[ext_resource path="res://Menus/anim/a0038.png" type="Texture" id=36]
+[ext_resource path="res://Menus/anim/a0044.png" type="Texture" id=37]
+[ext_resource path="res://Menus/anim/a0046.png" type="Texture" id=38]
+[ext_resource path="res://Menus/anim/a0054.png" type="Texture" id=39]
+[ext_resource path="res://Menus/anim/a0060.png" type="Texture" id=40]
+[ext_resource path="res://Menus/anim/a0053.png" type="Texture" id=41]
+[ext_resource path="res://Menus/anim/a0025.png" type="Texture" id=42]
+[ext_resource path="res://Menus/anim/a0027.png" type="Texture" id=43]
+[ext_resource path="res://Menus/anim/a0028.png" type="Texture" id=44]
+[ext_resource path="res://Menus/anim/a0026.png" type="Texture" id=45]
+[ext_resource path="res://Menus/anim/a0003.png" type="Texture" id=46]
+[ext_resource path="res://Menus/anim/a0015.png" type="Texture" id=47]
+[ext_resource path="res://Menus/anim/a0010.png" type="Texture" id=48]
+[ext_resource path="res://Menus/anim/a0002.png" type="Texture" id=49]
+[ext_resource path="res://Menus/anim/a0007.png" type="Texture" id=50]
+[ext_resource path="res://Menus/anim/a0006.png" type="Texture" id=51]
+[ext_resource path="res://Menus/anim/a0001.png" type="Texture" id=52]
+[ext_resource path="res://Menus/anim/a0009.png" type="Texture" id=53]
+[ext_resource path="res://Menus/anim/a0008.png" type="Texture" id=54]
+[ext_resource path="res://Menus/anim/a0011.png" type="Texture" id=55]
+[ext_resource path="res://Menus/anim/a0012.png" type="Texture" id=56]
+[ext_resource path="res://Menus/anim/a0005.png" type="Texture" id=57]
+[ext_resource path="res://Menus/anim/a0013.png" type="Texture" id=58]
+[ext_resource path="res://Menus/anim/a0004.png" type="Texture" id=59]
+[ext_resource path="res://Menus/anim/a0014.png" type="Texture" id=60]
+[ext_resource path="res://Menus/anim/a0016.png" type="Texture" id=61]
+[ext_resource path="res://Menus/anim/a0017.png" type="Texture" id=62]
+[ext_resource path="res://Menus/anim/a0018.png" type="Texture" id=63]
+[ext_resource path="res://Menus/anim/a0019.png" type="Texture" id=64]
+[ext_resource path="res://Menus/anim/a0021.png" type="Texture" id=65]
+[ext_resource path="res://Menus/anim/a0020.png" type="Texture" id=66]
+[ext_resource path="res://Menus/anim/a0022.png" type="Texture" id=67]
+[ext_resource path="res://Menus/anim/a0024.png" type="Texture" id=68]
+[ext_resource path="res://Menus/anim/a0023.png" type="Texture" id=69]
+[ext_resource path="res://Menus/anim/a0030.png" type="Texture" id=70]
+[ext_resource path="res://Menus/anim/a0031.png" type="Texture" id=71]
+[ext_resource path="res://Menus/anim/a0033.png" type="Texture" id=72]
+[ext_resource path="res://Menus/anim/a0032.png" type="Texture" id=73]
+[ext_resource path="res://Menus/anim/a0034.png" type="Texture" id=74]
+[ext_resource path="res://Menus/anim/a0029.png" type="Texture" id=75]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 52 ), ExtResource( 49 ), ExtResource( 46 ), ExtResource( 59 ), ExtResource( 57 ), ExtResource( 51 ), ExtResource( 50 ), ExtResource( 54 ), ExtResource( 53 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 47 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 66 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 75 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 73 ), ExtResource( 72 ), ExtResource( 74 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 16 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 37 ), ExtResource( 20 ), ExtResource( 38 ), ExtResource( 26 ), ExtResource( 33 ), ExtResource( 18 ), ExtResource( 34 ), ExtResource( 31 ), ExtResource( 17 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 35 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -51,8 +119,8 @@ glow_levels/2 = true
 glow_levels/5 = false
 glow_levels/6 = true
 glow_intensity = 0.45
-glow_strength = 1.21
-glow_bloom = 0.08
+glow_strength = 0.84
+glow_bloom = 0.45
 glow_blend_mode = 0
 
 [sub_resource type="Animation" id=8]
@@ -92,6 +160,8 @@ length = 3.0
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 100.0
+margin_bottom = 100.0
 mouse_filter = 2
 script = ExtResource( 9 )
 filter1 = ExtResource( 14 )
@@ -100,6 +170,7 @@ filter2 = ExtResource( 8 )
 [node name="Bg" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -159.0
 mouse_filter = 2
 color = Color( 0.00784314, 0.0431373, 0.0745098, 1 )
 
@@ -123,6 +194,13 @@ rect_min_size = Vector2( 690, 96 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer/VBoxContainer"]
+position = Vector2( 345, -100 )
+scale = Vector2( 6.29167, 6.29167 )
+frames = SubResource( 13 )
+frame = 1
+playing = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 modulate = Color( 1.05, 1, 1, 1 )
