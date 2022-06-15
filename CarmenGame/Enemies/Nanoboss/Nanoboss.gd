@@ -15,7 +15,7 @@ var facing_dir : int = 0
 var gone_through_dialogue : bool = false
 var plasma_orbs_released : int = 3
 var plasma_orb = preload("res://Enemies/Nanoboss/PlasmaOrb.tscn")
-
+var is2 = false
 enum {
 	WALKING,
 	PLASMING,
@@ -31,10 +31,12 @@ enum {
 var cur_attack : int = SLASH
 var state : int = IDLE
 var move_vel := Vector2()
-const SPEED = 20.0
+var SPEED = 20.0
 var attacking : bool = false
 
 func _ready():
+	SPEED *= Global.difficulty_scalar[1]
+	plasma_orbs_released = int(plasma_orbs_released*Global.difficulty_scalar[1])
 	Global.boss = self
 	disabled = true
 	hide()

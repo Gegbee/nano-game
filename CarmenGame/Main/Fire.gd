@@ -8,7 +8,7 @@ var up = false
 var mod: float = 0
 
 func _process(delta):
-	if is_instance_valid(Global.player):
+	if is_instance_valid(Global.player) and not get_parent().active:
 		if abs(position.x - Global.player.position.x) < DIST and abs(position.x - Global.player.position.x) != 0:
 			if up:
 				mod += (DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR

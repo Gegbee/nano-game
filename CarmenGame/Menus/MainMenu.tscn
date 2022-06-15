@@ -197,7 +197,7 @@ stretch_mode = 6
 position = Vector2( 345, -100 )
 scale = Vector2( 6.29167, 6.29167 )
 frames = SubResource( 13 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]

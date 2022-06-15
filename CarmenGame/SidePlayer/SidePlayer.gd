@@ -19,7 +19,6 @@ var dash_movement_x : float = 0.0
 var move_vel := Vector2()
 
 export var melee : NodePath
-# MUST CHANGE WHEN RELEASING GAME
 var has_melee : bool = false
 
 
@@ -29,7 +28,7 @@ var was_on_floor = true
 
 var cued_NPCs := []
 var first: bool = true
-
+var is2 = false
 # <audio>
 export var filter: AudioEffectFilter
 onready var audio = [$Dash, $Slide, $Slice, $Jump, $Step, $Land, $LowHealth, $LowerHealth]

@@ -1,5 +1,6 @@
 extends Node2D
-
+const ENDGLITCH = 10.0
+var active = false
 
 func _ready():
 	Global.respawn_point = Vector2()
@@ -10,6 +11,9 @@ func _input(_event):
 			Global.player.set_health(0)
 		
 func _process(_delta):
+	if active:
+		Global.setChrAbr(Global.getChrAbr()+ENDGLITCH*_delta)
+	
 	# CODE TO CHANGE ENVIRONMENT BASED ON PLAYERS X COORD
 	if is_instance_valid(Global.player):
 		var player_x = Global.player.global_position.x
@@ -48,5 +52,7 @@ func change_boss_blocks():
 			
 func end_game():
 	MusicController.transition_to(8, true)
+	active = true
 	yield(get_tree().create_timer(12.0), "timeout")
+	Global.setChrAbr(0)
 	get_tree().change_scene("res://Main/TheEnd.tscn")

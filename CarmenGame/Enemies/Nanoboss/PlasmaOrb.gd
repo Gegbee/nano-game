@@ -1,9 +1,10 @@
 extends Area2D
 
-const SPEED = 39.0
+var SPEED = 39.0*1.5
 var dir : Vector2 = Vector2()
 
 func _ready():
+	SPEED *= Global.difficulty_scalar[0]
 	if is_instance_valid(Global.player):
 		dir = (Global.player.global_position - global_position).normalized()
 		

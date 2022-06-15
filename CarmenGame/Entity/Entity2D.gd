@@ -29,6 +29,10 @@ const FILTER_SPEED: float = 1.01
 var disabled : bool = false
 
 func _ready():
+	if not is_in_group('player'):
+		MAX_HEALTH = int(Global.difficulty_scalar[0] * MAX_HEALTH)
+		if not self.is2:
+			knockback_resistance = Global.difficulty_scalar[0] * knockback_resistance
 	spawned_color_change()
 	add_to_group('entity')
 	health_bar = get_node(health_bar_path)
@@ -101,6 +105,9 @@ func set_health(new_health : int):
 	
 func kys():
 	if is_in_group('player'):
+		var save_melee = false
+		if Global.player.has_melee:
+			save_melee = true
 		Global.player = null
 		var meelee : bool = self.has_melee
 		var particles = Global.preloads["exploding_particles"].instance()
@@ -130,6 +137,7 @@ func kys():
 		Global.boss = null
 		Global.in_boss_fight = false
 		Global.enemies_container = null
+		_player.has_melee = save_melee
 		get_tree().get_current_scene().call_deferred("add_child", _player)
 		_player.has_melee = meelee
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)

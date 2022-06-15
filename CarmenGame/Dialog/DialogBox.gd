@@ -105,9 +105,8 @@ func runDialog(new_dialog : String):
 	elif split_dialog[0] == "Nano v1" and split_dialog[1].begins_with(" Kill him"):
 		MusicController.transition_to(5, true)
 		
-	elif split_dialog[0] == "Nano v2" and not played[2]:
+	elif split_dialog[0] == "Nano v2" and split_dialog[1].begins_with(" You"):
 		MusicController.transition_to(6, true)
-		played[2] = true
 	
 	elif split_dialog[0] == "Edd, The Nanoboss" and split_dialog[1].begins_with(" or I melt"):
 		MusicController.transition_to(7, true)

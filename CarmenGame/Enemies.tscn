@@ -15,6 +15,9 @@ position = Vector2( -2518, -48 )
 [node name="Nanobot2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -2626, -112 )
 
+[node name="Nanobot3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -2655, -321 )
+
 [node name="Nanobot4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -2838, -128 )
 
@@ -59,9 +62,6 @@ position = Vector2( -2720, -16 )
 
 [node name="Nanobot9" parent="." instance=ExtResource( 5 )]
 position = Vector2( -3057, -287 )
-
-[node name="Nanobot11" parent="." instance=ExtResource( 5 )]
-position = Vector2( -2655, -320 )
 
 [node name="Nanobot12" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2739, -400 )

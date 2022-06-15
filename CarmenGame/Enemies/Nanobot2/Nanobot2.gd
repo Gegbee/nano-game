@@ -1,10 +1,11 @@
 extends Entity2D
 
 
-const SPEED : float = 25.0
-const HIT_DISTANCE = 32
+var SPEED : float = 25.0
+var HIT_DISTANCE = 32
 var hitting : bool = false
 var facing_dir : int = -1
+var is2 = true
 
 var move_vel := Vector2()
 
@@ -16,6 +17,9 @@ enum {
 var state = IDLE
 
 func _ready():
+	if Global.difficulty_scalar[1] > 1:
+		SPEED *= Global.difficulty_scalar[0]
+		HIT_DISTANCE *= Global.difficulty_scalar[0]
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')
 

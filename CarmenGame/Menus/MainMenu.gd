@@ -16,7 +16,13 @@ func _process(delta):
 
 
 func _ready():
-	Global.difficulty = diff + 1
+	if Global.difficulty == 0:
+		difficulty_text.text = "\nDifficulty:\n[tab] -> easy"
+	elif Global.difficulty == 1:
+		difficulty_text.text = "\nDifficulty:\n[tab] -> medium"
+	elif Global.difficulty == 2:
+		difficulty_text.text = "\nDifficulty:\n[tab] -> hard"
+		
 	filter1.cutoff_hz = 20500
 	filter2.cutoff_hz = 20500
 #	save.open("res://save_game.txt", File.READ)
@@ -67,10 +73,16 @@ func _input(_event):
 
 		if diff == 0:
 			Global.difficulty = diff + 1
+			Global.difficulty_scalar[0] = 0.75
+			Global.difficulty_scalar[1] = 0.5
 			difficulty_text.text = "\nDifficulty:\n[tab] -> easy"
 		elif diff == 1:
 			Global.difficulty = diff + 1
+			Global.difficulty_scalar[0] = 1.0
+			Global.difficulty_scalar[1] = 1.0
 			difficulty_text.text = "\nDifficulty:\n[tab] -> medium"
 		elif diff == 2:
 			Global.difficulty = diff + 1
+			Global.difficulty_scalar[0] = 1.5
+			Global.difficulty_scalar[1] = 2.0
 			difficulty_text.text = "\nDifficulty:\n[tab] -> hard"

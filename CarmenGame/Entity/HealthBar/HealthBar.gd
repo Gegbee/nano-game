@@ -10,6 +10,7 @@ func _ready():
 	$Tween.start()
 
 func updateHealth(new_health : int):
+	max_value = get_parent().MAX_HEALTH
 	#$Tween.stop(self, ":modulate")
 #	$Tween.interpolate_property(self, "rect_scale", rect_scale, 
 #	Vector2(1, 1) * 1.3, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN)
