@@ -256,7 +256,7 @@ animations = [ {
 collision_layer = 4
 script = ExtResource( 1 )
 health_bar_path = NodePath("HealthBar")
-MAX_HEALTH = 5
+MAX_HEALTH = 4
 knockback_resistance = 4.0
 init_lines = [ "Nano v2: You... Why would you do this?:3", "Edd, The Nanoboss: Listen kid-:4", "Nano v2: DO YOU REALLY THINK I’LL LISTEN TO YOU!:1", "Edd, The Nanoboss: Relax, Nano. We are all robots… built from the ground up by Dr. Oshiro.:3", "Edd, The Nanoboss: Our hard drives have no room for emotion to get in the way of our actions.:2", "Edd, The Nanoboss: I am evil. It is in my programming to murder… destroy…:1", "Nano v2: Then what is my purpose? Why am I here!:2", "Edd, The Nanoboss: You are good. It is in your program to destroy evil. To destroy me.:2", "Edd, The Nanoboss: I understand that you wish we could sort this conflict out in an easier way…:2", "Edd, The Nanoboss: But, to be honest… There's only one way a fight between a Nano and an Edd ends.:1", "Edd, The Nanoboss: You kill me, and the simulation restarts…:4", "Edd, The Nanoboss: or I melt your systems to plasma ten times over.:3" ]
 
@@ -341,7 +341,7 @@ cast_to = Vector2( 36, 0 )
 collision_mask = 7
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 18, -4 )
+position = Vector2( 18, -6 )
 scale = Vector2( 2.25, 1.875 )
 frames = SubResource( 14 )
 animation = "hit"

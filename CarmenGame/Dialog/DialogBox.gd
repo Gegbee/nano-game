@@ -50,6 +50,8 @@ func _process(_delta):
 		filter.cutoff_hz /= FILTER_SPEED
 	elif not low and filter.cutoff_hz < 20500:
 		filter.cutoff_hz *= FILTER_SPEED
+	if len(set_dialog) > 0:
+		Global.setChrAbr(0.0)
 #
 #	if low and volume_lower.ceiling_db > AMPLIFY_HZ:
 #		volume_lower.ceiling_db -= AMPLIFY_SPEED

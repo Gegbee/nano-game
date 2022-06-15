@@ -19,7 +19,8 @@ func _process(delta):
 				if mod <= SHAKE[1]:
 					up = true
 				
-			Global.setChrAbr(mod)
+			if len(Global.dialog_box.set_dialog) <= 0:
+				Global.setChrAbr(mod)
 			shake()
 		
 #        Global.setChrAbr((DIST-abs(position.x - Global.player.position.x))/DIST*SCALAR + mod)

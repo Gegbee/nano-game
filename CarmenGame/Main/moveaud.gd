@@ -15,4 +15,5 @@ func _process(_delta):
 		if tripped:
 			position.x += 1
 	else:
-		position.x = Global.player.position.x
+		if is_instance_valid(Global.player):
+			position.x = Global.player.position.x
