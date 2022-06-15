@@ -18,20 +18,20 @@ func _process(_delta):
 	if is_instance_valid(Global.player):
 		var player_x = Global.player.global_position.x
 		if player_x > $EnvChangers/Pos0.position.x:
-			$CanvasLayer/DebugLabel.text = "FPS:" + str(Engine.get_frames_per_second()) + " - blue"
 			Global.setEnvColor(Color("06121e"), Color("010c17"))
 			Global.set_camera_limits($EnvChangers/Pos0.position.x, 48, -10000000, 48)
 		elif player_x < $EnvChangers/Pos0.position.x and player_x >= $EnvChangers/Pos1.position.x:
 			if Global.player.global_position.y < $EnvChangers/Pos2.position.y:
 				Global.set_camera_limits($EnvChangers/Pos1.position.x, $EnvChangers/Pos0.position.x, -10000000, 48)
 			else:
-				Global.set_camera_limits($EnvChangers/Pos1.position.x, $EnvChangers/Pos0.position.x, $EnvChangers/Pos3.position.y, 48)
+				if Global.in_boss_fight:
+					Global.set_camera_limits($EnvChangers/Pos1.position.x, $EnvChangers/Pos0.position.x, $EnvChangers/Pos3.position.y, 48)
+				else:
+					Global.set_camera_limits($EnvChangers/Pos1.position.x, $EnvChangers/Pos0.position.x, -10000000, 48)
 			Global.setEnvColor(Color("220401"), Color("120101"))
-			$CanvasLayer/DebugLabel.text = "FPS:" + str(Engine.get_frames_per_second()) + " - red"
 		else:
 			Global.setEnvColor(Color("230820"), Color("180216"))
 			Global.set_camera_limits(-10000000, $EnvChangers/Pos1.position.x, -10000000, 48)
-			$CanvasLayer/DebugLabel.text = "FPS:" + str(Engine.get_frames_per_second()) + " - purple"
 
 
 func _on_BossTrigger_body_exited(body):

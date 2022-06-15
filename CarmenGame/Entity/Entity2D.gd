@@ -109,6 +109,7 @@ func kys():
 		if Global.player.has_melee:
 			save_melee = true
 		Global.player = null
+		var meelee : bool = self.has_melee
 		var particles = Global.preloads["exploding_particles"].instance()
 		particles.time_before_clear = 3.0
 		particles.particle_textures = [
@@ -138,6 +139,7 @@ func kys():
 		Global.enemies_container = null
 		_player.has_melee = save_melee
 		get_tree().get_current_scene().call_deferred("add_child", _player)
+		_player.has_melee = meelee
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)
 		
 		_player.global_position = Global.respawn_point
