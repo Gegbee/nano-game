@@ -24,7 +24,7 @@ tracks/0/keys = {
 
 [node name="Nanov1" instance=ExtResource( 2 )]
 _name = "Nano v1"
-lines = [ "Nano: The rogue nanobot!!:2", "Nano: Stand down you terrorist!:3", "Nano v1: Dr. Oshiro have mercy… I’m not corrupted, I swear!:2", "Nano: Who are you?:1", "Nano v1: I’m you… or at least I think so.:4", "Nano v1: We are nanobots made to protect New Nanobot City.:3", "Nano v1: Employed by the great creator, a mysterious being who is only assumed to be the god of this world.:1", "Nano v1: You are the second version of me.:2", "Nano v1: It is your duty to defeat Edd once and for all.:4", "Nano: Edd?!:2", "Nano v1: Yes, Edd, The Nanoboss. He fled to the sewers after I almost destroyed him.:3", "Nano v1: I was too injured to chase him.:2", "Nano v1: Kill him, Nano version 2.0, do what I could not.:1", "Nano v1: Save our world, I believe in you.:4" ]
+lines = [ "Nano: The rogue nanobot!!:2", "Nano v1: In Oshiro’s name, have mercy… I’m not corrupted, I swear!:2", "Nano: Who are you?:1", "Nano v1: I’m you… or at least I think so.:4", "Nano v1: We are nanobots made to protect New Nanobot City.:3", "Nano v1: Employed by Dr. Oshiro, the god of this world.:1", "Nano v1: You are the second version of me.:2", "Nano v1: It is your duty to defeat Edd once and for all.:4", "Nano: Edd!!?!??!?!:2", "Nano v1: Yes, Edd, The Nanoboss. He fled to the sewers after I almost destroyed him.:3", "Nano v1: I was too injured to chase him.:2", "Nano v1: Kill him, Nano version 2.0, do what I could not.:1", "Nano v1: Save our world, I believe in you.:4" ]
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0, -12 )
