@@ -20,7 +20,7 @@ var move_vel := Vector2()
 
 export var melee : NodePath
 # MUST CHANGE WHEN RELEASING GAME
-var has_melee : bool = true
+var has_melee : bool = false
 
 
 export var shield : NodePath

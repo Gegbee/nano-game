@@ -160,8 +160,6 @@ length = 3.0
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 100.0
-margin_bottom = 100.0
 mouse_filter = 2
 script = ExtResource( 9 )
 filter1 = ExtResource( 14 )
@@ -170,7 +168,6 @@ filter2 = ExtResource( 8 )
 [node name="Bg" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -159.0
 mouse_filter = 2
 color = Color( 0.00784314, 0.0431373, 0.0745098, 1 )
 
@@ -179,12 +176,13 @@ color = Color( 0.00784314, 0.0431373, 0.0745098, 1 )
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 156.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 615.0
-margin_top = 270.0
+margin_top = 192.0
 margin_right = 1305.0
-margin_bottom = 810.0
+margin_bottom = 732.0
 custom_constants/separation = 40
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
@@ -199,7 +197,7 @@ stretch_mode = 6
 position = Vector2( 345, -100 )
 scale = Vector2( 6.29167, 6.29167 )
 frames = SubResource( 13 )
-frame = 1
+frame = 13
 playing = true
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]

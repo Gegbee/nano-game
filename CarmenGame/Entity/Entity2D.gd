@@ -102,6 +102,7 @@ func set_health(new_health : int):
 func kys():
 	if is_in_group('player'):
 		Global.player = null
+		var meelee : bool = self.has_melee
 		var particles = Global.preloads["exploding_particles"].instance()
 		particles.time_before_clear = 3.0
 		particles.particle_textures = [
@@ -130,6 +131,7 @@ func kys():
 		Global.in_boss_fight = false
 		Global.enemies_container = null
 		get_tree().get_current_scene().call_deferred("add_child", _player)
+		_player.has_melee = meelee
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)
 		
 		_player.global_position = Global.respawn_point
