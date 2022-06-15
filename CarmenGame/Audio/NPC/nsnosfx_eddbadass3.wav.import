@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nsnosfx_eddbadass3.wav-77c7b6d42b305c62e8894f78a9798dc0.sample"
+
+[deps]
+
+source_file="res://Audio/NPC/nsnosfx_eddbadass3.wav"
+dest_files=[ "res://.import/nsnosfx_eddbadass3.wav-77c7b6d42b305c62e8894f78a9798dc0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
 
 [ext_resource path="res://lowpassfilter.tres" type="AudioEffectLowPassFilter" id=1]
 [ext_resource path="res://lowpassfilter2.tres" type="AudioEffectLowPassFilter" id=2]
@@ -11,6 +11,11 @@ soft_clip_db = 4.0
 
 [sub_resource type="AudioEffectPhaser" id=3]
 resource_name = "Phaser"
+
+[sub_resource type="AudioEffectReverb" id=4]
+resource_name = "Reverb"
+damping = 0.34
+wet = 0.25
 
 [resource]
 bus/0/effect/0/effect = SubResource( 1 )
@@ -63,3 +68,11 @@ bus/7/mute = false
 bus/7/bypass_fx = false
 bus/7/volume_db = 0.0
 bus/7/send = "Master"
+bus/8/name = "layzreverb"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = 0.0
+bus/8/send = "sfx"
+bus/8/effect/0/effect = SubResource( 4 )
+bus/8/effect/0/enabled = true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nanosfx_wallrise.wav-651b7083452fdb407ffb86d3485120e7.sample"
+
+[deps]
+
+source_file="res://Audio/nanosfx_wallrise.wav"
+dest_files=[ "res://.import/nanosfx_wallrise.wav-651b7083452fdb407ffb86d3485120e7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

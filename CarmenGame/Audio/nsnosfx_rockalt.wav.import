@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nsnosfx_rockalt.wav-179436588dc04b02f7470b3cda3a0d28.sample"
+
+[deps]
+
+source_file="res://Audio/nsnosfx_rockalt.wav"
+dest_files=[ "res://.import/nsnosfx_rockalt.wav-179436588dc04b02f7470b3cda3a0d28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

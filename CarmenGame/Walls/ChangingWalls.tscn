@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Walls/ChangingWalls.gd" type="Script" id=1]
+[ext_resource path="res://Audio/nanosfx_dialoge.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/nanosfx_wallrise.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 8 )
@@ -17,5 +19,17 @@ shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Sprite"]
 color = Color( 0, 0, 0, 1 )
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -7.866
+pitch_scale = 1.64
+bus = "sfx"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = 24.0
+pitch_scale = 0.23
+bus = "layzreverb"
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

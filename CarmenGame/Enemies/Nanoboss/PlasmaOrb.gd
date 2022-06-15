@@ -15,7 +15,7 @@ func _process(delta):
 
 func _on_PlasmaOrb_body_entered(body):
 	if body.is_in_group('player') and is_instance_valid(Global.player):
-		body.damage(1 + Global.diffilcuty - 1, -(Global.player.global_position - global_position).normalized(), 100)
+		body.damage(1 + Global.difficulty - 1, -(Global.player.global_position - global_position).normalized(), 100)
 		queue_free()
 
 

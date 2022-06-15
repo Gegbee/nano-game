@@ -51,6 +51,7 @@ func _input(_event):
 #		is_empty = true
 		
 	elif Input.is_action_just_pressed("tab"):
+		$difficulty.play()
 		diff += 1
 		if diff > 2:
 			diff = 0

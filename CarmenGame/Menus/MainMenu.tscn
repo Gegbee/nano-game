@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://ScreenShaders/ScreenShaders.tscn" type="PackedScene" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Audio/seeya.wav" type="AudioStream" id=12]
 [ext_resource path="res://Menus/flash2.gd" type="Script" id=13]
 [ext_resource path="res://lowpassfilter2.tres" type="AudioEffectLowPassFilter" id=14]
+[ext_resource path="res://Audio/nanosfx_menu1.wav" type="AudioStream" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -271,6 +272,12 @@ anims/in = SubResource( 10 )
 [node name="startgame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -14.832
+bus = "sfx"
+
+[node name="difficulty" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -14.832
+pitch_scale = 1.63
 bus = "sfx"
 
 [node name="leave" type="AudioStreamPlayer" parent="."]

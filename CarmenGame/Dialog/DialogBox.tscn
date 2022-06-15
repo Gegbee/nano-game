@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Dialog/DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://retro_computer_personal_use.ttf" type="DynamicFontData" id=2]
@@ -24,6 +24,14 @@
 [ext_resource path="res://Audio/NPC/nanosfx_nanobot2.wav" type="AudioStream" id=22]
 [ext_resource path="res://Audio/NPC/nanosfx_nanobot4.wav" type="AudioStream" id=23]
 [ext_resource path="res://Audio/NPC/nanosfx_nanobot3.wav" type="AudioStream" id=24]
+[ext_resource path="res://Audio/NPC/nsnosfx_eddbadass1.wav" type="AudioStream" id=25]
+[ext_resource path="res://Audio/NPC/nsnosfx_eddbadass2.wav" type="AudioStream" id=26]
+[ext_resource path="res://Audio/NPC/nsnosfx_eddbadass3.wav" type="AudioStream" id=27]
+[ext_resource path="res://Audio/NPC/nsnosfx_nanoMAD2.wav" type="AudioStream" id=28]
+[ext_resource path="res://Audio/NPC/nsnosfx_nanoMAD4.wav" type="AudioStream" id=29]
+[ext_resource path="res://Audio/NPC/nsnosfx_nanoMAD1.wav" type="AudioStream" id=30]
+[ext_resource path="res://Audio/NPC/nsnosfx_nanoMAD3.wav" type="AudioStream" id=31]
+[ext_resource path="res://Audio/NPC/nsnosfx_eddbadass4.wav" type="AudioStream" id=32]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -160,6 +168,7 @@ script = ExtResource( 1 )
 filter = ExtResource( 15 )
 
 [node name="cinematic" type="ColorRect" parent="."]
+visible = false
 margin_left = -1034.0
 margin_top = 1084.0
 margin_right = 2929.0
@@ -238,19 +247,23 @@ bus = "sfx-master"
 [node name="Edd, The Nanoboss" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
-stream = ExtResource( 5 )
+stream = ExtResource( 25 )
+volume_db = -3.496
 bus = "sfx-master"
 
 [node name="2" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
-stream = ExtResource( 6 )
+stream = ExtResource( 26 )
+volume_db = -3.496
 bus = "sfx-master"
 
 [node name="3" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
-stream = ExtResource( 7 )
+stream = ExtResource( 27 )
+volume_db = -3.496
 bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Edd, The Nanoboss"]
-stream = ExtResource( 8 )
+stream = ExtResource( 32 )
+volume_db = -3.496
 bus = "sfx-master"
 
 [node name="Carben" type="Node2D" parent="."]
@@ -337,6 +350,28 @@ bus = "sfx-master"
 
 [node name="4" type="AudioStreamPlayer" parent="Nano v1"]
 stream = ExtResource( 23 )
+volume_db = -6.938
+bus = "sfx-master"
+
+[node name="Nano v2" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer" parent="Nano v2"]
+stream = ExtResource( 30 )
+volume_db = -6.938
+bus = "sfx-master"
+
+[node name="2" type="AudioStreamPlayer" parent="Nano v2"]
+stream = ExtResource( 28 )
+volume_db = -6.938
+bus = "sfx-master"
+
+[node name="3" type="AudioStreamPlayer" parent="Nano v2"]
+stream = ExtResource( 31 )
+volume_db = 0.054
+bus = "sfx-master"
+
+[node name="4" type="AudioStreamPlayer" parent="Nano v2"]
+stream = ExtResource( 29 )
 volume_db = -6.938
 bus = "sfx-master"
 
