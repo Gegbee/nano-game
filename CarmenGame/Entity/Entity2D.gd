@@ -106,11 +106,11 @@ func kys():
 		var particles = Global.preloads["exploding_particles"].instance()
 		particles.time_before_clear = 3.0
 		particles.particle_textures = [
-			load("res://Sideplayer/destroyed_part1.png"),
-			load("res://Sideplayer/destroyed_part2.png"),
-			load("res://Sideplayer/destroyed_part3.png"),
-			load("res://Sideplayer/destroyed_part4.png"),
-			load("res://Sideplayer/destroyed_part5.png")
+			load("res://SidePlayer/destroyed_part1.png"),
+			load("res://SidePlayer/destroyed_part2.png"),
+			load("res://SidePlayer/destroyed_part3.png"),
+			load("res://SidePlayer/destroyed_part4.png"),
+			load("res://SidePlayer/destroyed_part5.png")
 		]
 		get_tree().get_current_scene().call_deferred("add_child", particles)
 		particles.global_position = self.global_position + Vector2(0, -8)
