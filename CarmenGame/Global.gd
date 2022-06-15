@@ -1,6 +1,7 @@
 extends Node
 
 var difficulty : int = 1
+var difficulty_scalar : Array = [1.0, 1.0]
 
 var respawn_point : Vector2 = Vector2()
 

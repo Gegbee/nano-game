@@ -4,6 +4,7 @@ var SPEED : float = 20.0
 var HIT_DISTANCE = 32
 var hitting : bool = false
 var facing_dir : int = -1
+var is2 = false
 
 var floor_detection_pos : Vector2 = Vector2()
 var move_vel := Vector2()
@@ -17,6 +18,9 @@ enum {
 var state = IDLE
 
 func _ready():
+	if Global.difficulty_scalar[1] > 1:
+		SPEED *= Global.difficulty_scalar[1]
+		HIT_DISTANCE *= Global.difficulty_scalar[0]
 	$ambient.pitch_scale += randf()/10.0-0.05-0.75
 	floor_detection_pos = $FloorDetection.position
 	$AnimationPlayer.play('idle')

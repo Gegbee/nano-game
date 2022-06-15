@@ -3,6 +3,7 @@ extends StaticBody2D
 
 export var height : int = 16.0
 export var width : int = 32.0
+export var mute : bool = false
 
 var raised : bool = false
 
@@ -23,14 +24,18 @@ func _ready():
 	
 func rise():
 	if !raised:
-		$sound.play()
+		if not mute:
+			$sound.play()
 		$CollisionShape2D.set_deferred("disabled", false)
 		$Tween.interpolate_property($Sprite, "scale", Vector2(1, 0), Vector2(1, 1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 		yield(get_tree().create_timer(0.3), "timeout")
-		$hit.play()
+		if not mute:
+			$hit.play()
 		$sound.playing = false
 		raised = true
+		Global.setCameraShake(0.3)
+		Global.setChrAbr(1.0)
 	
 func lower():
 	if raised:
@@ -42,5 +47,4 @@ func lower():
 
 
 func _on_Tween_tween_completed(object, key):
-	Global.setCameraShake(0.3)
-	Global.setChrAbr(1.0)
+	pass

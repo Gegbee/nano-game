@@ -29,6 +29,10 @@ const FILTER_SPEED: float = 1.01
 var disabled : bool = false
 
 func _ready():
+	if not is_in_group('player'):
+		MAX_HEALTH = int(Global.difficulty_scalar[0] * MAX_HEALTH)
+		if not self.is2:
+			knockback_resistance = Global.difficulty_scalar[0] * knockback_resistance
 	spawned_color_change()
 	add_to_group('entity')
 	health_bar = get_node(health_bar_path)
@@ -101,15 +105,18 @@ func set_health(new_health : int):
 	
 func kys():
 	if is_in_group('player'):
+		var save_melee = false
+		if Global.player.has_melee:
+			save_melee = true
 		Global.player = null
 		var particles = Global.preloads["exploding_particles"].instance()
 		particles.time_before_clear = 3.0
 		particles.particle_textures = [
-			load("res://Sideplayer/destroyed_part1.png"),
-			load("res://Sideplayer/destroyed_part2.png"),
-			load("res://Sideplayer/destroyed_part3.png"),
-			load("res://Sideplayer/destroyed_part4.png"),
-			load("res://Sideplayer/destroyed_part5.png")
+			load("res://SidePlayer/destroyed_part1.png"),
+			load("res://SidePlayer/destroyed_part2.png"),
+			load("res://SidePlayer/destroyed_part3.png"),
+			load("res://SidePlayer/destroyed_part4.png"),
+			load("res://SidePlayer/destroyed_part5.png")
 		]
 		get_tree().get_current_scene().call_deferred("add_child", particles)
 		particles.global_position = self.global_position + Vector2(0, -8)
@@ -129,6 +136,7 @@ func kys():
 		Global.boss = null
 		Global.in_boss_fight = false
 		Global.enemies_container = null
+		_player.has_melee = save_melee
 		get_tree().get_current_scene().call_deferred("add_child", _player)
 		get_tree().get_current_scene().call_deferred("add_child", _enemies)
 		

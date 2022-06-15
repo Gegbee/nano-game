@@ -2,6 +2,7 @@ extends Node
 
 
 var music: Array
+var reset: Array
 var fading = []
 var playing = [0]
 var combat_ratio: float = 1.0
@@ -18,7 +19,7 @@ func _process(delta):
 			music[fade].volume_db = (music[fade].volume_db-0.01)*1.003
 			if music[fade].volume_db <= -75:
 				music[fade].playing = false
-				music[fade].volume_db = 0
+				music[fade].volume_db = reset[fade]
 				playing.remove(playing.find(fade))
 				fading.remove(fading.find(fade))
 			

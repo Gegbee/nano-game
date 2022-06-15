@@ -1,6 +1,6 @@
 extends Entity2D
 
-const SPEED : float = 25.0
+var SPEED : float = 25.0
 
 var facing_dir : int = -1
 
@@ -8,8 +8,10 @@ var move_vel := Vector2()
 
 var deathpos = Vector2.ZERO
 
-
+var is2 = false
 func _ready():
+	if Global.difficulty_scalar[1] > 1:
+		SPEED *= Global.difficulty_scalar[1]
 	$ambient.pitch_scale += randf()/10-0.05
 	$AnimationPlayer.play('idle')
 	add_to_group('enemy')
